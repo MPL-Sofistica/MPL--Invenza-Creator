@@ -9,10 +9,9 @@ public class CapturadorPosicion : EditorWindow
 
     Vector3 PosicionObjeto;
 
-    Vector3 PosicionPanelHijo;
+    [SerializeField] public List<Vector3> PosicionPanelHijo = new List<Vector3>();
 
-    Vector3 Posicion2PanelHijo;
-
+    private int numhijos;
 
     GameObject ObjetoaCapturar;
 
@@ -37,6 +36,7 @@ public class CapturadorPosicion : EditorWindow
   * Return: la ventana dentro del editor con las opciones que se le atribuyen, en este caso un vector3 para la posicion y un objeto a cargar
   * 
   * */
+
     private void OnGUI()
     {
         GUILayout.Label("Posicion del Objeto", EditorStyles.boldLabel);
@@ -44,13 +44,52 @@ public class CapturadorPosicion : EditorWindow
 
         PosicionObjeto = EditorGUILayout.Vector3Field("Posicion del Objeto", PosicionObjeto);
 
-
-        PosicionPanelHijo = EditorGUILayout.Vector3Field("Posicion del hijo", PosicionPanelHijo);
-
-        Posicion2PanelHijo = EditorGUILayout.Vector3Field("Posicion del segundo hijo", Posicion2PanelHijo);
-
-
         ObjetoaCapturar = EditorGUILayout.ObjectField("Objeto a Capturar", ObjetoaCapturar, typeof(GameObject), true) as GameObject;
+
+        numhijos = EditorGUILayout.IntField("numero de hijos: ", numhijos);
+
+        List<Vector3> list = PosicionPanelHijo;
+
+
+        numhijos = ObjetoaCapturar.transform.childCount;
+
+
+        int tamano = Mathf.Max(0, EditorGUILayout.IntField("Tamaño", numhijos));
+        while (tamano > list.Count)
+        {
+            list.Add(new Vector3());
+        }
+
+        while (tamano < list.Count)
+        {
+            list.RemoveAt(list.Count - 1);
+        }
+
+        for (int i = 0; i < numhijos; i++)
+        {
+            list[i] = EditorGUILayout.Vector3Field("Posicion del hijo numero: " + i, ObjetoaCapturar.transform.GetChild(i).transform.position);
+        }
+
+
+
+
+
+        /*if (GUILayout.Button("Cargar objeto"))
+        {
+
+
+
+            /*for (int i = 0; i <= numhijos; i++)
+            {
+                PosicionPanelHijo[i] = ObjetoaCapturar.transform.GetChild(i).position;
+            }
+
+            for (int j = 0; j <= numhijos; j++)
+            {
+                PosicionPanelHijo[j] = EditorGUILayout.Vector3Field("Posicion del Objeto", PosicionPanelHijo[j]);
+            }
+        }*/
+
 
         if (GUILayout.Button("Capturar la Posición"))
         {
@@ -71,22 +110,12 @@ public class CapturadorPosicion : EditorWindow
 * */
     private void CapturarPosicion()
     {
-        if (ObjetoaCapturar==null)
+        if (ObjetoaCapturar == null)
         {
             Debug.LogError("No Existe un objeto en el campo Objeto a Capturar");
             return;
         }
 
         PosicionObjeto = ObjetoaCapturar.transform.position;
-
-        PosicionPanelHijo = ObjetoaCapturar.transform.GetChild(0).transform.position;
-
-        Posicion2PanelHijo = ObjetoaCapturar.transform.GetChild(1).transform.position;
-
     }
-
-
-
-
-
 }
