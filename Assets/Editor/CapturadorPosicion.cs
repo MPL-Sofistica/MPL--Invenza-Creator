@@ -4,30 +4,64 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.Video;
 using UnityEngine.UI;
+using System.IO;
+using System;
 
-
+[Serializable]
 public class CapturadorPosicion : EditorWindow
 {
 
-    Vector3 PosicionObjeto;
-    Vector3 EscalaObjeto;
+    public string tituloCardV;
+    public string type;
 
-    [SerializeField] public List<Objeto> HijosdelObjeto = new List<Objeto>();
+    public List<Objeto> model = new List<Objeto>();
 
-    [SerializeField] public List<SubObjeto> SubHijos = new List<SubObjeto>();
+
+    public enum Tipos
+    {
+        MR,
+        AR,
+        XR,
+        VR,
+        i360,
+        v360
+    }
+
+    Tipos tipodeexperiencia;
+
+    GameObject ObjetoaCapturar;
+
+    CapturadorPosicion Experiencia;
+
+
+    //Vector3 PosicionObjeto;
+    //Vector3 EscalaObjeto;
+
+    //public List<Objeto> lista = new List<Objeto>();
+
+    /*[SerializeField]*/
+    // public List<SubObjeto> listasubobjetos = new List<SubObjeto>();
 
     private int numhijos;
 
     private int numsubhijos;
 
-    GameObject ObjetoaCapturar;
+    // GameObject ObjetoaCapturar;
 
-    SpriteRenderer SpriteHolder;
+    Image SpriteHolder;
+
+    List<Sprite> imagenreferencia = new List<Sprite>();
 
     VideoPlayer VideoHolder;
 
     Text TextHolder;
 
+    Vector2 scrollPosition = Vector2.zero;
+
+
+    bool showelement;
+
+    List<bool> subelements = new List<bool>();
 
     [MenuItem("Invenza Creator SDK/Capturar Posición")]
     /**
@@ -53,93 +87,148 @@ public class CapturadorPosicion : EditorWindow
     private void OnGUI()
     {
 
+        scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true, GUILayout.Width(500), GUILayout.Height(700));
+
+
+
+
+        GUILayout.Label("Titulo de la experiencia", EditorStyles.boldLabel);
+
+        tituloCardV = EditorGUILayout.TextField("Titulo", GUILayout.MaxWidth(200));
+
+        GUILayout.Label("Seleccione el tipo de la experiencia", EditorStyles.boldLabel);
+
+        tipodeexperiencia = (Tipos)EditorGUILayout.EnumPopup("", tipodeexperiencia, GUILayout.MaxWidth(200));
+
+
+        type = tipodeexperiencia.ToString();
+
+        GUILayout.Label("Objeto a Capturar", EditorStyles.boldLabel);
+
         ObjetoaCapturar = EditorGUILayout.ObjectField("Objeto a Capturar", ObjetoaCapturar, typeof(GameObject), true) as GameObject;
 
-        GUILayout.Label("Posicion del Objeto", EditorStyles.boldLabel);
 
 
-        PosicionObjeto = EditorGUILayout.Vector3Field("Posicion del Objeto", PosicionObjeto);
-        EscalaObjeto = EditorGUILayout.Vector3Field("Escala del Objeto", EscalaObjeto);
+        if (ObjetoaCapturar != null)
+        {
+            numhijos = ObjetoaCapturar.transform.childCount;
 
-
-        numhijos = EditorGUILayout.IntField("numero de hijos: ", numhijos);
-
-        numhijos = ObjetoaCapturar.transform.childCount;
-
-
-        List<Objeto> lista = HijosdelObjeto;
-
-        List<SubObjeto> listasubobjetos = SubHijos;
+        }
 
         if (GUILayout.Button("Capturar la Posición"))
         {
             CapturarPosicion();
         }
 
-        int tamano = Mathf.Max(0, EditorGUILayout.IntField("Tamaño", numhijos));
-        while (tamano > lista.Count)
+        if (GUILayout.Button("Convertir a Json"))
         {
-            lista.Add(new Objeto());
+            TestJson();
         }
 
-        while (tamano < lista.Count)
+        int tamano = Mathf.Max(0, EditorGUILayout.IntField("Tamaño", numhijos));
+        while (tamano > model.Count)
         {
-            lista.RemoveAt(lista.Count - 1);
+            model.Add(new Objeto());
+
+        }
+
+        while (numhijos > imagenreferencia.Count)
+        {
+            imagenreferencia.Add(Sprite.Create(null, new Rect(new Vector2(0, 0), new Vector2(0, 0)), new Vector2(0, 0)));
+        }
+
+        while (tamano < model.Count)
+        {
+            model.RemoveAt(model.Count - 1);
+            imagenreferencia.RemoveAt(imagenreferencia.Count - 1);
         }
 
 
         if (ObjetoaCapturar != null)
         {
-            numsubhijos = ObjetoaCapturar.transform.childCount;
-            for (int i = 0; i < numhijos; i++)
+
+            showelement = EditorGUILayout.Foldout(showelement, "Elemento");
+
+            if (showelement)
             {
-                GUILayout.Label("Hijo " + i + " del objeto:", EditorStyles.boldLabel);
-                lista[i].posicion = EditorGUILayout.Vector3Field("Posicion", ObjetoaCapturar.transform.GetChild(i).transform.position);
-                lista[i].rotacion = EditorGUILayout.Vector3Field("Rotacion", ObjetoaCapturar.transform.GetChild(i).transform.rotation.eulerAngles);
-                EditorGUILayout.Space();
-
-                if (ObjetoaCapturar.transform.childCount > 0)
+                numsubhijos = ObjetoaCapturar.transform.childCount;
+                for (int i = 0; i < numhijos; i++)
                 {
-                    int tamañosubhijos = ObjetoaCapturar.transform.GetChild(i).transform.childCount;
-                    while (tamañosubhijos > listasubobjetos.Count)
+                    while (numsubhijos > subelements.Count)
                     {
-                        listasubobjetos.Add(new SubObjeto());
+                        subelements.Add(new bool());
                     }
-                    for (int ji = 0; ji < ObjetoaCapturar.transform.GetChild(i).childCount; ji++)
+                    while (numsubhijos < subelements.Count)
                     {
-                        if (ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).gameObject.GetComponent<SpriteRenderer>() != null)
-                        {
-                            SpriteHolder = ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).gameObject.GetComponent<SpriteRenderer>();
-                            GUILayout.Label("Sub Hijo del objeto", EditorStyles.boldLabel);
-                            listasubobjetos[ji].path = EditorGUILayout.TextField("camino de el archivo", AssetDatabase.GetAssetPath(SpriteHolder.sprite));
-                            listasubobjetos[ji].name = EditorGUILayout.TextField("Nombre del objeto", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.name);
-                            Debug.Log("hay spriterenderer");
-                        }
-                        else if (ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).gameObject.GetComponent<VideoPlayer>() != null)
-                        {
-                            VideoHolder = ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).gameObject.GetComponent<VideoPlayer>();
-                            listasubobjetos[ji].path = EditorGUILayout.TextField("camino de el archivo", AssetDatabase.GetAssetPath(VideoHolder.clip));
-                            listasubobjetos[ji].name = EditorGUILayout.TextField("Nombre del objeto", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.name);
-                            Debug.Log("hay videoplayer");
+                        subelements.RemoveAt(model.Count - 1);
+                    }
 
-                        }
-                        else if (ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).gameObject.GetComponent<Text>() != null)
+                    GUILayout.Label("Hotspot " + i + " del objeto:", EditorStyles.boldLabel);
+                    subelements[i] = EditorGUILayout.Foldout(subelements[i], "Elemento" + i);
+
+                    if (subelements[i])
+                    {
+                        model[i].nameModel = EditorGUILayout.TextField(ObjetoaCapturar.transform.GetChild(i).transform.name, GUILayout.MaxWidth(200));
+                        imagenreferencia[i] = EditorGUILayout.ObjectField("imagen de referencia", imagenreferencia[i], typeof(Sprite), true) as Sprite;
+                        if (imagenreferencia != null)
                         {
-                            TextHolder = ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).gameObject.GetComponent<Text>();
-                            listasubobjetos[ji].path = EditorGUILayout.TextField("camino de el archivo", TextHolder.text);
-                            listasubobjetos[ji].name = EditorGUILayout.TextField("Nombre del objeto", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.name);
-                            Debug.Log("hay texto");
+                            model[i].pathImageRef = EditorGUILayout.TextField("Nombre del objeto", ObjetoaCapturar.transform.GetChild(i).transform.name);
                         }
-                        else
+                        model[i].pathModel = EditorGUILayout.TextField("direccion del modelo", AssetDatabase.GetAssetPath(ObjetoaCapturar.transform.GetChild(i).gameObject as GameObject));
+
+                        //model[i].posicion = EditorGUILayout.Vector3Field("Posicion", ObjetoaCapturar.transform.GetChild(i).transform.position);
+                        //model[i].rotacion = EditorGUILayout.Vector3Field("Rotacion", ObjetoaCapturar.transform.GetChild(i).transform.rotation.eulerAngles);
+                        EditorGUILayout.Space();
+
+                        if (ObjetoaCapturar.transform.childCount > 0)
                         {
-                            listasubobjetos[ji].path = EditorGUILayout.TextField("camino de el archivo", "no hay ningun tipo de compatibilidad");
-                            listasubobjetos[ji].name = EditorGUILayout.TextField("Nombre del objeto", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.name);
-                            Debug.LogWarning("El Objeto Hijo No Contiene Ningun tipo reconocible");
+                            int tamañosubhijos = ObjetoaCapturar.transform.GetChild(i).transform.childCount;
+                            model[i].hostpots = new List<SubObjeto>();
+                            while (tamañosubhijos > model[i].hostpots.Count)
+                            {
+                                //listasubobjetos.Add(new SubObjeto());
+                                model[i].hostpots.Add(new SubObjeto());
+                            }
+                            for (int ji = 0; ji < ObjetoaCapturar.transform.GetChild(i).childCount; ji++)
+                            {
+                                if (ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).gameObject.GetComponent<Image>() != null)
+                                {
+                                    SpriteHolder = ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).gameObject.GetComponent<Image>();
+                                    GUILayout.Label("Sub Hijo del objeto", EditorStyles.boldLabel);
+                                    //model[i].hostpots[ji].path = EditorGUILayout.TextField("camino de el archivo", AssetDatabase.GetAssetPath(SpriteHolder.sprite));
+                                    //model[i].hostpots[ji].name = EditorGUILayout.TextField("Nombre del objeto", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.name);
+                                    //Debug.Log("hay spriterenderer");
+                                }
+                                else if (ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).gameObject.GetComponent<VideoPlayer>() != null)
+                                {
+                                    VideoHolder = ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).gameObject.GetComponent<VideoPlayer>();
+                                    //model[i].hostpots[ji].path = EditorGUILayout.TextField("camino de el archivo", AssetDatabase.GetAssetPath(VideoHolder.clip));
+                                    //model[i].hostpots[ji].name = EditorGUILayout.TextField("Nombre del objeto", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.name);
+                                    //Debug.Log("hay videoplayer");
+
+                                }
+                                else if (ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).gameObject.GetComponent<Text>() != null)
+                                {
+                                    TextHolder = ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).gameObject.GetComponent<Text>();
+                                    //model[i].hostpots[ji].path = EditorGUILayout.TextField("camino de el archivo", TextHolder.text);
+                                    //model[i].hostpots[ji].name = EditorGUILayout.TextField("Nombre del objeto", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.name);
+                                    //Debug.Log("hay texto");
+                                }
+                                else
+                                {
+                                    //model[i].hostpots[ji].path = EditorGUILayout.TextField("camino de el archivo", "no hay ningun tipo de compatibilidad");
+                                    //model[i].hostpots[ji].name = EditorGUILayout.TextField("Nombre del objeto", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.name);
+                                    //Debug.LogWarning("El Objeto Hijo No Contiene Ningun tipo reconocible");
+                                }
+                            }
+                            //lista[i].ListadeHijos = listasubobjetos;
                         }
                     }
                 }
             }
-        }        
+
+        }
+        GUILayout.EndScrollView();
     }
 
 
@@ -152,75 +241,31 @@ public class CapturadorPosicion : EditorWindow
 * */
     private void CapturarPosicion()
     {
-        if (ObjetoaCapturar == null)
+        /*if (ObjetoaCapturar == null)
         {
             Debug.LogError("No Existe un objeto en el campo Objeto a Capturar");
             return;
-        }
-        PosicionObjeto = ObjetoaCapturar.transform.position;
-        EscalaObjeto = ObjetoaCapturar.transform.localScale;
+        }*/
+        //PosicionObjeto = ObjetoaCapturar.transform.position;
+        //EscalaObjeto = ObjetoaCapturar.transform.localScale;
     }
 
-
-    private void CapturarHijos()
+    public void OnInspectorUpdate()
     {
-        numhijos = EditorGUILayout.IntField("numero de hijos: ", numhijos);
-
-        numhijos = ObjetoaCapturar.transform.childCount;
-
-
-        List<Objeto> lista = HijosdelObjeto;
-
-        List<SubObjeto> listasubobjetos = SubHijos;
-
-        int tamano = Mathf.Max(0, EditorGUILayout.IntField("Tamaño", numhijos));
-        while (tamano > lista.Count)
-        {
-            lista.Add(new Objeto());
-        }
-
-        while (tamano < lista.Count)
-        {
-            lista.RemoveAt(lista.Count - 1);
-        }
-
-
-        if (ObjetoaCapturar != null)
-        {
-            numsubhijos = ObjetoaCapturar.transform.childCount;
-            for (int i = 0; i < numhijos; i++)
-            {
-                GUILayout.Label("Hijo " + i + " del objeto:", EditorStyles.boldLabel);
-                lista[i].posicion = EditorGUILayout.Vector3Field("Posicion", ObjetoaCapturar.transform.GetChild(i).transform.position);
-                lista[i].rotacion = EditorGUILayout.Vector3Field("Rotacion", ObjetoaCapturar.transform.GetChild(i).transform.rotation.eulerAngles);
-                EditorGUILayout.Space();
-
-                if (ObjetoaCapturar.transform.childCount > 0)
-                {
-                    int tamañosubhijos = ObjetoaCapturar.transform.GetChild(i).transform.childCount;
-                    while (tamañosubhijos > listasubobjetos.Count)
-                    {
-                        listasubobjetos.Add(new SubObjeto());
-                    }
-                    for (int ji = 0; ji < ObjetoaCapturar.transform.GetChild(i).childCount; ji++)
-                    {
-                        if (ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).gameObject.GetComponent<SpriteRenderer>() != null)
-                        {
-                            SpriteHolder = ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).gameObject.GetComponent<SpriteRenderer>();
-                            GUILayout.Label("Sub Hijo del objeto", EditorStyles.boldLabel);
-                            listasubobjetos[ji].path = EditorGUILayout.TextField("camino de el archivo", AssetDatabase.GetAssetPath(SpriteHolder.sprite));
-                            listasubobjetos[ji].name = EditorGUILayout.TextField("Nombre del objeto", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.name);
-                            Debug.Log("hay spriterenderer");
-                        }
-                        else
-                        {
-                            listasubobjetos[ji].path = EditorGUILayout.TextField("camino de el archivo", "no es tipo sprite");
-                            listasubobjetos[ji].name = EditorGUILayout.TextField("Nombre del objeto", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.name);
-                        }
-                    }
-                }
-            }
-        }
+        this.Repaint();
     }
+
+    public void TestJson()
+    {
+
+        //string json = JsonUtility.ToJson(lista);
+
+        //string json = JsonHelper.ToJson(lista, true);
+
+
+        //Debug.Log(json);
+
+    }
+
 
 }

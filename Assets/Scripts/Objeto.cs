@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class Objeto : SubObjeto
+[Serializable]
+public class Objeto
 {
-    public Vector3 posicion;
-    public Vector3 rotacion;
-    public List<SubObjeto> ListadeHijos;
+    public string nameModel;
+    public string pathImageRef;
+    public string pathModel;
+    public string scaleModel;
+    public List<SubObjeto> hostpots;
 }

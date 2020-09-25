@@ -1,0 +1,42 @@
+{
+  materials: [
+    {
+      name: 'final3:blinn1SG',
+      parameters: [
+        {
+          baseColor: null,
+        },
+        {
+          baseColorTint: [
+            0.40000000000000002,
+            0.40000000000000002,
+            0.40000000000000002,
+            1,
+          ],
+        },
+        {
+          metallic: 0,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/obj_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+    ],
+    collision: {},
+    file: 'sampleData/models/esparragos.obj',
+    name: 'esparragos',
+    recenter: 'root',
+  },
+  version: '0.54:2',
+}
