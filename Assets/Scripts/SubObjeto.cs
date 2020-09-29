@@ -6,11 +6,11 @@ using System;
 [Serializable]
 public class SubObjeto
 {
-    public string nameHostpot;
-    public string positionHostpot;
-    public string rotationHostpot;
-    public string imageHostPot;
-    public string typeHostPot;
+    public string nameHotspot;
+    public string positionHotspot;
+    public string rotationHotspot;
+    public string imageHotsPot;
+    public string typeHotsPot;
     public string pathArray;
     public string titleMenu;
     public string positionMenu;

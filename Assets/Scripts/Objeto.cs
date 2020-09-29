@@ -10,5 +10,5 @@ public class Objeto
     public string pathImageRef;
     public string pathModel;
     public string scaleModel;
-    public List<SubObjeto> hostpots;
+    public List<SubObjeto> hotspots;
 }
