@@ -76,16 +76,13 @@ public class CapturadorPosicion : EditorWindow
 
         scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true, GUILayout.Width(1000), GUILayout.Height(700));
 
-
-
-
         GUILayout.Label("Titulo de la experiencia", EditorStyles.boldLabel);
 
-        experiencia.tituloCardV = EditorGUILayout.TextField("Titulo", GUILayout.MaxWidth(200));
+        experiencia.tituloCardV = EditorGUILayout.TextField("Titulo");
 
         GUILayout.Label("Seleccione el tipo de la experiencia", EditorStyles.boldLabel);
 
-        tipodeexperiencia = (Tipos)EditorGUILayout.EnumPopup("", tipodeexperiencia, GUILayout.MaxWidth(200));
+        tipodeexperiencia = (Tipos)EditorGUILayout.EnumPopup("", tipodeexperiencia);
 
 
         experiencia.type = tipodeexperiencia.ToString();
@@ -99,12 +96,6 @@ public class CapturadorPosicion : EditorWindow
         if (ObjetoaCapturar != null)
         {
             numhijos = ObjetoaCapturar.transform.childCount;
-
-        }
-
-        if (GUILayout.Button("Capturar la Posición"))
-        {
-            CapturarPosicion();
         }
 
         if (GUILayout.Button("Convertir a Json"))
@@ -119,7 +110,6 @@ public class CapturadorPosicion : EditorWindow
             while (tamano > experiencia.model.Count)
             {
                 experiencia.model.Add(new Objeto());
-
             }
 
             while (numhijos > imagenreferencia.Count)
@@ -129,7 +119,7 @@ public class CapturadorPosicion : EditorWindow
 
             while (numhijos > modelos3D.Count)
             {
-                modelos3D.Add(new GameObject());
+                modelos3D.Add(null);
             }
 
             while (tamano < experiencia.model.Count)
@@ -204,43 +194,50 @@ public class CapturadorPosicion : EditorWindow
                                     {
                                         for (int k = 0; k < ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.childCount; k++)
                                         {
+                                            experiencia.model[i].hotspots[ji].positionMenu = EditorGUILayout.TextField("posicion del panel", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.position.ToString().Replace("(", "").Replace(")", ""));
+                                            experiencia.model[i].hotspots[ji].scaleMenu = EditorGUILayout.TextField("escala del panel", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.localScale.ToString().Replace("(", "").Replace(")", ""));
+                                            experiencia.model[i].hotspots[ji].rotationMenu = EditorGUILayout.TextField("rotacion del panel", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.rotation.ToString().Replace("(", "").Replace(")", ""));
                                             if (ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).gameObject.GetComponent<Canvas>() != null)
                                             {
-                                                experiencia.model[i].hotspots[ji].typeHotsPot = "image";
-                                                experiencia.model[i].hotspots[ji].positionMenu = EditorGUILayout.TextField("posicion del panel", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.position.ToString().Replace("(", "").Replace(")", ""));
-                                                experiencia.model[i].hotspots[ji].scaleMenu = EditorGUILayout.TextField("escala del panel", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.localScale.ToString().Replace("(", "").Replace(")", ""));
-                                                experiencia.model[i].hotspots[ji].rotationMenu = EditorGUILayout.TextField("rotacion del panel", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.rotation.ToString().Replace("(", "").Replace(")", ""));
-
-                                                if (ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.childCount > 0)
+                                                if (ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).GetChild(0).gameObject.GetComponent<Image>() != null)
                                                 {
-                                                    for (int l = 0; l < ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.childCount; l++)
+                                                    experiencia.model[i].hotspots[ji].typeHotsPot = "image";
+                                                    if (ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.childCount > 0)
                                                     {
-                                                        SpriteHolder = ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.GetChild(l).gameObject.GetComponent<Image>();
-                                                        experiencia.model[i].hotspots[ji].pathArray = experiencia.model[i].hotspots[ji].pathArray + AssetDatabase.GetAssetPath(SpriteHolder.sprite) + "#";
+                                                        for (int l = 0; l < ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.childCount; l++)
+                                                        {
+                                                            SpriteHolder = ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.GetChild(l).gameObject.GetComponent<Image>();
+                                                            experiencia.model[i].hotspots[ji].pathArray = experiencia.model[i].hotspots[ji].pathArray + AssetDatabase.GetAssetPath(SpriteHolder.sprite) + "#";
+                                                        }
+                                                    }
+                                                    experiencia.model[i].hotspots[ji].pathArray = EditorGUILayout.TextField("direccion del archivo", experiencia.model[i].hotspots[ji].pathArray);
+                                                    EditorGUILayout.Space();
+                                                }
+                                                else if (ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).GetChild(0).gameObject.GetComponent<Text>() != null)
+                                                {
+                                                    experiencia.model[i].hotspots[ji].typeHotsPot = "texto";
+                                                    if (ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.childCount > 0)
+                                                    {
+                                                        for (int m = 0; m < ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.childCount; m++)
+                                                        {
+                                                            TextHolder = ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.GetChild(m).gameObject.GetComponent<Text>();
+                                                            experiencia.model[i].hotspots[ji].pathArray = experiencia.model[i].hotspots[ji].pathArray + TextHolder.text + "#";
+                                                        }
+                                                        experiencia.model[i].hotspots[ji].pathArray = EditorGUILayout.TextField("direccion del archivo", experiencia.model[i].hotspots[ji].pathArray);
+                                                        EditorGUILayout.Space();
                                                     }
                                                 }
-                                                experiencia.model[i].hotspots[ji].pathArray = EditorGUILayout.TextField("direccion del archivo", experiencia.model[i].hotspots[ji].pathArray);
-
-                                                EditorGUILayout.Space();
                                             }
                                             else if (ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).gameObject.GetComponent<VideoPlayer>() != null)
                                             {
                                                 VideoHolder = ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).gameObject.GetComponent<VideoPlayer>();
                                                 experiencia.model[i].hotspots[ji].typeHotsPot = "video";
-                                                experiencia.model[i].hotspots[ji].pathArray = EditorGUILayout.TextField("camino de el archivo", AssetDatabase.GetAssetPath(VideoHolder.clip));
-                                                Debug.Log("hay videoplayer");
-                                            }
-                                            else if (ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).gameObject.GetComponent<Text>() != null)
-                                            {
-                                                TextHolder = ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).gameObject.GetComponent<Text>();
-                                                experiencia.model[i].hotspots[ji].typeHotsPot = "texto";
-                                                experiencia.model[i].hotspots[ji].pathArray = EditorGUILayout.TextField("camino de el archivo", TextHolder.text);
-                                                Debug.Log("hay texto");
+                                                experiencia.model[i].hotspots[ji].pathArray = EditorGUILayout.TextField("camino del archivo", AssetDatabase.GetAssetPath(VideoHolder.clip));
+                                                //Debug.Log("hay videoplayer");
+                                                EditorGUILayout.Space();
                                             }
                                             else
                                             {
-                                                //model[i].hostpots[ji].path = EditorGUILayout.TextField("camino de el archivo", "no hay ningun tipo de compatibilidad");
-                                                //model[i].hostpots[ji].name = EditorGUILayout.TextField("Nombre del objeto", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.name);
                                                 Debug.LogWarning("El Objeto Hijo No Contiene Ningun tipo reconocible");
                                             }
                                         }
@@ -257,26 +254,9 @@ public class CapturadorPosicion : EditorWindow
         GUILayout.EndScrollView();
     }
 
-
-    /**
-* Name: CapturarPosicion
-* Description: Captura la posicion del GameObject puesto en la variable
-* Params: NO
-* Return: se ve la posicion dentro de la ventana de editor creada
-* 
-* */
-    private void CapturarPosicion()
-    {
-
-
-        //Experiencia.tituloCardV = tituloCardV;
-        //Experiencia.type = type;
-        // Experiencia.model = model;
-    }
-
     public void OnInspectorUpdate()
     {
-        this.Repaint();
+        //this.Repaint();
     }
 
     public void TestJson()
