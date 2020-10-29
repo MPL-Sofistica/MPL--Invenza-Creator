@@ -1,0 +1,38 @@
+{
+    "SHORT_TITLE": "Brida",
+    "type": "MR",
+    "model": [
+        {
+            "NAME_MODEL": "brida_opc1",
+            "PATH_IMAGE_REF": "",
+            "PATH_MODEL": "1.0, 1.0, 1.0",
+            "SCALE_MODEL": "",
+            "hotspots": [
+                {
+                    "NAME_HOTSPOT": "uno",
+                    "POSITION_HOTSPOT": "-0.7, 3.0, -1.4",
+                    "ROTATION_HOTSPOT": "0.0, -0.7, 0.0, 0.7",
+                    "IMAGE_HOTSPOT": "uno",
+                    "TYPE": "image",
+                    "PATH_ARRAY": "Imagenes/brida 1.jpg&&Imagenes/brida 1.jpg&&Imagenes/brida 1.jpg",
+                    "TITLE_PANEL": "",
+                    "POSITION_PANEL": "-0.7, 4.0, -2.9",
+                    "SCALE_PANEL": "0.0, 0.0, 1.0",
+                    "ROTATION_PANEL": "0.0, -0.7, 0.0, 0.7"
+                },
+                {
+                    "NAME_HOTSPOT": "dos",
+                    "POSITION_HOTSPOT": "-0.6, 2.1, 2.0",
+                    "ROTATION_HOTSPOT": "0.0, -0.7, 0.0, 0.7",
+                    "IMAGE_HOTSPOT": "dos",
+                    "TYPE": "image",
+                    "PATH_ARRAY": "Imagenes/brida 1.jpg&&Imagenes/brida 1.jpg&&Imagenes/brida 1.jpg",
+                    "TITLE_PANEL": "",
+                    "POSITION_PANEL": "-0.5, 3.0, 3.4",
+                    "SCALE_PANEL": "0.0, 0.0, 1.0",
+                    "ROTATION_PANEL": "0.0, -0.7, 0.0, 0.7"
+                }
+            ]
+        }
+    ]
+}

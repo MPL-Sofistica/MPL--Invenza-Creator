@@ -1,0 +1,70 @@
+{
+    "tituloCardV": "Titulo",
+    "type": "MR",
+    "model": [
+        {
+            "nameModel": "brida_opc2",
+            "pathImageRef": "",
+            "pathModel": "",
+            "scaleModel": "1.0, 1.0, 1.0",
+            "hotspots": [
+                {
+                    "nameHotspot": "hotspot1",
+                    "positionHotspot": "-2.0, 3.0, -5.8",
+                    "rotationHotspot": "0.0, 0.7, 0.0, 0.7",
+                    "imageHotsPot": "hotspot1",
+                    "typeHotsPot": "image",
+                    "pathArray": "Assets/Imagenes/brida 1.jpg#Assets/Imagenes/brida 2.jpg#Assets/Imagenes/brida 3.jpg#Assets/Imagenes/brida 4.jpg#",
+                    "titleMenu": "",
+                    "positionMenu": "-0.4, 4.2, -5.8",
+                    "scaleMenu": "0.0, 0.0, 1.0",
+                    "rotationMenu": "0.0, 0.0, 0.0, 1.0"
+                }
+            ]
+        },
+        {
+            "nameModel": "Cylinder",
+            "pathImageRef": "",
+            "pathModel": "",
+            "scaleModel": "1.0, 1.0, 1.0",
+            "hotspots": [
+                {
+                    "nameHotspot": "hotspot 1",
+                    "positionHotspot": "-5.2, 3.9, -7.3",
+                    "rotationHotspot": "0.0, 0.0, 0.0, 1.0",
+                    "imageHotsPot": "hotspot 1",
+                    "typeHotsPot": "video",
+                    "pathArray": "Assets/Video/Pexels Videos 2019791.mp4",
+                    "titleMenu": "",
+                    "positionMenu": "",
+                    "scaleMenu": "",
+                    "rotationMenu": ""
+                },
+                {
+                    "nameHotspot": "hotspot 2",
+                    "positionHotspot": "-5.2, 2.5, -8.1",
+                    "rotationHotspot": "0.0, 0.0, 0.0, 1.0",
+                    "imageHotsPot": "hotspot 2",
+                    "typeHotsPot": "texto",
+                    "pathArray": "Este es un texto de prueba para verificar que captura lo que se escribe.",
+                    "titleMenu": "",
+                    "positionMenu": "",
+                    "scaleMenu": "",
+                    "rotationMenu": ""
+                },
+                {
+                    "nameHotspot": "hotspot 3",
+                    "positionHotspot": "-6.7, 2.5, -7.6",
+                    "rotationHotspot": "0.0, 0.0, 0.0, 1.0",
+                    "imageHotsPot": "hotspot 3",
+                    "typeHotsPot": "image",
+                    "pathArray": "Assets/Imagenes/brida 1.jpg#Assets/Imagenes/brida 1.jpg#Assets/Imagenes/brida 1.jpg#Assets/Imagenes/brida 1.jpg#Assets/Imagenes/brida 1.jpg#Assets/Imagenes/brida 1.jpg#",
+                    "titleMenu": "",
+                    "positionMenu": "-5.3, 3.4, -7.6",
+                    "scaleMenu": "0.0, 0.0, 1.0",
+                    "rotationMenu": "0.0, 0.0, 0.0, 1.0"
+                }
+            ]
+        }
+    ]
+}

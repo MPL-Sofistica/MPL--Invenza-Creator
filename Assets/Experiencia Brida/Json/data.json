@@ -1,0 +1,38 @@
+{
+    "tituloCardV": "Titulo",
+    "type": "MR",
+    "model": [
+        {
+            "nameModel": "brida_opc1",
+            "pathImageRef": "Assets/Experiencia Brida/imagenes/brida 5.jpg",
+            "pathModel": "Assets/Experiencia Brida/modelos/brida_opc1 1.obj",
+            "scaleModel": "1.0, 1.0, 1.0",
+            "hotspots": [
+                {
+                    "nameHotspot": "uno",
+                    "positionHotspot": "-0.7, 3.0, -1.4",
+                    "rotationHotspot": "0.0, -0.7, 0.0, 0.7",
+                    "imageHotsPot": "uno",
+                    "typeHotsPot": "image",
+                    "pathArray": "Assets/Imagenes/brida 1.jpg#Assets/Imagenes/brida 1.jpg#Assets/Imagenes/brida 1.jpg#",
+                    "titleMenu": "",
+                    "positionMenu": "-0.7, 4.0, -2.9",
+                    "scaleMenu": "0.0, 0.0, 1.0",
+                    "rotationMenu": "0.0, -0.7, 0.0, 0.7"
+                },
+                {
+                    "nameHotspot": "dos",
+                    "positionHotspot": "-0.6, 2.1, 2.0",
+                    "rotationHotspot": "0.0, -0.7, 0.0, 0.7",
+                    "imageHotsPot": "dos",
+                    "typeHotsPot": "image",
+                    "pathArray": "Assets/Imagenes/brida 1.jpg#Assets/Imagenes/brida 1.jpg#Assets/Imagenes/brida 1.jpg#",
+                    "titleMenu": "",
+                    "positionMenu": "-0.5, 3.0, 3.4",
+                    "scaleMenu": "0.0, 0.0, 1.0",
+                    "rotationMenu": "0.0, -0.7, 0.0, 0.7"
+                }
+            ]
+        }
+    ]
+}
