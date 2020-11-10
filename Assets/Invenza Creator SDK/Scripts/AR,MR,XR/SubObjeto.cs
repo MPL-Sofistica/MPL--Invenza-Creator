@@ -16,4 +16,5 @@ public class SubObjeto
     public string POSITION_PANEL;
     public string SCALE_PANEL;
     public string ROTATION_PANEL;
+    public string NUM_PANEL;
 }

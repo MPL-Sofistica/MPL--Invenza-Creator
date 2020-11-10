@@ -1,0 +1,19 @@
+path model label : archivo txt (tener la ruta unicamente)
+
+si no se usa, se manda vacio
+
+
+EXPERIENCIA
+
+url internal file: nombre del paquete del apk "co.com.xxxxx" / para v360 y i360 direccion del index webGL
+
+
+version: 
+
+
+
+
+
+i360 v360
+
+internal file

@@ -10,5 +10,6 @@ public class Objeto
     public string PATH_IMAGE_REF;
     public string PATH_MODEL;
     public string SCALE_MODEL;
-    public List<SubObjeto> hotspots;
+    public List<SubObjeto> HOTSPOTS;
+    public string PATH_MODEL_LABEL;
 }
