@@ -17,4 +17,15 @@ public class SubObjeto
     public string SCALE_PANEL;
     public string ROTATION_PANEL;
     public string NUM_PANEL;
+    public List<Botones> BUTTONS = new List<Botones>();
+
+
+}
+
+
+[Serializable]
+public class Botones
+{
+    public string TYPE;
+    public string PATH_ARRAY;
 }
