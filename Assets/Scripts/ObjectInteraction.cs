@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Pvr_UnitySDKAPI;
 using UnityEngine;
 
-public class AttachTest : MonoBehaviour
+public class ObjectInteraction : MonoBehaviour
 {
     // Start is called before the first frame update
 
@@ -28,13 +28,13 @@ public class AttachTest : MonoBehaviour
     private Transform currentNode;
 
     private int mainHandNess;
-    
+
     private Ray ray;
     private RaycastHit hit;
 
     //The material in the highlighted state of the object
     //[SerializeField]
-    public Material attachMaterial;
+    public Material pointMaterial;
     //[SerializeField]
     public Material normalMaterial;
 
@@ -44,15 +44,14 @@ public class AttachTest : MonoBehaviour
     //The current state of motion of the object
     private bool moveState = false;
 
-    //private Vector3 currentPosition;
-    //private Vector3 lastPosition;
-    //private Vector3 movementDirection;
 
-    private Vector3 angularVelocity;
-    private Vector3 linearVelocity;
+    public GameObject interactableinfo;
 
-    private Vector3 angularVelocityGetKey;
-    private Vector3 angularVelocityAverage;
+
+    public Animator objectAnimator;
+
+    public AudioSource soundSource;
+
 
     void Start()
     {
@@ -84,8 +83,6 @@ public class AttachTest : MonoBehaviour
                 currentNode = node1;
 
             }
-          
-            
             ray.direction = currentController.transform.forward - currentController.transform.up * 0.25f;
             ray.origin = currentController.transform.Find("start").position;
 
@@ -94,28 +91,17 @@ public class AttachTest : MonoBehaviour
             {
                 if (noClick)
                 {
-                    transform.GetComponent<MeshRenderer>().material = attachMaterial;
+                    transform.GetComponent<MeshRenderer>().material = pointMaterial;
                 }
 
                 {
                     //Judging whether the "Trigger" is pressed or not
                     if (Input.GetKey(KeyCode.Space) || Pvr_UnitySDKAPI.Controller.UPvr_GetKey(mainHandNess, Pvr_UnitySDKAPI.Pvr_KeyCode.TRIGGER))
                     {
-                        moveState = true;
-                        noClick = false;
-                        transform.GetComponent<MeshRenderer>().material = normalMaterial;
-
-                        //Completed the attach effect
-                        transform.position = Vector3.Lerp(transform.position, currentNode.position, Time.deltaTime * attachSpeed);
-                        transform.rotation = Quaternion.Lerp(transform.rotation,currentNode.rotation,Time.deltaTime *attachSpeed);
-                        transform.SetParent(currentNode);
-                        GetComponent<Rigidbody>().isKinematic = true;
-
-                        angularVelocityGetKey = Pvr_UnitySDKAPI.Controller.UPvr_GetAngularVelocity(mainHandNess);
-
-                        //lastPosition = transform.position;
+                        interactableinfo.SetActive(true);
+                        PlayAnimator("",true);
+                        soundSource.Play();
                     }
-
                 }
             }
             else
@@ -126,30 +112,17 @@ public class AttachTest : MonoBehaviour
             //Checking whether the "Trigger" is lifted or not
             if (Input.GetKeyUp(KeyCode.Space) || Pvr_UnitySDKAPI.Controller.UPvr_GetKeyUp(mainHandNess, Pvr_UnitySDKAPI.Pvr_KeyCode.TRIGGER))
             {
-                if (moveState)
-                {
-                    noClick = true;
-
-                    transform.SetParent(null);
-                    GetComponent<Rigidbody>().isKinematic = false;
-
-                    angularVelocity = Pvr_UnitySDKAPI.Controller.UPvr_GetAngularVelocity(mainHandNess);
-                    angularVelocityAverage = (angularVelocityGetKey + angularVelocity) / 2;
-                    linearVelocity = Pvr_UnitySDKAPI.Controller.UPvr_GetVelocity(mainHandNess);
-
-                    GetComponent<Rigidbody>().angularVelocity = angularVelocityAverage * 0.0001f * throwSpeed;
-                    GetComponent<Rigidbody>().velocity = linearVelocity * 0.0001f * throwSpeed;
-                    
-
-                    //currentPosition = transform.position;
-                    //movementDirection = (currentPosition - lastPosition);
-                    //GetComponent<Rigidbody>().AddForce(movementDirection * throwSpeed);
-                    moveState = false;
-                }
-                
+                interactableinfo.SetActive(false);
+                PlayAnimator("", false);
+                soundSource.Stop();
+                noClick = false;
             }
-
-            
         }
+    }
+
+
+    public void PlayAnimator(string condition,bool play)
+    {
+        objectAnimator.SetBool(condition,play);               
     }
 }
