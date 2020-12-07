@@ -18,8 +18,6 @@ public class SubObjeto
     public string ROTATION_PANEL;
     public string NUM_PANEL;
     public List<Botones> BUTTONS = new List<Botones>();
-
-
 }
 
 

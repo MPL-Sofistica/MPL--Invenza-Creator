@@ -38,6 +38,10 @@ public class CapturadorPosicion : EditorWindow
 
     private bool loopedi = false;
 
+    private bool loopediAR = false;
+
+    private bool loopedtAR = false;
+
     private bool loopedt = false;
 
     Image SpriteHolder;
@@ -47,6 +51,8 @@ public class CapturadorPosicion : EditorWindow
     List<GameObject> modelos3D = new List<GameObject>();
 
     List<TextAsset> archivostexto = new List<TextAsset>();
+
+    List<DefaultAsset> modelostensor = new List<DefaultAsset>();
 
     VideoPlayer VideoHolder;
 
@@ -181,13 +187,29 @@ public class CapturadorPosicion : EditorWindow
                                     imagenreferencia[i] = EditorGUILayout.ObjectField("imagen de referencia", imagenreferencia[i], typeof(Sprite), true, GUILayout.MaxWidth(480)) as Sprite;
                                     if (imagenreferencia[i] != null)
                                     {
-                                        experiencia.MODEL[i].PATH_IMAGE_REF = EditorGUILayout.TextField("Dirección de la imagen", AssetDatabase.GetAssetPath(imagenreferencia[i]), GUILayout.MaxWidth(480));
+                                        string auxst;
+
+                                        auxst = AssetDatabase.GetAssetPath(imagenreferencia[i]);
+
+                                        if (auxst.StartsWith("Assets/Invenza Creator SDK/"))
+                                        {
+                                            auxst = auxst.Replace("Assets/Invenza Creator SDK/", "");
+                                        }
+                                        experiencia.MODEL[i].PATH_IMAGE_REF = EditorGUILayout.TextField("Dirección de la imagen", auxst, GUILayout.MaxWidth(480));
                                     }
 
                                     modelos3D[i] = EditorGUILayout.ObjectField("Modelo 3d del objeto en la escena", modelos3D[i], typeof(GameObject), true, GUILayout.MaxWidth(480)) as GameObject;
                                     if (modelos3D[i] != null)
                                     {
-                                        experiencia.MODEL[i].PATH_MODEL = EditorGUILayout.TextField("Dirección del modelo", AssetDatabase.GetAssetPath(modelos3D[i]).ToString(), GUILayout.MaxWidth(480));
+                                        string auxst;
+
+                                        auxst = AssetDatabase.GetAssetPath(modelos3D[i]);
+
+                                        if (auxst.StartsWith("Assets/Invenza Creator SDK/"))
+                                        {
+                                            auxst = auxst.Replace("Assets/Invenza Creator SDK/", "");
+                                        }
+                                        experiencia.MODEL[i].PATH_MODEL = EditorGUILayout.TextField("Dirección del modelo", auxst, GUILayout.MaxWidth(480));
                                     }
                                     experiencia.MODEL[i].SCALE_MODEL = EditorGUILayout.TextField("Escala del modelo", ObjetoaCapturar.transform.GetChild(i).transform.localScale.ToString().Replace("(", "").Replace(")", ""), GUILayout.MaxWidth(480));
                                     experiencia.MODEL[i].PATH_MODEL_LABEL = "";
@@ -353,7 +375,7 @@ public class CapturadorPosicion : EditorWindow
 
                         while (numhijos > archivostexto.Count)
                         {
-                            archivostexto.Add(new TextAsset());
+                            archivostexto.Add(null);
                         }
 
                         while (numhijos > imagenreferencia.Count)
@@ -361,9 +383,9 @@ public class CapturadorPosicion : EditorWindow
                             imagenreferencia.Add(Sprite.Create(null, new Rect(new Vector2(0, 0), new Vector2(0, 0)), new Vector2(0, 0)));
                         }
 
-                        while (numhijos > modelos3D.Count)
+                        while (numhijos > modelostensor.Count)
                         {
-                            modelos3D.Add(null);
+                            modelostensor.Add(null);
                         }
 
                         while (tamano < experiencia.MODEL.Count)
@@ -407,10 +429,19 @@ public class CapturadorPosicion : EditorWindow
                                          experiencia.MODEL[i].PATH_IMAGE_REF = EditorGUILayout.TextField("Dirección de la imagen", AssetDatabase.GetAssetPath(imagenreferencia[i]), GUILayout.MaxWidth(480));
                                      }*/
 
-                                    modelos3D[i] = EditorGUILayout.ObjectField("Modelo Tensor TFLITE", modelos3D[i], typeof(GameObject), true, GUILayout.MaxWidth(480)) as GameObject;
-                                    if (modelos3D[i] != null)
+                                    modelostensor[i] = EditorGUILayout.ObjectField("Modelo Tensor TFLITE", modelostensor[i], typeof(DefaultAsset), true, GUILayout.MaxWidth(480)) as DefaultAsset;
+                                    if (modelostensor[i] != null)
                                     {
-                                        experiencia.MODEL[i].PATH_MODEL = EditorGUILayout.TextField("Dirección del modelo", AssetDatabase.GetAssetPath(modelos3D[i]), GUILayout.MaxWidth(480));
+                                        string auxst;
+
+                                        auxst = AssetDatabase.GetAssetPath(modelostensor[i]);
+
+                                        if (auxst.StartsWith("Assets/Invenza Creator SDK/"))
+                                        {
+                                            auxst = auxst.Replace("Assets/Invenza Creator SDK/", "");
+                                        }
+
+                                        experiencia.MODEL[i].PATH_MODEL = EditorGUILayout.TextField("Dirección del modelo", auxst, GUILayout.MaxWidth(480));
                                     }
                                     //experiencia.MODEL[i].SCALE_MODEL = EditorGUILayout.TextField("Escala del modelo", ObjetoaCapturar.transform.GetChild(i).transform.localScale.ToString().Replace("(", "").Replace(")", ""), GUILayout.MaxWidth(480));
 
@@ -447,10 +478,7 @@ public class CapturadorPosicion : EditorWindow
                                             if (ObjetoaCapturar.transform.GetChild(i).GetChild(ji).transform.tag == "hotspot")
                                             {
                                                 GUILayout.Label("Sub Hijo del objeto", EditorStyles.boldLabel);
-                                                //experiencia.MODEL[i].HOTSPOTS[ji].NAME_HOTSPOT = EditorGUILayout.TextField("nombre del hotspot " + ji + " ", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.name, GUILayout.MaxWidth(480));
-                                                // experiencia.MODEL[i].HOTSPOTS[ji].POSITION_HOTSPOT = EditorGUILayout.TextField("posicion del hotsptpot numero: " + ji + " ", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.position.ToString().Replace("(", "").Replace(")", ""), GUILayout.MaxWidth(480));
-                                                //experiencia.MODEL[i].HOTSPOTS[ji].ROTATION_HOTSPOT = EditorGUILayout.TextField("rotacion del hotsptpot numero: " + ji + " ", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.rotation.ToString().Replace("(", "").Replace(")", ""), GUILayout.MaxWidth(480));
-                                                // experiencia.MODEL[i].HOTSPOTS[ji].IMAGE_HOTSPOT = experiencia.MODEL[i].HOTSPOTS[ji].NAME_HOTSPOT;
+
                                                 experiencia.MODEL[i].HOTSPOTS[ji].NUM_PANEL = EditorGUILayout.TextField("numero del panel" + ji + " ", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.name, GUILayout.MaxWidth(480));
                                                 experiencia.MODEL[i].HOTSPOTS[ji].TITLE_PANEL = EditorGUILayout.TextField("nombre del panel" + ji + " ", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.name, GUILayout.MaxWidth(480));
                                                 if (ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.childCount > 0)
@@ -462,67 +490,106 @@ public class CapturadorPosicion : EditorWindow
                                                         experiencia.MODEL[i].HOTSPOTS[ji].ROTATION_PANEL = EditorGUILayout.TextField("rotacion del panel", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.rotation.ToString().Replace("(", "").Replace(")", ""), GUILayout.MaxWidth(480));
                                                         if (ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).gameObject.GetComponent<Canvas>() != null)
                                                         {
-                                                            if (ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).GetChild(0).gameObject.GetComponent<Image>() != null)
+                                                            for (int b = 0; b < ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.childCount; b++)
                                                             {
-                                                                experiencia.MODEL[i].HOTSPOTS[ji].TYPE = "image";
-                                                                if (ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.childCount > 0)
+                                                                if (ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.GetChild(b).transform.tag == "button")
                                                                 {
-                                                                    string aux;
-                                                                    for (int l = 0; l < ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.childCount; l++)
+                                                                    numbotones = ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.childCount;
+                                                                    //Debug.Log(numbotones);
+                                                                    while (numbotones > experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS.Count)
                                                                     {
-                                                                        SpriteHolder = ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.GetChild(l).gameObject.GetComponent<Image>();
-                                                                        aux = AssetDatabase.GetAssetPath(SpriteHolder.sprite);
+                                                                        experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS.Add(new Botones());
+                                                                    }
+
+                                                                    //Debug.Log(ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.GetChild(b).transform.name);
+                                                                    if (ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.GetChild(b).transform.GetChild(0).gameObject.GetComponent<Image>() != null)
+                                                                    {
+                                                                        EditorGUILayout.LabelField("Boton de imagen");
+                                                                        EditorGUILayout.Space();
+                                                                        experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].TYPE = "imagen";
+                                                                        if (ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.GetChild(b).transform.childCount > 0)
+                                                                        {
+                                                                            string aux;
+                                                                            //if (!loopediAR)
+                                                                            //{
+                                                                            for (int l = 0; l < ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.GetChild(b).childCount; l++)
+                                                                            {
+                                                                                SpriteHolder = ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.GetChild(b).transform.GetChild(l).gameObject.GetComponent<Image>();
+                                                                                aux = AssetDatabase.GetAssetPath(SpriteHolder.sprite);
+
+                                                                                if (aux.StartsWith("Assets/Invenza Creator SDK/"))
+                                                                                {
+                                                                                    aux = aux.Replace("Assets/Invenza Creator SDK/", "");
+                                                                                }
+
+                                                                                experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY = experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY + aux + "&&";
+                                                                            }
+
+                                                                            experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY = experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY.Substring(0, experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY.Length - 2);
+                                                                            loopediAR = true;
+                                                                            //}
+                                                                        }
+                                                                        EditorGUILayout.LabelField("Dirección del archivo");
+                                                                        experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY = EditorGUILayout.TextArea(experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY, GUILayout.Height(50), GUILayout.Width(position.width - 20));
+
+                                                                        Debug.Log(experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY);
+                                                                        EditorGUILayout.Space();
+                                                                    }
+                                                                    else if (ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.GetChild(b).transform.GetChild(0).gameObject.GetComponent<Text>() != null)
+                                                                    {
+                                                                        EditorGUILayout.LabelField("Boton de texto");
+                                                                        EditorGUILayout.Space();
+                                                                        experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].TYPE = "texto";
+                                                                        if (ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.GetChild(b).transform.childCount > 0)
+                                                                        {
+                                                                            // if (!loopedtAR)
+                                                                            // {
+                                                                            for (int m = 0; m < ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.GetChild(b).transform.childCount; m++)
+                                                                            {
+                                                                                TextHolder = ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.GetChild(b).transform.GetChild(m).gameObject.GetComponent<Text>();
+                                                                                experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY = experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY + TextHolder.text + "&&";
+                                                                            }
+                                                                            experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY = experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY.Substring(0, experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY.Length - 2);
+                                                                            loopedtAR = true;
+                                                                            // }
+                                                                        }
+                                                                        EditorGUILayout.LabelField("Contenido del texto");
+                                                                        experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY = EditorGUILayout.TextArea(experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY, GUILayout.Height(50), GUILayout.MaxWidth(480));
+
+                                                                        Debug.Log(experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY);
+
+
+                                                                        EditorGUILayout.Space();
+                                                                    }
+                                                                    else if (ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.GetChild(b).transform.GetChild(0).gameObject.GetComponent<VideoPlayer>() != null)
+                                                                    {
+                                                                        EditorGUILayout.LabelField("Boton de video");
+                                                                        EditorGUILayout.Space();
+                                                                        VideoHolder = ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.GetChild(b).transform.GetChild(0).gameObject.GetComponent<VideoPlayer>();
+                                                                        experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].TYPE = "video";
+
+                                                                        string aux = AssetDatabase.GetAssetPath(VideoHolder.clip);
 
                                                                         if (aux.StartsWith("Assets/Invenza Creator SDK/"))
                                                                         {
                                                                             aux = aux.Replace("Assets/Invenza Creator SDK/", "");
                                                                         }
+                                                                        experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY = EditorGUILayout.TextField("Dirección del archivo", aux, GUILayout.MaxWidth(480));
 
-                                                                        experiencia.MODEL[i].HOTSPOTS[ji].PATH_ARRAY = experiencia.MODEL[i].HOTSPOTS[ji].PATH_ARRAY + aux + "&&";
+                                                                        //Debug.Log("hay videoplayer");
+                                                                        EditorGUILayout.Space();
                                                                     }
-
-                                                                    experiencia.MODEL[i].HOTSPOTS[ji].PATH_ARRAY = experiencia.MODEL[i].HOTSPOTS[ji].PATH_ARRAY.Substring(0, experiencia.MODEL[i].HOTSPOTS[ji].PATH_ARRAY.Length - 2); ;
-                                                                }
-                                                                EditorGUILayout.LabelField("Dirección del archivo");
-                                                                experiencia.MODEL[i].HOTSPOTS[ji].PATH_ARRAY = EditorGUILayout.TextArea(experiencia.MODEL[i].HOTSPOTS[ji].PATH_ARRAY, GUILayout.Height(50), GUILayout.Width(position.width - 20));
-                                                                EditorGUILayout.Space();
-                                                            }
-                                                            else if (ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).GetChild(0).gameObject.GetComponent<Text>() != null)
-                                                            {
-                                                                experiencia.MODEL[i].HOTSPOTS[ji].TYPE = "texto";
-                                                                if (ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.childCount > 0)
-                                                                {
-                                                                    for (int m = 0; m < ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.childCount; m++)
+                                                                    else
                                                                     {
-                                                                        TextHolder = ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.GetChild(m).gameObject.GetComponent<Text>();
-                                                                        experiencia.MODEL[i].HOTSPOTS[ji].PATH_ARRAY = experiencia.MODEL[i].HOTSPOTS[ji].PATH_ARRAY + TextHolder.text + "&&";
+                                                                        Debug.LogWarning("el objeto no tiene ningun formato reconocible");
                                                                     }
-                                                                    experiencia.MODEL[i].HOTSPOTS[ji].PATH_ARRAY = experiencia.MODEL[i].HOTSPOTS[ji].PATH_ARRAY.Substring(0, experiencia.MODEL[i].HOTSPOTS[ji].PATH_ARRAY.Length - 2);
+                                                                    ///////////////////////////////////////////////////////////
                                                                 }
-                                                                EditorGUILayout.LabelField("Contenido del texto");
-                                                                experiencia.MODEL[i].HOTSPOTS[ji].PATH_ARRAY = EditorGUILayout.TextArea(experiencia.MODEL[i].HOTSPOTS[ji].PATH_ARRAY, GUILayout.Height(50), GUILayout.MaxWidth(480));
-                                                                EditorGUILayout.Space();
+                                                                else
+                                                                {
+                                                                    Debug.LogWarning("El Objeto no es boton");
+                                                                }
                                                             }
-                                                        }
-                                                        else if (ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).gameObject.GetComponent<VideoPlayer>() != null)
-                                                        {
-                                                            VideoHolder = ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).gameObject.GetComponent<VideoPlayer>();
-                                                            experiencia.MODEL[i].HOTSPOTS[ji].TYPE = "video";
-
-                                                            string aux = AssetDatabase.GetAssetPath(VideoHolder.clip);
-
-                                                            if (aux.StartsWith("Assets/Invenza Creator SDK/"))
-                                                            {
-                                                                aux = aux.Replace("Assets/Invenza Creator SDK/", "");
-                                                            }
-                                                            experiencia.MODEL[i].HOTSPOTS[ji].PATH_ARRAY = EditorGUILayout.TextField("Dirección del archivo", aux, GUILayout.MaxWidth(480));
-
-                                                            //Debug.Log("hay videoplayer");
-                                                            EditorGUILayout.Space();
-                                                        }
-                                                        else
-                                                        {
-                                                            Debug.LogWarning("El Objeto Hijo No Contiene Ningun tipo reconocible");
                                                         }
                                                     }
                                                 }
