@@ -4,6 +4,18 @@
 using UnityEngine;
 using System.Collections;
 
+
+/**
+* Name: CameraEditorControl
+* 
+* Description: Clase que permite simular el uso de un HMD dentro del editor de unity
+* 
+* Params: 
+* Return: N/A
+ * */
+
+
+
 namespace Interactive360.Utils
 {
 

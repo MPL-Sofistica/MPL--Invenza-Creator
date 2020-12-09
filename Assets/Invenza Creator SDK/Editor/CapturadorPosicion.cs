@@ -36,14 +36,6 @@ public class CapturadorPosicion : EditorWindow
 
     private int numbotones;
 
-    private bool loopedi = false;
-
-    private bool loopediAR = false;
-
-    private bool loopedtAR = false;
-
-    private bool loopedt = false;
-
     Image SpriteHolder;
 
     List<Sprite> imagenreferencia = new List<Sprite>();
@@ -92,7 +84,7 @@ public class CapturadorPosicion : EditorWindow
   * Name: OnGUI
   * Description: Crea la ventana junto con las opciones internas
   * Params: NO
-  * Return: la ventana dentro del editor con las opciones que se le atribuyen, en este caso un vector3 para la posicion y un objeto a cargar
+  * Return: la ventana dentro del editor con las opciones que se le atribuyen, en este caso una ventana que muestra el objeto a cargar y todas las caracteristicas necesarias para generar una experiencia en Asira
   * 
   * */
 
@@ -259,7 +251,7 @@ public class CapturadorPosicion : EditorWindow
                                                                     {
                                                                         EditorGUILayout.LabelField("Boton de imagen");
                                                                         EditorGUILayout.Space();
-                                                                        experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].TYPE = "imagen";
+                                                                        experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].TYPE = "image";
                                                                         if (ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.GetChild(b).transform.childCount > 0)
                                                                         {
                                                                             string aux;
@@ -278,7 +270,6 @@ public class CapturadorPosicion : EditorWindow
                                                                                 Debug.Log(experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY);
                                                                             }
                                                                             experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY = experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY.Substring(0, experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY.Length - 2);
-                                                                            loopediAR = true;
                                                                             //}
                                                                         }
                                                                         EditorGUILayout.LabelField("Dirección del archivo");
@@ -294,16 +285,12 @@ public class CapturadorPosicion : EditorWindow
                                                                         experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].TYPE = "text";
                                                                         if (ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.GetChild(b).transform.childCount > 0)
                                                                         {
-                                                                            // if (!loopedtAR)
-                                                                            // {
                                                                             for (int m = 0; m < ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.GetChild(b).transform.childCount; m++)
                                                                             {
                                                                                 TextHolder = ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.GetChild(b).transform.GetChild(m).gameObject.GetComponent<Text>();
                                                                                 experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY = experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY + TextHolder.text + "&&";
                                                                             }
                                                                             experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY = experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY.Substring(0, experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY.Length - 2);
-                                                                            loopedtAR = true;
-                                                                            // }
                                                                         }
                                                                         EditorGUILayout.LabelField("Contenido del texto");
                                                                         experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY = EditorGUILayout.TextArea(experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY, GUILayout.Height(50), GUILayout.MaxWidth(480));
@@ -511,12 +498,11 @@ public class CapturadorPosicion : EditorWindow
                                                                     {
                                                                         EditorGUILayout.LabelField("Boton de imagen");
                                                                         EditorGUILayout.Space();
-                                                                        experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].TYPE = "imagen";
+                                                                        experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].TYPE = "image";
                                                                         if (ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.GetChild(b).transform.childCount > 0)
                                                                         {
                                                                             string aux;
-                                                                            //if (!loopediAR)
-                                                                            //{
+
                                                                             for (int l = 0; l < ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.GetChild(b).childCount; l++)
                                                                             {
                                                                                 SpriteHolder = ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.GetChild(b).transform.GetChild(l).gameObject.GetComponent<Image>();
@@ -531,8 +517,6 @@ public class CapturadorPosicion : EditorWindow
                                                                             }
 
                                                                             experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY = experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY.Substring(0, experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY.Length - 2);
-                                                                            loopediAR = true;
-                                                                            //}
                                                                         }
                                                                         EditorGUILayout.LabelField("Dirección del archivo");
                                                                         experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY = EditorGUILayout.TextArea(experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY, GUILayout.Height(50), GUILayout.Width(position.width - 20));
@@ -544,19 +528,16 @@ public class CapturadorPosicion : EditorWindow
                                                                     {
                                                                         EditorGUILayout.LabelField("Boton de texto");
                                                                         EditorGUILayout.Space();
-                                                                        experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].TYPE = "texto";
+                                                                        experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].TYPE = "text";
                                                                         if (ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.GetChild(b).transform.childCount > 0)
                                                                         {
-                                                                            // if (!loopedtAR)
-                                                                            // {
+
                                                                             for (int m = 0; m < ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.GetChild(b).transform.childCount; m++)
                                                                             {
                                                                                 TextHolder = ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.GetChild(b).transform.GetChild(m).gameObject.GetComponent<Text>();
                                                                                 experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY = experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY + TextHolder.text + "&&";
                                                                             }
                                                                             experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY = experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY.Substring(0, experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY.Length - 2);
-                                                                            loopedtAR = true;
-                                                                            // }
                                                                         }
                                                                         EditorGUILayout.LabelField("Contenido del texto");
                                                                         experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY = EditorGUILayout.TextArea(experiencia.MODEL[i].HOTSPOTS[ji].BUTTONS[b].PATH_ARRAY, GUILayout.Height(50), GUILayout.MaxWidth(480));
@@ -675,19 +656,20 @@ public class CapturadorPosicion : EditorWindow
         GUILayout.EndScrollView();
     }
 
-    public void OnInspectorUpdate()
-    {
-        //this.Repaint();
-    }
-
+    /**
+* Name: TestJson
+* Description: Crea el Objeto en formato json de todos los datos capturados en el metodo OnGUI
+* Params: NO
+* Return: Documento json generado a travez de la codificacion de las variables
+* 
+* */
     public void TestJson()
     {
         string jsonpath;
         string json = JsonUtility.ToJson(experiencia, true);
 
-        //string json = JsonHelper.ToJson(Experiencia, true);
 
-        jsonpath = EditorUtility.SaveFilePanel("Seleccione la carpeta donde va a alojar el json", "", "data", "json");
+        jsonpath = EditorUtility.SaveFilePanel("Seleccione la carpeta donde va a alojar el json", "", "manifest", "json");
 
 
         File.WriteAllText(jsonpath, json);

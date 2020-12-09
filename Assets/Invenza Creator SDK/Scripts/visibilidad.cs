@@ -3,6 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+
+/**
+* Name: visibilidad
+* 
+* Description: clase que permite activar o desactivar un objeto determinado en la escena
+* Params:  N/A
+* 
+* Return: N/A
+**/
+
 public class visibilidad : MonoBehaviour{
     public GameObject Cajainfo1;
     public GameObject Cajainfo2;

@@ -3,6 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+/**
+* Name: InstructionManager
+* 
+* Description: Clase que permite el cambio de imagenes dentro del hotspot de tipo imagen
+* Params:  N/A
+* 
+* Return: N/A
+ * */
+
+
+
+
 public class InstructionManager : MonoBehaviour
 {
     public Sprite[] instructions;
@@ -15,11 +28,15 @@ public class InstructionManager : MonoBehaviour
     public GameObject Botondelante;
     public GameObject Botondetras;
 
-    public void Start()
-    {
 
-    }
-
+/**
+* Name: changeinstructionsUP
+* 
+* Description: metodo que cambia al siguiente objeto dentro del arreglo "instructions"
+* Params:  N/A
+* 
+* Return: N/A
+**/
 
     public void changeinstructionsUP()
     {
@@ -50,6 +67,15 @@ public class InstructionManager : MonoBehaviour
 
 
     }
+
+    /**
+* Name: changeinstructionsDown
+* 
+* Description: metodo que cambia al anterior objeto dentro del arreglo "instructions"
+* Params:  N/A
+* 
+* Return: N/A
+**/
 
     public void changeinstructionsDown()
     {

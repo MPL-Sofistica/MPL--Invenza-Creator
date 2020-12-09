@@ -5,7 +5,13 @@ using System;
 
 
 
-
+/**
+* Name: JsonHelper
+* Description: clase que genera los json a partir de un arreglo de arreglos, cosa que la clase basica de unity no permite
+* Params: NO
+* Return: informacion solicitada por el usuario en formato json a partir de los parametros que se ingresen dentro de la clase
+* 
+* */
 
 public static class JsonHelper
 {

@@ -28,7 +28,7 @@ public class ComprimirDireccion : EditorWindow
   * Name: OnGUI
   * Description: Crea la ventana junto con las opciones internas
   * Params: NO
-  * Return: la ventana dentro del editor con las opciones que se le atribuyen, en este caso un vector3 para la posicion y un objeto a cargar
+  * Return: la ventana dentro del editor con la opción de comprimir la carpeta deseada
   * 
   * */
     private void OnGUI()
@@ -37,23 +37,31 @@ public class ComprimirDireccion : EditorWindow
 
         if (GUILayout.Button("Buscar"))
         {
-            path = EditorUtility.OpenFolderPanel("Seleccione la carpeta a comprimir","","");
+            path = EditorUtility.OpenFolderPanel("Seleccione la carpeta a comprimir", "", "");
         }
 
-        GUILayout.TextField(path,GUILayout.MaxWidth(500.0f));
+        GUILayout.TextField(path, GUILayout.MaxWidth(500.0f));
 
 
         if (GUILayout.Button("Comprimir"))
         {
 
 
-            zipPath = EditorUtility.SaveFilePanel("Seleccione la carpeta donde va a alojar el comprimido", "","result", "zip");
+            zipPath = EditorUtility.SaveFilePanel("Seleccione la carpeta donde va a alojar el comprimido", "", "result", "zip");
 
             ComprimirCarpeta(zipPath);
         }
     }
 
-
+    /**
+* Name: ComprimirCarpeta
+* Description: Comprime la direccion dada y retorna un objeto del tipo .zip
+* 
+* Params: zipPath. Un objeto tipo string que da la direccion a comprimir
+* 
+* Return: una carpeta comprimida en formato zip
+* 
+* */
     public void ComprimirCarpeta(string zipPath)
     {
         System.IO.Compression.ZipFile.CreateFromDirectory(path, zipPath);

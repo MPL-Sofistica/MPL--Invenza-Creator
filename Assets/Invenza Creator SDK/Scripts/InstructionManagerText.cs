@@ -3,6 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+
+/**
+* Name: InstructionManager
+* 
+* Description: Clase que permite el cambio de textos dentro del hotspot de tipo texto
+* Params:  N/A
+* 
+* Return: N/A
+ * */
+
+
 public class InstructionManagerText : MonoBehaviour
 {
     public string[] instructions;
@@ -15,11 +27,14 @@ public class InstructionManagerText : MonoBehaviour
     public GameObject Botondelante;
     public GameObject Botondetras;
 
-    public void Start()
-    {
-
-    }
-
+    /**
+    * Name: changeinstructionsUP
+    * 
+    * Description: metodo que cambia al siguiente objeto dentro del arreglo "instructions"
+    * Params:  N/A
+    * 
+    * Return: N/A
+    **/
 
     public void changeinstructionsUP()
     {
@@ -50,6 +65,17 @@ public class InstructionManagerText : MonoBehaviour
 
 
     }
+
+
+    /**
+* Name: changeinstructionsDown
+* 
+* Description: metodo que cambia al anterior objeto dentro del arreglo "instructions"
+* Params:  N/A
+* 
+* Return: N/A
+**/
+
 
     public void changeinstructionsDown()
     {
