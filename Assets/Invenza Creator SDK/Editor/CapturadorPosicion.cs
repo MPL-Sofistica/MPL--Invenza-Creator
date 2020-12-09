@@ -24,6 +24,18 @@ public class CapturadorPosicion : EditorWindow
         v360
     }
 
+    enum Objetos
+    {
+
+        SELECCIONE_UN_TIPO_DE_OBJETO,
+        OBJ,
+        GLTF
+    }
+
+    Objetos tipoobjeto;
+
+    Objetos tipoobj;
+
     Tipos tipodeexperiencia;
 
     GameObject ObjetoaCapturar;
@@ -41,6 +53,8 @@ public class CapturadorPosicion : EditorWindow
     List<Sprite> imagenreferencia = new List<Sprite>();
 
     List<GameObject> modelos3D = new List<GameObject>();
+
+    List<DefaultAsset> modelogltf = new List<DefaultAsset>();
 
     List<TextAsset> archivostexto = new List<TextAsset>();
 
@@ -141,6 +155,11 @@ public class CapturadorPosicion : EditorWindow
                             modelos3D.Add(null);
                         }
 
+                        while (numhijos > modelogltf.Count)
+                        {
+                            modelogltf.Add(null);
+                        }
+
                         while (tamano < experiencia.MODEL.Count)
                         {
                             experiencia.MODEL.RemoveAt(experiencia.MODEL.Count - 1);
@@ -190,22 +209,55 @@ public class CapturadorPosicion : EditorWindow
                                         experiencia.MODEL[i].PATH_IMAGE_REF = EditorGUILayout.TextField("Dirección de la imagen", auxst, GUILayout.MaxWidth(480));
                                     }
 
-                                    modelos3D[i] = EditorGUILayout.ObjectField("Modelo 3d del objeto en la escena", modelos3D[i], typeof(GameObject), true, GUILayout.MaxWidth(480)) as GameObject;
-                                    if (modelos3D[i] != null)
+                                    GUILayout.Label("Seleccione el tipo de objeto", EditorStyles.boldLabel);
+
+                                    tipoobjeto = (Objetos)EditorGUILayout.EnumPopup("", tipoobjeto, GUILayout.MaxWidth(480));
+
+                                    tipoobj = tipoobjeto;
+
+                                    switch (tipoobj)
                                     {
-                                        string auxst;
+                                        case Objetos.OBJ:
+                                            {
+                                                modelos3D[i] = EditorGUILayout.ObjectField("Modelo 3d del objeto en la escena", modelos3D[i], typeof(GameObject), true, GUILayout.MaxWidth(480)) as GameObject;
+                                                if (modelos3D[i] != null)
+                                                {
+                                                    string auxst;
 
-                                        auxst = AssetDatabase.GetAssetPath(modelos3D[i]);
+                                                    auxst = AssetDatabase.GetAssetPath(modelos3D[i]);
 
-                                        if (auxst.StartsWith("Assets/Invenza Creator SDK/"))
-                                        {
-                                            auxst = auxst.Replace("Assets/Invenza Creator SDK/", "");
-                                        }
-                                        experiencia.MODEL[i].PATH_MODEL = EditorGUILayout.TextField("Dirección del modelo", auxst, GUILayout.MaxWidth(480));
+                                                    if (auxst.StartsWith("Assets/Invenza Creator SDK/"))
+                                                    {
+                                                        auxst = auxst.Replace("Assets/Invenza Creator SDK/", "");
+                                                    }
+                                                    experiencia.MODEL[i].PATH_MODEL = EditorGUILayout.TextField("Dirección del modelo", auxst, GUILayout.MaxWidth(480));
+                                                }
+                                                experiencia.MODEL[i].SCALE_MODEL = EditorGUILayout.TextField("Escala del modelo", ObjetoaCapturar.transform.GetChild(i).transform.localScale.ToString().Replace("(", "").Replace(")", ""), GUILayout.MaxWidth(480));
+                                                experiencia.MODEL[i].PATH_MODEL_LABEL = "";
+                                                EditorGUILayout.Space();
+                                            }
+                                            break;
+                                        case Objetos.GLTF:
+                                            {
+                                                modelogltf[i] = EditorGUILayout.ObjectField("Modelo 3d del objeto en la escena", modelos3D[i], typeof(DefaultAsset), true, GUILayout.MaxWidth(480)) as DefaultAsset;
+                                                if (modelogltf[i] != null)
+                                                {
+                                                    string auxst;
+
+                                                    auxst = AssetDatabase.GetAssetPath(modelogltf[i]);
+
+                                                    if (auxst.StartsWith("Assets/Invenza Creator SDK/"))
+                                                    {
+                                                        auxst = auxst.Replace("Assets/Invenza Creator SDK/", "");
+                                                    }
+                                                    experiencia.MODEL[i].PATH_MODEL = EditorGUILayout.TextField("Dirección del modelo", auxst, GUILayout.MaxWidth(480));
+                                                }
+                                                experiencia.MODEL[i].SCALE_MODEL = EditorGUILayout.TextField("Escala del modelo", ObjetoaCapturar.transform.GetChild(i).transform.localScale.ToString().Replace("(", "").Replace(")", ""), GUILayout.MaxWidth(480));
+                                                experiencia.MODEL[i].PATH_MODEL_LABEL = "";
+                                                EditorGUILayout.Space();
+                                            }
+                                            break;
                                     }
-                                    experiencia.MODEL[i].SCALE_MODEL = EditorGUILayout.TextField("Escala del modelo", ObjetoaCapturar.transform.GetChild(i).transform.localScale.ToString().Replace("(", "").Replace(")", ""), GUILayout.MaxWidth(480));
-                                    experiencia.MODEL[i].PATH_MODEL_LABEL = "";
-                                    EditorGUILayout.Space();
 
                                     if (ObjetoaCapturar.transform.childCount > 0)
                                     {
