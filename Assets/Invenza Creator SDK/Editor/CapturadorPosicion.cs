@@ -78,6 +78,10 @@ public class CapturadorPosicion : EditorWindow
 
     DefaultAsset apkfile;
 
+    string title;
+    string apk_name;
+    string pkg_name;
+
     [MenuItem("Invenza Creator SDK/Capturar Posición")]
     /**
      * Name: CrearVentana
@@ -110,7 +114,9 @@ public class CapturadorPosicion : EditorWindow
 
         GUILayout.Label("Titulo de la experiencia", EditorStyles.boldLabel);
 
-        experiencia.SHORT_TITLE = EditorGUILayout.TextField("", experiencia.SHORT_TITLE);
+        title = EditorGUILayout.TextField("Titulo de prueba", title);
+
+        experiencia.SHORT_TITLE = title;
 
         GUILayout.Label("Seleccione el tipo de la experiencia", EditorStyles.boldLabel);
 
@@ -682,7 +688,9 @@ public class CapturadorPosicion : EditorWindow
                     apkfile = EditorGUILayout.ObjectField("direccion del apk", apkfile, typeof(DefaultAsset), true, GUILayout.MaxWidth(480)) as DefaultAsset;
                     if (apkfile)
                     {
-                        experiencia.URL_INTERNAL_FILE = EditorGUILayout.TextField("nombre del apk", experiencia.URL_INTERNAL_FILE, GUILayout.MaxWidth(480));
+                        apk_name = EditorGUILayout.TextField("nombre del apk", apk_name, GUILayout.MaxWidth(480));
+
+                        experiencia.URL_INTERNAL_FILE = apk_name;
 
 
                         string aux = AssetDatabase.GetAssetPath(apkfile);
@@ -693,7 +701,11 @@ public class CapturadorPosicion : EditorWindow
                             experiencia.URL_FILE = aux;
                         }
                         experiencia.URL_FILE = EditorGUILayout.TextField("direccion del zip", experiencia.URL_FILE, GUILayout.MaxWidth(480));
-                        experiencia.NAME_FILE_ZIP = EditorGUILayout.TextField("nombre del Paquete del app", experiencia.NAME_FILE_ZIP, GUILayout.MaxWidth(480));
+
+
+                        pkg_name = EditorGUILayout.TextField("nombre del Paquete del app", pkg_name, GUILayout.MaxWidth(480));
+
+                        experiencia.NAME_FILE_ZIP = pkg_name;
                     }
                 }
                 break;
