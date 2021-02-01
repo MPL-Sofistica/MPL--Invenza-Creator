@@ -1,7 +1,9 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{C86752C8-EC73-3646-9475-DDA0748BDEAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebXR", "WebXR.csproj", "{9912DE0A-0141-F19C-A7AE-C45731956E2B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{94FE5410-F575-9E42-1DB3-7A8235185D47}"
 EndProject
@@ -17,6 +19,10 @@ Global
 		{C86752C8-EC73-3646-9475-DDA0748BDEAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C86752C8-EC73-3646-9475-DDA0748BDEAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C86752C8-EC73-3646-9475-DDA0748BDEAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9912DE0A-0141-F19C-A7AE-C45731956E2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9912DE0A-0141-F19C-A7AE-C45731956E2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9912DE0A-0141-F19C-A7AE-C45731956E2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9912DE0A-0141-F19C-A7AE-C45731956E2B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{94FE5410-F575-9E42-1DB3-7A8235185D47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{94FE5410-F575-9E42-1DB3-7A8235185D47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94FE5410-F575-9E42-1DB3-7A8235185D47}.Release|Any CPU.ActiveCfg = Release|Any CPU

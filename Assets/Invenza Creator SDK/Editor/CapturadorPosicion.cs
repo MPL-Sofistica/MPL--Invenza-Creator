@@ -7,11 +7,10 @@ using UnityEngine.UI;
 using System.IO;
 using System;
 using System.IO.Compression;
-
+using Siccity.GLTFUtility;
 [Serializable]
 public class CapturadorPosicion : EditorWindow
 {
-
     public Experiencia experiencia;
 
     enum Tipos
@@ -54,7 +53,7 @@ public class CapturadorPosicion : EditorWindow
 
     List<GameObject> modelos3D = new List<GameObject>();
 
-    List<DefaultAsset> modelogltf = new List<DefaultAsset>();
+    List<GameObject> modelogltf = new List<GameObject>();
 
     List<TextAsset> archivostexto = new List<TextAsset>();
 
@@ -245,7 +244,7 @@ public class CapturadorPosicion : EditorWindow
                                             break;
                                         case Objetos.GLTF:
                                             {
-                                                modelogltf[i] = EditorGUILayout.ObjectField("Modelo 3d del objeto en la escena", modelos3D[i], typeof(DefaultAsset), true, GUILayout.MaxWidth(480)) as DefaultAsset;
+                                                modelogltf[i] = EditorGUILayout.ObjectField("Modelo 3d del objeto en la escena", modelogltf[i], typeof(GameObject), true, GUILayout.MaxWidth(480)) as GameObject;
                                                 if (modelogltf[i] != null)
                                                 {
                                                     string auxst;
@@ -258,7 +257,7 @@ public class CapturadorPosicion : EditorWindow
                                                     }
                                                     experiencia.MODEL[i].PATH_MODEL = EditorGUILayout.TextField("Dirección del modelo", auxst, GUILayout.MaxWidth(480));
                                                 }
-                                                experiencia.MODEL[i].SCALE_MODEL = EditorGUILayout.TextField("Escala del modelo", ObjetoaCapturar.transform.GetChild(i).transform.localScale.ToString().Replace("(", "").Replace(")", ""), GUILayout.MaxWidth(480));
+                                                experiencia.MODEL[i].SCALE_MODEL = EditorGUILayout.TextField("Escala del modelo", ObjetoaCapturar.transform.GetChild(i).transform.localScale.ToString("F3").Replace("(", "").Replace(")", ""), GUILayout.MaxWidth(480));
                                                 experiencia.MODEL[i].PATH_MODEL_LABEL = "";
                                                 EditorGUILayout.Space();
                                             }
@@ -280,17 +279,23 @@ public class CapturadorPosicion : EditorWindow
                                             {
                                                 GUILayout.Label("Sub Hijo del objeto", EditorStyles.boldLabel);
                                                 experiencia.MODEL[i].HOTSPOTS[ji].NAME_HOTSPOT = EditorGUILayout.TextField("nombre del hotspot " + ji + " ", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.name, GUILayout.MaxWidth(480));
-                                                experiencia.MODEL[i].HOTSPOTS[ji].POSITION_HOTSPOT = EditorGUILayout.TextField("posicion del hotsptpot numero: " + ji + " ", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.position.ToString().Replace("(", "").Replace(")", ""), GUILayout.MaxWidth(480));
-                                                experiencia.MODEL[i].HOTSPOTS[ji].ROTATION_HOTSPOT = EditorGUILayout.TextField("rotacion del hotsptpot numero: " + ji + " ", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.rotation.ToString().Replace("(", "").Replace(")", ""), GUILayout.MaxWidth(480));
+                                                //experiencia.MODEL[i].HOTSPOTS[ji].POSITION_HOTSPOT = EditorGUILayout.TextField("posicion del hotsptpot numero: " + ji + " ", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.localPosition.ToString("F5").Replace("(", "").Replace(")", ""), GUILayout.MaxWidth(480));
+                                                experiencia.MODEL[i].HOTSPOTS[ji].POSITION_HOTSPOT = EditorGUILayout.TextField("posicion del hotsptpot numero: " + ji + " ", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.localPosition.ToString("F5").Replace("(", "").Replace(")", ""), GUILayout.MaxWidth(480));
+                                                experiencia.MODEL[i].HOTSPOTS[ji].ROTATION_HOTSPOT = EditorGUILayout.TextField("rotacion del hotsptpot numero: " + ji + " ", left2rightrotation(ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.rotation.eulerAngles).ToString("F5").Replace("(", "").Replace(")", ""), GUILayout.MaxWidth(480));
+                                                Debug.Log(experiencia.MODEL[i].HOTSPOTS[ji].ROTATION_HOTSPOT);
                                                 experiencia.MODEL[i].HOTSPOTS[ji].IMAGE_HOTSPOT = experiencia.MODEL[i].HOTSPOTS[ji].NAME_HOTSPOT;
+                                                experiencia.MODEL[i].HOTSPOTS[ji].TITLE_PANEL = EditorGUILayout.TextField("nombre del panel" + ji + " ", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.name, GUILayout.MaxWidth(480));
+
 
                                                 if (ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.childCount > 0)
                                                 {
                                                     for (int k = 0; k < ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.childCount; k++)
                                                     {
-                                                        experiencia.MODEL[i].HOTSPOTS[ji].POSITION_PANEL = EditorGUILayout.TextField("posicion del panel", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.position.ToString().Replace("(", "").Replace(")", ""), GUILayout.MaxWidth(480));
-                                                        experiencia.MODEL[i].HOTSPOTS[ji].SCALE_PANEL = EditorGUILayout.TextField("escala del panel", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.localScale.ToString().Replace("(", "").Replace(")", ""), GUILayout.MaxWidth(480));
-                                                        experiencia.MODEL[i].HOTSPOTS[ji].ROTATION_PANEL = EditorGUILayout.TextField("rotacion del panel", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.rotation.ToString().Replace("(", "").Replace(")", ""), GUILayout.MaxWidth(480));
+                                                        experiencia.MODEL[i].HOTSPOTS[ji].POSITION_PANEL = EditorGUILayout.TextField("posicion del panel", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.localPosition.ToString("F5").Replace("(", "").Replace(")", ""), GUILayout.MaxWidth(480));
+                                                        experiencia.MODEL[i].HOTSPOTS[ji].SCALE_PANEL = EditorGUILayout.TextField("escala del panel", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.localScale.ToString("F5").Replace("(", "").Replace(")", ""), GUILayout.MaxWidth(480));
+                                                        //experiencia.MODEL[i].HOTSPOTS[ji].ROTATION_PANEL = EditorGUILayout.TextField("rotacion del panel", ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.localRotation.eulerAngles.ToString().Replace("(", "").Replace(")", ""), GUILayout.MaxWidth(480));
+                                                        experiencia.MODEL[i].HOTSPOTS[ji].ROTATION_PANEL = EditorGUILayout.TextField("rotacion del panel", left2righthand(ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.localRotation.eulerAngles).ToString().Replace("(", "").Replace(")", ""), GUILayout.MaxWidth(480));
+                                                        Debug.Log(experiencia.MODEL[i].HOTSPOTS[ji].ROTATION_PANEL);
                                                         if (ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).gameObject.GetComponent<Canvas>() != null)
                                                         {
                                                             for (int b = 0; b < ObjetoaCapturar.transform.GetChild(i).transform.GetChild(ji).transform.GetChild(k).transform.childCount; b++)
@@ -740,6 +745,22 @@ public class CapturadorPosicion : EditorWindow
 
 
         Debug.Log(json);
+    }
+
+    public Vector3 left2righthand(Vector3 vector)
+    {
+        Vector3 temporal = vector;
+        vector.x = vector.z;
+        vector.y = 180 + (vector.y * -1);
+        vector.z = temporal.x;
+        return vector;
+    }
+
+    public Vector3 left2rightrotation(Vector3 vector)
+    {
+        vector.x = -vector.x;
+        vector.y = -vector.y;
+        return vector;
     }
 
 

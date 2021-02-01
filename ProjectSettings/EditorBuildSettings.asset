@@ -8,4 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Invenza Creator SDK/Scenes/video360.unity
     guid: 001212fa27520b14195cdf80191ce8fb
-  m_configObjects: {}
+  - enabled: 0
+    path: Assets/Invenza Creator SDK/Scenes/Camion.unity
+    guid: 9ecff3f7d4ee2654c838386178b7d1a1
+  m_configObjects:
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 0f2fef4c139e7214cb1578e83e283966,
+      type: 2}

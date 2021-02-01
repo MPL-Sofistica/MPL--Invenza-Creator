@@ -64,7 +64,7 @@ public class ComprimirDireccion : EditorWindow
 * */
     public void ComprimirCarpeta(string zipPath)
     {
-        System.IO.Compression.ZipFile.CreateFromDirectory(path, zipPath);
+        System.IO.Compression.ZipFile.CreateFromDirectory(path, zipPath, System.IO.Compression.CompressionLevel.Fastest, true);
     }
 
 

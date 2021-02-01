@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Pvr_UnitySDKAPI;
 using UnityEngine;
 
+
 public class AttachTest : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -28,7 +29,7 @@ public class AttachTest : MonoBehaviour
     private Transform currentNode;
 
     private int mainHandNess;
-    
+
     private Ray ray;
     private RaycastHit hit;
 
@@ -54,6 +55,9 @@ public class AttachTest : MonoBehaviour
     private Vector3 angularVelocityGetKey;
     private Vector3 angularVelocityAverage;
 
+
+    public bool ishit;
+
     void Start()
     {
         ray = new Ray();
@@ -66,90 +70,111 @@ public class AttachTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Determined whether the handle is connected
-        if (Controller.UPvr_GetControllerState(0) == ControllerState.Connected || Controller.UPvr_GetControllerState(1) == ControllerState.Connected)
+
+        if (ishit)
         {
-            //Get the current master control controller index
-            mainHandNess = Pvr_UnitySDKAPI.Controller.UPvr_GetMainHandNess();
-
-            if (mainHandNess == 0)
+            //Determined whether the handle is connected
+            if (Controller.UPvr_GetControllerState(0) == ControllerState.Connected || Controller.UPvr_GetControllerState(1) == ControllerState.Connected || Input.GetKey(KeyCode.Space))
             {
-                currentController = controller0;
-                currentNode = node0;
-            }
+                //Get the current master control controller index
+                //mainHandNess = Pvr_UnitySDKAPI.Controller.UPvr_GetMainHandNess();
 
-            if (mainHandNess == 1)
-            {
-                currentController = controller1;
-                currentNode = node1;
+                mainHandNess = 1;
 
-            }
-          
-            
-            ray.direction = currentController.transform.forward - currentController.transform.up * 0.25f;
-            ray.origin = currentController.transform.Find("start").position;
-
-            //Determine whether the ray interacts with this object
-            if (Physics.Raycast(ray, out hit) && (hit.transform == transform))
-            {
-                if (noClick)
+                if (mainHandNess == 0)
                 {
-                    transform.GetComponent<MeshRenderer>().material = attachMaterial;
+                    currentController = controller0;
+                    currentNode = node0;
                 }
 
+                if (mainHandNess == 1)
                 {
-                    //Judging whether the "Trigger" is pressed or not
-                    if (Input.GetKey(KeyCode.Space) || Pvr_UnitySDKAPI.Controller.UPvr_GetKey(mainHandNess, Pvr_UnitySDKAPI.Pvr_KeyCode.TRIGGER))
+                    currentController = controller1;
+                    currentNode = node1;
+
+                }
+
+
+                ray.direction = currentController.transform.forward - currentController.transform.up * 0.25f;
+                ray.origin = currentController.transform.Find("start").position;
+
+                //Determine whether the ray interacts with this object
+                if (Physics.Raycast(ray, out hit) && (hit.transform == transform))
+                {
+                    if (noClick)
                     {
-                        moveState = true;
-                        noClick = false;
-                        transform.GetComponent<MeshRenderer>().material = normalMaterial;
+                        transform.GetComponent<MeshRenderer>().material = attachMaterial;
+                    }
 
-                        //Completed the attach effect
-                        transform.position = Vector3.Lerp(transform.position, currentNode.position, Time.deltaTime * attachSpeed);
-                        transform.rotation = Quaternion.Lerp(transform.rotation,currentNode.rotation,Time.deltaTime *attachSpeed);
-                        transform.SetParent(currentNode);
-                        GetComponent<Rigidbody>().isKinematic = true;
+                    {
+                        //Judging whether the "Trigger" is pressed or not
+                        if (Input.GetKey(KeyCode.Space) || Pvr_UnitySDKAPI.Controller.UPvr_GetKey(mainHandNess, Pvr_UnitySDKAPI.Pvr_KeyCode.TRIGGER))
+                        {
+                            giveme();
 
-                        angularVelocityGetKey = Pvr_UnitySDKAPI.Controller.UPvr_GetAngularVelocity(mainHandNess);
+                        }
 
-                        //lastPosition = transform.position;
+                    }
+                }
+                else
+                {
+                    transform.GetComponent<MeshRenderer>().material = normalMaterial;
+                }
+
+                //Checking whether the "Trigger" is lifted or not
+                if (Input.GetKeyUp(KeyCode.Space) || Pvr_UnitySDKAPI.Controller.UPvr_GetKeyUp(mainHandNess, Pvr_UnitySDKAPI.Pvr_KeyCode.TRIGGER))
+                {
+                    if (moveState)
+                    {
+                        noClick = true;
+
+                        transform.SetParent(null);
+                        GetComponent<Rigidbody>().isKinematic = false;
+
+                        angularVelocity = Pvr_UnitySDKAPI.Controller.UPvr_GetAngularVelocity(mainHandNess);
+                        angularVelocityAverage = (angularVelocityGetKey + angularVelocity) / 2;
+                        linearVelocity = Pvr_UnitySDKAPI.Controller.UPvr_GetVelocity(mainHandNess);
+
+                        GetComponent<Rigidbody>().angularVelocity = angularVelocityAverage * 0.0001f * throwSpeed;
+                        GetComponent<Rigidbody>().velocity = linearVelocity * 0.0001f * throwSpeed;
+
+                        ishit = false;
+                        moveState = false;
                     }
 
                 }
+
+
             }
-            else
-            {
-                transform.GetComponent<MeshRenderer>().material = normalMaterial;
-            }
-
-            //Checking whether the "Trigger" is lifted or not
-            if (Input.GetKeyUp(KeyCode.Space) || Pvr_UnitySDKAPI.Controller.UPvr_GetKeyUp(mainHandNess, Pvr_UnitySDKAPI.Pvr_KeyCode.TRIGGER))
-            {
-                if (moveState)
-                {
-                    noClick = true;
-
-                    transform.SetParent(null);
-                    GetComponent<Rigidbody>().isKinematic = false;
-
-                    angularVelocity = Pvr_UnitySDKAPI.Controller.UPvr_GetAngularVelocity(mainHandNess);
-                    angularVelocityAverage = (angularVelocityGetKey + angularVelocity) / 2;
-                    linearVelocity = Pvr_UnitySDKAPI.Controller.UPvr_GetVelocity(mainHandNess);
-
-                    GetComponent<Rigidbody>().angularVelocity = angularVelocityAverage * 0.0001f * throwSpeed;
-                    GetComponent<Rigidbody>().velocity = linearVelocity * 0.0001f * throwSpeed;
-                    
-
-                    //currentPosition = transform.position;
-                    //movementDirection = (currentPosition - lastPosition);
-                    //GetComponent<Rigidbody>().AddForce(movementDirection * throwSpeed);
-                    moveState = false;
-                }
-                
-            }
-
-            
         }
     }
+
+    public void AtachandOwn()
+    {
+        moveState = true;
+        noClick = false;
+        transform.GetComponent<MeshRenderer>().material = normalMaterial;
+
+        //Completed the attach effect
+        transform.position = Vector3.Lerp(transform.position, currentNode.position, Time.deltaTime * attachSpeed);
+        transform.rotation = Quaternion.Lerp(transform.rotation, currentNode.rotation, Time.deltaTime * attachSpeed);
+        transform.SetParent(currentNode);
+        GetComponent<Rigidbody>().isKinematic = true;
+
+        //The reason for using "Input.GetKey" is to get a more accurate motion trend in 2 frams.
+        //angularVelocityGetKey = Pvr_UnitySDKAPI.Controller.UPvr_GetAngularVelocity(mainHandNess);
+        Debug.Log("entro al la pegada del control");
+    }
+
+    public void giveme()
+    {
+        transform.GetComponent<MeshRenderer>().material = attachMaterial;
+        Debug.Log("ahora es mio");
+        transform.position = Vector3.Lerp(transform.position, currentNode.position, Time.deltaTime * attachSpeed);
+        transform.rotation = Quaternion.Lerp(transform.rotation, currentNode.rotation, Time.deltaTime * attachSpeed);
+        transform.SetParent(currentNode);
+        GetComponent<Rigidbody>().isKinematic = true;
+
+    }
+
 }

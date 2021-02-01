@@ -20,9 +20,6 @@ using System;
 * 
 * Return: N/A
  * */
-
-
-
 [Serializable]
 public class Objeto
 {
