@@ -1,0 +1,56 @@
+{
+    "SHORT_TITLE": "AR_Demo",
+    "TYPE": "AR",
+    "URL_INTERNAL_FILE": "",
+    "NAME_FILE_ZIP": "",
+    "URL_FILE": "",
+    "MODEL": [
+        {
+            "NAME_MODEL": "pico",
+            "PATH_IMAGE_REF": "",
+            "PATH_MODEL": "AR_pico/model_quant.tflite",
+            "SCALE_MODEL": "",
+            "PATH_MODEL_LABEL": "AR_pico/labels.txt",
+            "HOTSPOTS": [
+                {
+                    "NAME_HOTSPOT": "",
+                    "POSITION_HOTSPOT": "",
+                    "ROTATION_HOTSPOT": "",
+                    "IMAGE_HOTSPOT": "",
+                    "TYPE": "",
+                    "PATH_ARRAY": "",
+                    "TITLE_PANEL": "Hotspot 1",
+                    "POSITION_PANEL": "-0.8710, 0.4670, 0.0000",
+                    "SCALE_PANEL": "0.0040, 0.0040, 1.0000",
+                    "ROTATION_PANEL": "0.0000, 0.0000, 0.0000, 1.0000",
+                    "NUM_PANEL": "Hotspot 1",
+                    "BUTTONS": [
+                        {
+                            "TYPE": "image",
+                            "PATH_ARRAY": "AR_pico/Images/m-carousel-4ks.png"
+                        }
+                    ]
+                },
+                {
+                    "NAME_HOTSPOT": "",
+                    "POSITION_HOTSPOT": "",
+                    "ROTATION_HOTSPOT": "",
+                    "IMAGE_HOTSPOT": "",
+                    "TYPE": "",
+                    "PATH_ARRAY": "",
+                    "TITLE_PANEL": "Hotspot 2",
+                    "POSITION_PANEL": "0.8590, 0.0000, 0.0000",
+                    "SCALE_PANEL": "0.0040, 0.0040, 1.0000",
+                    "ROTATION_PANEL": "0.0000, 0.0000, 0.0000, 1.0000",
+                    "NUM_PANEL": "Hotspot 2",
+                    "BUTTONS": [
+                        {
+                            "TYPE": "image",
+                            "PATH_ARRAY": "AR_pico/Images/pico2.jpg"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

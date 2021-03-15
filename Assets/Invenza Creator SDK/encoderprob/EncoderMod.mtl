@@ -1,0 +1,254 @@
+# Blender MTL File: 'EncoderMod.blend'
+# Material Count: 23
+
+newmtl Material.001
+Ns 225.000000
+Ka 0.086364 0.086364 0.086364
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\Diseno3\\Desktop\\Ejercicio Blender\\encoder\\texturas\\Captura de pantalla 2020-10-08 080712.png
+
+newmtl Material.002
+Ns 225.000000
+Ka 0.122727 0.122727 0.122727
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\Diseno3\\Desktop\\Ejercicio Blender\\encoder\\texturas\\Captura de pantalla 2020-10-08 080616.png
+
+newmtl Material.003
+Ns 225.000000
+Ka 0.095455 0.095455 0.095455
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\Diseno3\\Desktop\\Ejercicio Blender\\encoder\\texturas\\Captura de pantalla 2020-10-08 080542.png
+
+newmtl Material.004
+Ns 225.000000
+Ka 0.077273 0.077273 0.077273
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\Diseno3\\Desktop\\Ejercicio Blender\\encoder\\texturas\\Captura de pantalla 2020-10-08 081237.png
+
+newmtl Material.005
+Ns 225.000000
+Ka 0.172727 0.172727 0.172727
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\Diseno3\\Desktop\\Ejercicio Blender\\encoder\\texturas\\Captura de pantalla 2020-10-08 081317.png
+
+newmtl Material.006
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd -s 4.900000 4.900000 4.900000 C:\\Users\\Diseno3\\Desktop\\Ejercicio Blender\\Bomba de Proximidad\\textura\\Captura de pantalla 2020-10-09 103517.png
+
+newmtl Material.007
+Ns 225.000000
+Ka 0.100000 0.100000 0.100000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\Diseno3\\Desktop\\Ejercicio Blender\\encoder\\texturas\\Captura de pantalla 2020-10-08 081548.png
+
+newmtl Material.008
+Ns 225.000000
+Ka 0.100000 0.100000 0.100000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\Diseno3\\Desktop\\Ejercicio Blender\\encoder\\texturas\\Captura de pantalla 2020-10-08 081548.png
+
+newmtl Material.009
+Ns 225.000000
+Ka 0.100000 0.100000 0.100000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\Diseno3\\Desktop\\Ejercicio Blender\\encoder\\texturas\\Captura de pantalla 2020-10-08 081548.png
+
+newmtl Material.010
+Ns 225.000000
+Ka 0.100000 0.100000 0.100000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\Diseno3\\Desktop\\Ejercicio Blender\\encoder\\texturas\\Captura de pantalla 2020-10-08 081816.png
+
+newmtl Material.011
+Ns 225.000000
+Ka 0.186364 0.186364 0.186364
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\Diseno3\\Desktop\\Ejercicio Blender\\encoder\\texturas\\Captura de pantalla 2020-10-08 082013.png
+
+newmtl Material.012
+Ns 225.000000
+Ka 0.154545 0.154545 0.154545
+Kd 0.800000 0.800000 0.800000
+Ks 0.463636 0.463636 0.463636
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\Diseno3\\Desktop\\Ejercicio Blender\\encoder\\texturas\\Captura de pantalla 2020-10-08 082349.png
+
+newmtl Material.013
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\Diseno3\\Desktop\\Ejercicio Blender\\encoder\\texturas\\Captura de pantalla 2020-10-08 082806.png
+
+newmtl Material.014
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\Diseno3\\Desktop\\Ejercicio Blender\\encoder\\texturas\\Captura de pantalla 2020-10-08 082806.png
+
+newmtl Material.015
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\Diseno3\\Desktop\\Ejercicio Blender\\encoder\\texturas\\Captura de pantalla 2020-10-08 082806.png
+
+newmtl Material.016
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\Diseno3\\Desktop\\Ejercicio Blender\\encoder\\texturas\\Captura de pantalla 2020-10-08 082806.png
+
+newmtl Material.017
+Ns 193.462789
+Ka 0.609091 0.609091 0.609091
+Kd 0.800000 0.800000 0.800000
+Ks 0.300000 0.300000 0.300000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl Material.018
+Ns 225.000000
+Ka 0.254545 0.254545 0.254545
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\Diseno3\\Desktop\\Ejercicio Blender\\Bomba de Proximidad\\textura\\Captura de pantalla 2020-10-09 103623.png
+
+newmtl Material.019
+Ns 225.000000
+Ka 0.255000 0.255000 0.255000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\Diseno3\\Desktop\\Ejercicio Blender\\Bomba de Proximidad\\textura\\Captura de pantalla 2020-10-09 103623.png
+
+newmtl Material.020
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\Diseno3\\Desktop\\Ejercicio Blender\\Bomba de Proximidad\\textura\\Captura de pantalla 2020-10-13 085041.png
+
+newmtl Material.021
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\Diseno3\\Desktop\\Ejercicio Blender\\Bomba de Proximidad\\textura\\Captura de pantalla 2020-10-13 085305.png
+
+newmtl Material.022
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\Diseno3\\Desktop\\Ejercicio Blender\\Bomba de Proximidad\\textura\\Captura de pantalla 2020-10-13 085305.png
+
+newmtl Material.024
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\Diseno3\\Desktop\\Ejercicio Blender\\Presion acople rapido\\texturas\\Captura de pantalla 2020-10-27 105428.png

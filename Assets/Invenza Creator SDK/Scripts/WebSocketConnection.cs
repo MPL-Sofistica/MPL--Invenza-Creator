@@ -74,18 +74,31 @@ public class WebSocketConnection : MonoBehaviour
      **/
     public void sendinfo()
     {
-        //Debug.Log("hola");
+        Debug.Log("hola");
         deviceinfo.id = helper.getSerialNumber();
         deviceinfo.name = helper.getSerialNumber();
+
         memoria = helper.GetStorage();
         deviceinfo.memory = memoria.ToString("F2");
         memoria_total = helper.GetStorage() * 100 / helper.GetTotalStorage();
 
         deviceinfo.memory_p = memoria_total.ToString();
+        bateria = SystemInfo.batteryLevel * 100;
+        deviceinfo.drums = bateria.ToString();
+
+        /*deviceinfo.id = SystemInfo.deviceUniqueIdentifier;
+        deviceinfo.name = SystemInfo.deviceName;
+        memoria = 30f;
+        deviceinfo.memory = memoria.ToString("F2");
+
+        memoria_total = 30f * 100 / 50f;
+
+        deviceinfo.memory_p = memoria_total.ToString();
 
         bateria = SystemInfo.batteryLevel * 100;
 
-        deviceinfo.drums = bateria.ToString();
+        deviceinfo.drums = "100";*/
+
 
         holder.message = deviceinfo;
         if (ConexionesDocentes.connected)

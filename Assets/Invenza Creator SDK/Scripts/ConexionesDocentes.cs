@@ -22,7 +22,7 @@ public class ConexionesDocentes : MonoBehaviour
 
     public GameObject manager;
 
-    //public DownloadUtils loader;
+    public DownloadUtils loader;
 
     //public GameObject createelement;
 
@@ -75,8 +75,8 @@ public class ConexionesDocentes : MonoBehaviour
     **/
     public void changeip(int index)
     {
-        //loader.url = docentesactuales[index - 1].ipAddress;
-        //loader.teachername = docentesactuales[index - 1].id_user;
+        loader.url = docentesactuales[index - 1].ipAddress;
+        loader.teachername = docentesactuales[index - 1].id_user;
         //Debug.Log("debo cambiar de ip");
         /*for (int i = 0; i < element.objectlist.Count; i++)
         {

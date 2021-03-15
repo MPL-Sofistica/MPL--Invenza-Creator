@@ -74,7 +74,7 @@ public class DeviceInfoCapture : MonoBehaviour
         holder.message = deviceinfo;
 
         string sendmessage = JsonUtility.ToJson(holder);
-        //Debug.Log(deviceinfo.name);
+        Debug.Log(sendmessage);
 
         Receive(sendmessage);
         deviceinfo.screenshot.Clear();
@@ -108,7 +108,7 @@ public class DeviceInfoCapture : MonoBehaviour
         }
 
         holder.message = deviceinfo;*/
-
+      
          deviceinfo.id = helper.getSerialNumber();
          deviceinfo.name = helper.getSerialNumber();
 

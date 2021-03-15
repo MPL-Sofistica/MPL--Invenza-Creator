@@ -1,0 +1,529 @@
+<!DOCTYPE doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+            <meta content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width, shrink-to-fit=no" name="viewport">
+                <title>
+                    Prueba Panolens
+                </title>
+                <script src="js/three.min.js">
+                </script>
+                <script src="js/panolens.min.js	">
+                </script>
+				<script src="js/ColladaLoader.js"></script>
+                <style>
+                    html, body {
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			margin: 0;
+		}
+
+
+
+
+		.btns{
+
+			background: rgba(7,5,58,0.902); 
+			border-radius: 0px 0px 5px 5px;
+			text-align:center;
+			height: 15px;
+			display: block;
+
+			width: 100%;
+			left: 0;
+			bottom: 0;
+
+
+
+		}
+		#btnmenu{
+			display:inline-block;
+
+			
+
+			text-align: center;
+			font-family: Sansation;
+
+			font-size: 6px;
+			color: rgba(255,255,255,1);
+
+			background:  rgba(255,255,255,0.4);
+			
+			border-radius: 5px; 
+			margin: 2px; 
+			float: left;	
+		}
+		#btnmenu span{
+			vertical-align: middle;
+			align-content: center;
+			margin: 2px; 
+			display: flex;
+			justify-content: center;
+			align-items: center; 
+
+		}
+
+		.contetview{
+			display: inline-block;
+			margin: auto;
+
+
+
+		}
+		.contetview p{
+			padding-left: 3px;
+			padding-right: 3px;
+			font-size: 8px; 
+
+		}
+		.contetview > img{
+			margin: auto;
+			vertical-align: middle;
+		}
+		.outcontetview > h4{
+			margin: 0px;
+			text-align: center;
+			font-size: 6px; 
+
+		}
+		.btns > h4{
+			margin: 0px;
+			text-align: center;
+			font-size: 10px; 
+			color: #fff; 
+
+		}
+
+
+		.name{
+			display:inline-block;
+
+			
+
+			text-align: center;
+			font-family: Sansation;
+
+			font-size: 6px;
+			color: rgba(255,255,255,1);
+
+			background:  rgba(255,255,255,0.4);
+			
+			border-radius: 5px; 
+			margin: 2px; 	
+			float: left;
+		}
+		.name span{
+			vertical-align: middle;
+			align-content: center;
+			margin: 2px; 
+			display: flex;
+			justify-content: center;
+			align-items: center; 
+
+		}
+		.cerrar {
+			display:inline-block;
+
+			
+
+			text-align: center;
+			font-family: Sansation;
+
+			font-size: 6px;
+			color: rgba(255,255,255,1);
+
+			background:  rgba(152,28,209,1);
+
+			border-radius: 1px; 
+			margin: 0px; 	
+			float: right;
+
+		}
+		.cerrar > span{
+			vertical-align: middle;
+			align-content: center;
+			margin: 2px; 
+			display: flex;
+			justify-content: center;
+			align-items: center; 
+
+
+		}
+		.flexbox-container {
+			display: none;
+			width: 230px;
+			height: 72px;
+			position:absolute;
+		}
+
+		.flexbox-container > div {
+			width: 50%;
+
+			border-radius: 5px 5px 5px 5px; 
+			background-image: linear-gradient(rgba(245,245,245,0.90), rgba(223,223,223,0.90),rgba(200,200,200,0.90));
+		}
+
+		.flexbox-container > div:first-child {
+			margin-right: 5px;
+		}
+		.outcontetview{
+			padding: 5px;
+			text-align: center;
+
+		}
+		#menu2{
+			visibility: hidden;
+		}
+		
+		.flexbox-container2 {
+			display: none;
+			width: 170px;
+			height: 100px;
+			position:absolute;
+		}
+
+		.flexbox-container2 > div {
+			width: 100%;
+
+			border-radius: 5px 5px 5px 5px; 
+			background-image: linear-gradient(rgba(245,245,245,0.90), rgba(223,223,223,0.90),rgba(200,200,200,0.90));
+		}
+
+		.flexbox-container3 {
+			display: none;
+			width: 150px;
+			height: 80px;
+			position:absolute;
+		}
+
+		.flexbox-container3 > div {
+			width: 100%;
+
+			border-radius: 5px 5px 5px 5px;
+			background-image: linear-gradient(rgba(245,245,245,0.90), rgba(223,223,223,0.90),rgba(200,200,200,0.90));
+		}
+                </style>
+            </meta>
+        </meta>
+    </head>
+    <body>
+        <div class="flexbox-container2" id="containervideo">
+            <div class="menus3" id="menu1">
+                <div class="outcontetview" id="viewcontent">
+                    <div class="contetview">
+                        <video autoplay="" height="80px" id="myVideo" loop="" preload="auto" width="150px">
+                            <source src="asset/glpV1.mp4" type="video/mp4">
+                            </source>
+                        </video>
+                    </div>
+                </div>
+                <div class="btns" id="btnmenu2">
+                    <h4>
+                        Video
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <div class="flexbox-container3" id="containertext">
+            <div class="menus3" id="menu1">
+                <div class="outcontetview" id="viewcontent">
+                    <div class="contetview">
+                        <p style="text-align: justify;">
+                            Este ejemplo permite mostrar el uso de capas de conocimiento sobre un área específica. Puede incluir textos, audios, imágenes, videos. Ejemplo: Imágenes de EPP usadas en manejo de alturas
+                        </p>
+                    </div>
+                </div>
+                <div class="btns" id="btnmenu2">
+                    <h4>
+                        Hotspot / punto sensible 1.
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <div class="flexbox-container3" id="containerimg">
+            <div class="menus3" id="menu1">
+                <div class="outcontetview" id="viewcontent2">
+                    <div class="contetview" id="viewcontent21">
+                        <img height="70px" id="imgcontent" name="imgcontent" src="img/arnes.png" width="130px">
+                        </img>
+                    </div>
+                </div>
+                <div class="btns" id="btnmenu2">
+                    <h4>
+                        Línea de vida doble - EPP1
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <div class="flexbox-container3" id="containerimg2">
+            <div class="menus3" id="menu1">
+                <div class="outcontetview" id="viewcontent2">
+                    <div class="contetview" id="viewcontent21">
+                        <img height="70px" id="imgcontent" name="imgcontent" src="img/arnesazul.png" width="130px">
+                        </img>
+                    </div>
+                </div>
+                <div class="btns" id="btnmenu2">
+                    <h4>
+                        Línea de vida doble - EPP2
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <script>
+            //document.getElementsByName("fname")[0]; 
+		//var idel = document.getElementsByClassName('panolens-infospot');
+	//	var men = idel.document.getElementsByClassName('menus');
+	var panorama, panorama2, viewer, container, infospot,infospot2, infospot3, infospot4, infospot5, infoimg;
+	var aux4; 
+
+
+	const path = 'asset/';
+	const format = '.jpg';
+
+	/*--------------------panorama 1--------------------------------*/
+	panorama = new PANOLENS.CubePanorama( [
+		path + 'px' + format, path + 'nx' + format,
+		path + 'py' + format, path + 'ny' + format,
+		path + 'pz' + format, path + 'nz' + format
+		] );
+	infospot2 = new PANOLENS.Infospot( 300, 'img/hotsp_r.png', true );
+	infospot2.position.set(-5000.00, -2955.49, 33.87 );
+
+	//var panels = document.getElementById('containermain'); 
+//	infospot2.addHoverElement( panels,70);
+
+
+
+
+	infospot3 = new PANOLENS.Infospot( 300, 'img/hsb01.png' );
+	infospot3.position.set(-5000.00, -2955.49, -350 );
+	infospot3.addHoverElement(document.getElementById('containertext'), 85, -80);
+
+
+
+	infospot4 = new PANOLENS.Infospot( 300, 'img/hsb02.png' );
+	infospot4.position.set(-5000.00, -2955.49, 0 );
+	infospot4.addHoverElement(document.getElementById('containerimg'),84,50 );
+
+
+	
+
+
+
+	infospot5 = new PANOLENS.Infospot( 300, 'img/hsb03.png' );
+	infospot5.position.set(-5000.00, -2955.49, 350 );
+
+	infospot5.addHoverElement(document.getElementById('containerimg2'),83,30);
+
+	infospot = new PANOLENS.Infospot( 300, 'img/hsb.png' );
+	infospot.position.set(3268.26, -2084.65, 5000.00 );
+	infospot.addHoverElement(document.getElementById('containervideo') ,100, 0 );
+
+	infosplay = new PANOLENS.Infospot( 300, 'img/hsb.png' );
+	infosplay.position.set(3268.26, -2084.65, 4650.00 );
+	infosplay.onDismiss(); 
+
+
+
+	infospot4.addEventListener('hoverenter', function(){
+		infospot5.onDismiss(); 
+
+
+	}); 
+	infospot5.addEventListener('hoverenter', function(){
+		infospot4.onDismiss(); 
+
+
+	}); 
+	infospot4.addEventListener('click', function(){
+		infospot5.onDismiss(); 
+
+
+	}); 
+	infospot5.addEventListener('click	', function(){
+		infospot4.onDismiss(); 
+
+
+	}); 
+
+	infoimg = new PANOLENS.Infospot( 150, 'img/imgbtn.png' );
+	infoimg.position.set(-5000.00, -2982.78, -1412.74);
+	infoimg.addEventListener( 'click', function ()	{
+		document.getElementsByClassName('menus2')[1].style.visibility = 'visible';
+		document.getElementsByClassName('flexbox-container')[1].style.display = 'flex'; });
+
+
+		const loadingManager = new THREE.LoadingManager( function () {
+
+panorama.add( elf );
+
+} );
+const loader = new THREE.ColladaLoader( loadingManager );
+			loader.load( 'Models/untitled.dae', function ( collada ) {
+
+				elf = collada.scene;
+
+			} );
+
+
+	panorama.add( infospot3 );
+	//panorama.add( infospot2 );
+	panorama.add( infospot4 );
+	panorama.add( infospot5 );
+	panorama.add( infospot);
+
+	panorama.addEventListener( 'enter-fade-start', function(){
+		viewer.tweenControlCenter(new THREE.Vector3(-5000.00, -1861.95, 250.18), 0 );
+	} );
+	panorama.addEventListener('click', function(){
+
+		infospot3.position.set(-5000.00, -2955.49, -350 );
+		infospot4.position.set(-5000.00, -2955.49, 0); 	
+		infospot5.position.set(-5000.00, -2955.49, 350 );
+
+	});
+
+	infospot.addEventListener('click', function(){
+		console.log('Entro en click');
+		var list = document.getElementsByTagName("video");
+
+		for (var i = 0; i < list.length; i++) {
+			list[i].play();
+			console.log(list[i]);
+		}
+
+
+
+	});
+	infosplay.addEventListener('click', function(){
+		document.getElementById("myVideo").play();
+		console.log('Entro en click');
+
+
+	});
+
+
+
+
+	viewer = new PANOLENS.Viewer({autoHideInfospot: false, 	controlButtons:['video', 'fullscreen'], enableReticle: false});
+	viewer.add( panorama);
+
+	 viewer.enableEffect( PANOLENS.MODES.CARDBOARD );
+     // viewer.enableControl( PANOLENS.CONTROLS.DEVICEORIENTATION); 
+	  //viewer.add( panorama2);
+	  /*-5000.00, -2542.15, -1122.66*/
+
+	  function num(){
+	  	var aux = 0;
+	  	var zdd = document.getElementsByClassName('flexbox-container'); 
+	  	console.log(zdd.length);
+	  	var aux2 = zdd.length; 
+	  	if ( aux2 <= 2) {
+	  		if (zdd[1].style.display == 'none') {
+	  			aux=3; 
+	  			console.log('entro 1 '+aux2);
+
+	  		}else{
+	  			aux=1; 
+	  			console.log('entro 2 '+aux2);
+	  		}
+	  	}
+	  	else{
+	  		if (zdd[2].style.display != 'none') {
+	  			aux=3; 
+	  			console.log('entro 3 '+aux2);
+
+	  		}else{
+	  			aux=1; 
+	  			console.log('entro 4 '+aux2);
+	  		}
+
+	  	}
+	  	return aux; 
+	  }
+	  var statuspan = 0;
+	  var statuspan2 = 1;
+	  var onImagepan1 = 'url("img/ic_card_white.png")';
+	  var offImagepan1= 'url("img/ic_card_white_n.png")';
+	  var onImagepan2 = 'url("img/icon_blanco_360.png")';
+	  var offImagepan2= 'url("img/icon_blanco_360_n.png")';
+
+	  var itempan1 = {
+	  	style: {
+	  		backgroundImage: onImagepan1
+	  	},
+
+	  	onTap: function(){
+		//if (statuspan === 1) {
+			/*viewer.setPanorama(panorama); 
+			viewer.enableEffect( PANOLENS.MODES.NORMAL );
+			viewer.enableControl( PANOLENS.CONTROLS.ORBIT ); 
+			viewer.tweenControlCenter(new THREE.Vector3(-5000.00, -1861.95, 250.18), 0 );
+			console.log(statuspan);
+			statuspan = 0;
+			statuspan2 = 1; 
+		//	itempan1.style.backgroundImage = statuspan === 0 ? offImagepan1 : onImagepan1;
+		//itempan2.style.backgroundImage = statuspan2 === 0 ? offImagepan2 : onImagepan2;*/
+
+		//}
+		
+
+	}
+};
+viewer.appendControlItem(itempan1);
+
+var itempan2 = {
+	style: {
+		backgroundImage: onImagepan2
+	},
+
+	onTap: function(){
+		/*if (statuspan2 === 1) {
+			viewer.setPanorama(panorama2); 
+			viewer.enableEffect( PANOLENS.MODES.NORMAL );
+			viewer.enableControl( PANOLENS.CONTROLS.ORBIT ); 
+			//viewer.tweenControlCenter(new THREE.Vector3(-5000.00, -1861.95, 250.18), 0 );
+			//console.log(statuspan);
+			statuspan2 = 0;
+			statuspan = 1;
+			//itempan1.style.backgroundImage = statuspan === 0 ? offImagepan1 : onImagepan1;
+			//itempan2.style.backgroundImage = statuspan2 === 0 ? offImagepan2 : onImagepan2;
+
+		}*/
+		location.href = "index.html";
+	}
+};
+viewer.appendControlItem(itempan2);
+
+
+//createWidgetpano1(); 
+/*var observer = new MutationObserver(function(mutations) {
+  mutations.forEach(function(mutation) {
+    if(mutation.attributeName === 'style'){
+    	var flex = document.getElementsByClassName('flexbox-container')[1]; 
+    	if (!aux4) {
+		console.log("style change");
+      document.getElementsByClassName('flexbox-container')[1].style.display = 'flex';
+
+    	}else{
+    	document.getElementsByClassName('flexbox-container')[1].style.display = 'none';
+    	}
+      
+    }
+  });    
+});
+
+// Notify me of style changes
+var observerConfig = {
+	attributes: true, 
+  attributeFilter: ["style"]
+};
+
+var targetNode = document.getElementsByClassName('flexbox-container')[1];
+
+observer.observe(targetNode, observerConfig);*/
+        </script>
+    </body>
+</html>

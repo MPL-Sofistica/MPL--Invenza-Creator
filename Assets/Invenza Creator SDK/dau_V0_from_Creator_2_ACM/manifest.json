@@ -1,0 +1,17 @@
+{
+    "SHORT_TITLE": "DAU Demo",
+    "TYPE": "MR",
+    "URL_INTERNAL_FILE": "",
+    "NAME_FILE_ZIP": "",
+    "URL_FILE": "",
+    "MODEL": [
+        {
+            "NAME_MODEL": "DAU",
+            "PATH_IMAGE_REF": "dau_V0_from_Creator_2_ACM/ImagenDAU.PNG",
+            "PATH_MODEL": "dau_V0_from_Creator_2_ACM/DAU.gltf",
+            "SCALE_MODEL": "1.000, 1.000, 1.000",
+            "PATH_MODEL_LABEL": "",
+            "HOTSPOTS": []
+        }
+    ]
+}

@@ -1,0 +1,103 @@
+{
+    "SHORT_TITLE": "AR_Demo",
+    "TYPE": "AR",
+    "URL_INTERNAL_FILE": "",
+    "NAME_FILE_ZIP": "",
+    "URL_FILE": "",
+    "MODEL": [
+        {
+            "NAME_MODEL": "rocking chair, folding chair, barber chair",
+            "PATH_IMAGE_REF": "",
+            "PATH_MODEL": "AR_exp/mobilenet_quant_v1_224.tflite",
+            "SCALE_MODEL": "",
+            "PATH_MODEL_LABEL": "AR_exp/labels.txt",
+            "HOTSPOTS": [
+                {
+                    "NAME_HOTSPOT": "",
+                    "POSITION_HOTSPOT": "",
+                    "ROTATION_HOTSPOT": "",
+                    "IMAGE_HOTSPOT": "",
+                    "TYPE": "",
+                    "PATH_ARRAY": "",
+                    "TITLE_PANEL": "Hotspot1",
+                    "POSITION_PANEL": "-0.8520, 0.0000, 0.0000",
+                    "SCALE_PANEL": "0.0040, 0.0040, 1.0000",
+                    "ROTATION_PANEL": "0.0000, 0.0000, 0.0000, 1.0000",
+                    "NUM_PANEL": "Hotspot1",
+                    "BUTTONS": [
+                        {
+                            "TYPE": "image",
+                            "PATH_ARRAY": "AR_exp/Images/ar_portatil.png"
+                        }
+                    ]
+                },
+                {
+                    "NAME_HOTSPOT": "",
+                    "POSITION_HOTSPOT": "",
+                    "ROTATION_HOTSPOT": "",
+                    "IMAGE_HOTSPOT": "",
+                    "TYPE": "",
+                    "PATH_ARRAY": "",
+                    "TITLE_PANEL": "Hotspot2",
+                    "POSITION_PANEL": "0.8200, -0.0054, 0.0000",
+                    "SCALE_PANEL": "0.0040, 0.0040, 1.0000",
+                    "ROTATION_PANEL": "0.0000, 0.0000, 0.0000, 1.0000",
+                    "NUM_PANEL": "Hotspot2",
+                    "BUTTONS": [
+                        {
+                            "TYPE": "image",
+                            "PATH_ARRAY": "AR_exp/Images/ar_portatil_1.png&&AR_exp/Images/ar_portatil_2.png&&AR_exp/Images/ar_portatil_3.png"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "NAME_MODEL": "laptop, notebook",
+            "PATH_IMAGE_REF": "",
+            "PATH_MODEL": "AR_exp/mobilenet_quant_v1_224.tflite",
+            "SCALE_MODEL": "",
+            "PATH_MODEL_LABEL": "AR_exp/labels.txt",
+            "HOTSPOTS": [
+                {
+                    "NAME_HOTSPOT": "",
+                    "POSITION_HOTSPOT": "",
+                    "ROTATION_HOTSPOT": "",
+                    "IMAGE_HOTSPOT": "",
+                    "TYPE": "",
+                    "PATH_ARRAY": "",
+                    "TITLE_PANEL": "Hotspot1",
+                    "POSITION_PANEL": "-1.1712, 0.6984, -0.0005",
+                    "SCALE_PANEL": "0.0040, 0.0040, 1.0000",
+                    "ROTATION_PANEL": "0.0000, 0.0000, 0.0000, 1.0000",
+                    "NUM_PANEL": "Hotspot1",
+                    "BUTTONS": [
+                        {
+                            "TYPE": "image",
+                            "PATH_ARRAY": "AR_exp/Images/ar_portatil.png"
+                        }
+                    ]
+                },
+                {
+                    "NAME_HOTSPOT": "",
+                    "POSITION_HOTSPOT": "",
+                    "ROTATION_HOTSPOT": "",
+                    "IMAGE_HOTSPOT": "",
+                    "TYPE": "",
+                    "PATH_ARRAY": "",
+                    "TITLE_PANEL": "Hotspot2",
+                    "POSITION_PANEL": "1.1696, -0.0054, 0.0000",
+                    "SCALE_PANEL": "0.0040, 0.0040, 1.0000",
+                    "ROTATION_PANEL": "0.0000, 0.0000, 0.0000, 1.0000",
+                    "NUM_PANEL": "Hotspot2",
+                    "BUTTONS": [
+                        {
+                            "TYPE": "image",
+                            "PATH_ARRAY": "AR_exp/Images/ar_portatil_1.png&&AR_exp/Images/ar_portatil_2.png&&AR_exp/Images/ar_portatil_3.png"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

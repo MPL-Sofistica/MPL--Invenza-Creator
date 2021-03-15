@@ -1,0 +1,164 @@
+{
+    "SHORT_TITLE": "Encoder_Demo",
+    "TYPE": "MR",
+    "URL_INTERNAL_FILE": "",
+    "NAME_FILE_ZIP": "",
+    "URL_FILE": "",
+    "MODEL": [
+        {
+            "NAME_MODEL": "Encoder",
+            "PATH_IMAGE_REF": "encoder_V0_from_Creator_2_ACM/encoder_lista.png",
+            "PATH_MODEL": "encoder_V0_from_Creator_2_ACM/EncoderMod.gltf",
+            "SCALE_MODEL": "2.000, 2.000, 2.000",
+            "PATH_MODEL_LABEL": "",
+            "HOTSPOTS": [
+                {
+                    "NAME_HOTSPOT": "Hotspot 1",
+                    "POSITION_HOTSPOT": "0.15200, 0.57900, 0.00000",
+                    "ROTATION_HOTSPOT": "0.00000, -180.00000, 0.00000",
+                    "IMAGE_HOTSPOT": "Hotspot 1",
+                    "TYPE": "",
+                    "PATH_ARRAY": "",
+                    "TITLE_PANEL": "Hotspot 1",
+                    "POSITION_PANEL": "-3.86000, 2.70000, 0.00000",
+                    "SCALE_PANEL": "0.00400, 0.00400, 1.00000",
+                    "ROTATION_PANEL": "0.0, 180.0, 0.0",
+                    "NUM_PANEL": "",
+                    "BUTTONS": [
+                        {
+                            "TYPE": "text",
+                            "PATH_ARRAY": "Es importante recordar que para la instalación del Encoder se deben realizar los respectivos permisos de trabajo&&E ir acompañados del mecánico del taladro o la persona que designen en el equipo para realizar la instalación. &&Antes de hacer cualquier procedimiento bloquee previamente el sitio de trabajo con la ayuda del perforador y el mecánico."
+                        },
+                        {
+                            "TYPE": "video",
+                            "PATH_ARRAY": "encoder_V0_from_Creator_2_ACM/video/Encoderhs1video1.mp4"
+                        },
+                        {
+                            "TYPE": "video",
+                            "PATH_ARRAY": "encoder_V0_from_Creator_2_ACM/video/Encoderhs1video2.mp4"
+                        }
+                    ]
+                },
+                {
+                    "NAME_HOTSPOT": "Hotspot 2",
+                    "POSITION_HOTSPOT": "-0.26200, 0.57900, 0.00000",
+                    "ROTATION_HOTSPOT": "0.00000, -180.00000, 0.00000",
+                    "IMAGE_HOTSPOT": "Hotspot 2",
+                    "TYPE": "",
+                    "PATH_ARRAY": "",
+                    "TITLE_PANEL": "Hotspot 2",
+                    "POSITION_PANEL": "3.82000, 2.70000, 0.00000",
+                    "SCALE_PANEL": "0.00400, 0.00400, 1.00000",
+                    "ROTATION_PANEL": "0.0, 180.0, 0.0",
+                    "NUM_PANEL": "",
+                    "BUTTONS": [
+                        {
+                            "TYPE": "text",
+                            "PATH_ARRAY": "Identificar el punto de instalación en el eje del malacate (en la línea neumática de la caja de cambios). Establezca el tipo de rosca y diámetro de conexión que requiere el encoder."
+                        },
+                        {
+                            "TYPE": "image",
+                            "PATH_ARRAY": "dau_V0_from_Creator_2_ACM/image/hotspot2imagen1.jpg&&dau_V0_from_Creator_2_ACM/image/hotspot2imagen2.jpg"
+                        }
+                    ]
+                },
+                {
+                    "NAME_HOTSPOT": "Hotspot 3",
+                    "POSITION_HOTSPOT": "0.00000, 0.29300, 0.17500",
+                    "ROTATION_HOTSPOT": "0.00000, -180.00000, 0.00000",
+                    "IMAGE_HOTSPOT": "Hotspot 3",
+                    "TYPE": "",
+                    "PATH_ARRAY": "",
+                    "TITLE_PANEL": "Hotspot 3",
+                    "POSITION_PANEL": "3.82000, 2.70000, 0.00000",
+                    "SCALE_PANEL": "0.00400, 0.00400, 1.00000",
+                    "ROTATION_PANEL": "0.0, 180.0, 0.0",
+                    "NUM_PANEL": "",
+                    "BUTTONS": [
+                        {
+                            "TYPE": "text",
+                            "PATH_ARRAY": "Instalar eje de conexión de diámetro adecuado en el sensor.\r\nPara cambiar el eje del encoder se utiliza una llave hexagonal para liberar el collar de sujeción e intercambiar el eje según se requiera.\r\n"
+                        },
+                        {
+                            "TYPE": "video",
+                            "PATH_ARRAY": "encoder_V0_from_Creator_2_ACM/video/Encoderhs3video1.mp4"
+                        },
+                        {
+                            "TYPE": "image",
+                            "PATH_ARRAY": "dau_V0_from_Creator_2_ACM/image/hotspot3imagen1.jpg"
+                        }
+                    ]
+                },
+                {
+                    "NAME_HOTSPOT": "Hotspot 4",
+                    "POSITION_HOTSPOT": "0.00000, 0.29300, -0.16000",
+                    "ROTATION_HOTSPOT": "0.00000, 0.00000, 0.00000",
+                    "IMAGE_HOTSPOT": "Hotspot 4",
+                    "TYPE": "",
+                    "PATH_ARRAY": "",
+                    "TITLE_PANEL": "Hotspot 4",
+                    "POSITION_PANEL": "3.82000, 2.70000, 0.00000",
+                    "SCALE_PANEL": "0.00400, 0.00400, 1.00000",
+                    "ROTATION_PANEL": "0.0, 180.0, 0.0",
+                    "NUM_PANEL": "",
+                    "BUTTONS": [
+                        {
+                            "TYPE": "text",
+                            "PATH_ARRAY": "Instalar el sensor en el eje del malacate utilizando las llaves correctas, y ubicándolo adelante del sistema neumático.\n&&Se puede instalar sensores de otras compañías alineados detrás de nuestro sensor.&&Asegúrese de enroscar adecuadamente el encoder al eje del malacate para no crear movimientos excéntricos, ya que pueden dañar el sensor o el sistema neumático del malacate."
+                        },
+                        {
+                            "TYPE": "image",
+                            "PATH_ARRAY": "dau_V0_from_Creator_2_ACM/image/hotspot4imagen1.jpg"
+                        }
+                    ]
+                },
+                {
+                    "NAME_HOTSPOT": "Hotspot 5",
+                    "POSITION_HOTSPOT": "0.08700, 0.29300, 0.09600",
+                    "ROTATION_HOTSPOT": "0.00000, -180.00000, 0.00000",
+                    "IMAGE_HOTSPOT": "Hotspot 5",
+                    "TYPE": "",
+                    "PATH_ARRAY": "",
+                    "TITLE_PANEL": "Hotspot 5",
+                    "POSITION_PANEL": "-3.84000, -2.74000, 0.00000",
+                    "SCALE_PANEL": "0.00400, 0.00400, 1.00000",
+                    "ROTATION_PANEL": "0.0, 180.0, 0.0",
+                    "NUM_PANEL": "",
+                    "BUTTONS": [
+                        {
+                            "TYPE": "image",
+                            "PATH_ARRAY": "dau_V0_from_Creator_2_ACM/image/hotspot5imagen1.jpg"
+                        },
+                        {
+                            "TYPE": "text",
+                            "PATH_ARRAY": "Con amarres plásticos que aseguren el cuerpo del Encoder a puntos fijos del piso o estructura del malacate, esto evitara que se dañe el cable del sensor, normalmente el sensor cuenta con una guaya para anclaje.&&En las siguientes imágenes podemos observar cómo adicionalmente a la guaya se usan amarres plásticos para evitar que gire. &&También en la imagen de la derecha podemos ver que hay Encoders de otras compañías acoplados al nuestro."
+                        },
+                        {
+                            "TYPE": "image",
+                            "PATH_ARRAY": "dau_V0_from_Creator_2_ACM/image/hotspot5imagen2.jpg&&dau_V0_from_Creator_2_ACM/image/hotspot5imagen3.jpg"
+                        }
+                    ]
+                },
+                {
+                    "NAME_HOTSPOT": "Hotspot 6",
+                    "POSITION_HOTSPOT": "-0.20100, 0.11500, -0.01000",
+                    "ROTATION_HOTSPOT": "0.00000, -180.00000, 0.00000",
+                    "IMAGE_HOTSPOT": "Hotspot 6",
+                    "TYPE": "",
+                    "PATH_ARRAY": "",
+                    "TITLE_PANEL": "Hotspot 6",
+                    "POSITION_PANEL": "4.30000, 0.01000, 0.00000",
+                    "SCALE_PANEL": "0.00400, 0.00400, 1.00000",
+                    "ROTATION_PANEL": "0.0, 180.0, 0.0",
+                    "NUM_PANEL": "",
+                    "BUTTONS": [
+                        {
+                            "TYPE": "video",
+                            "PATH_ARRAY": "encoder_V0_from_Creator_2_ACM/video/encoderhs6video1.mp4"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,91 @@
+{
+    "SHORT_TITLE": "MR_Demo",
+    "TYPE": "MR",
+    "URL_INTERNAL_FILE": "",
+    "NAME_FILE_ZIP": "",
+    "URL_FILE": "",
+    "MODEL": [
+        {
+            "NAME_MODEL": "Bridas",
+            "PATH_IMAGE_REF": "Brida/bridamr.png",
+            "PATH_MODEL": "Brida/Bridas/Bridas.gltf",
+            "SCALE_MODEL": "2.000, 2.000, 2.000",
+            "PATH_MODEL_LABEL": "",
+            "HOTSPOTS": [
+                {
+                    "NAME_HOTSPOT": "Hotspot1",
+                    "POSITION_HOTSPOT": "0.01490, 0.26240, 0.12300",
+                    "ROTATION_HOTSPOT": "0.00000, -180.00000, 0.00000",
+                    "IMAGE_HOTSPOT": "Hotspot1",
+                    "TYPE": "",
+                    "PATH_ARRAY": "",
+                    "TITLE_PANEL": "Hotspot1",
+                    "POSITION_PANEL": "-3.85000, -2.71000, 0.00000",
+                    "SCALE_PANEL": "0.00400, 0.00400, 1.00000",
+                    "ROTATION_PANEL": "0.0, 180.0, 0.0",
+                    "NUM_PANEL": "",
+                    "BUTTONS": [
+                        {
+                            "TYPE": "video",
+                            "PATH_ARRAY": "Brida/mr_vid1.mp4"
+                        }
+                    ]
+                },
+                {
+                    "NAME_HOTSPOT": "Hotspot2",
+                    "POSITION_HOTSPOT": "-0.07970, 0.08940, 0.13770",
+                    "ROTATION_HOTSPOT": "0.00000, -180.00000, 0.00000",
+                    "IMAGE_HOTSPOT": "Hotspot2",
+                    "TYPE": "",
+                    "PATH_ARRAY": "",
+                    "TITLE_PANEL": "Hotspot2",
+                    "POSITION_PANEL": "3.84000, 2.66000, 0.00000",
+                    "SCALE_PANEL": "0.00400, 0.00400, 1.00000",
+                    "ROTATION_PANEL": "0.0, 180.0, 0.0",
+                    "NUM_PANEL": "",
+                    "BUTTONS": [
+                        {
+                            "TYPE": "video",
+                            "PATH_ARRAY": "Brida/mr_vid2.mp4"
+                        }
+                    ]
+                },
+                {
+                    "NAME_HOTSPOT": "Hotspot3",
+                    "POSITION_HOTSPOT": "0.18000, 0.17000, 0.00600",
+                    "ROTATION_HOTSPOT": "0.00000, -270.00000, 0.00000",
+                    "IMAGE_HOTSPOT": "Hotspot3",
+                    "TYPE": "",
+                    "PATH_ARRAY": "",
+                    "TITLE_PANEL": "Hotspot3",
+                    "POSITION_PANEL": "-3.83000, 2.66000, 0.00000",
+                    "SCALE_PANEL": "0.00400, 0.00400, 1.00000",
+                    "ROTATION_PANEL": "0.0, 180.0, 0.0",
+                    "NUM_PANEL": "",
+                    "BUTTONS": [
+                        {
+                            "TYPE": "video",
+                            "PATH_ARRAY": "Brida/mr_vid3.mp4"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "NAME_MODEL": "Bridas_Llaves",
+            "PATH_IMAGE_REF": "Brida/llavesBrida.png",
+            "PATH_MODEL": "Brida/Bridas_Llaves/Bridas_Llaves.gltf",
+            "SCALE_MODEL": "2.000, 2.000, 2.000",
+            "PATH_MODEL_LABEL": "",
+            "HOTSPOTS": []
+        },
+        {
+            "NAME_MODEL": "Esparragos",
+            "PATH_IMAGE_REF": "Brida/esparragos.png",
+            "PATH_MODEL": "Brida/Esparragos/Esparragos.gltf",
+            "SCALE_MODEL": "2.000, 2.000, 2.000",
+            "PATH_MODEL_LABEL": "",
+            "HOTSPOTS": []
+        }
+    ]
+}

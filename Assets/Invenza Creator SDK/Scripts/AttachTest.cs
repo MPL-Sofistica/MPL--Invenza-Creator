@@ -6,38 +6,23 @@ using UnityEngine;
 
 public class AttachTest : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // Start is called before the first frame update   
+    public Animator objectanim;
+    public Animator buttonanim;
 
-    //The focus of the object's "attach" movement(left hand / right hand)
-    public Transform node0;
-    public Transform node1;
 
     //Controller(left hand / right hand)
     public GameObject controller0;
     public GameObject controller1;
 
-    //The speed of the "attach" process
-    public float attachSpeed;
-
-    //The speed of throwing objects
-    public float throwSpeed = 5;
-
+    public float maxdistance;
     //Controller in use
     private GameObject currentController;
-
-    //The focus of the object's "attach" movement
-    private Transform currentNode;
 
     private int mainHandNess;
 
     private Ray ray;
     private RaycastHit hit;
-
-    //The material in the highlighted state of the object
-    //[SerializeField]
-    public Material attachMaterial;
-    //[SerializeField]
-    public Material normalMaterial;
 
     //The key is pressed or not pressed
     private bool noClick = true;
@@ -47,13 +32,7 @@ public class AttachTest : MonoBehaviour
 
     //private Vector3 currentPosition;
     //private Vector3 lastPosition;
-    //private Vector3 movementDirection;
-
-    private Vector3 angularVelocity;
-    private Vector3 linearVelocity;
-
-    private Vector3 angularVelocityGetKey;
-    private Vector3 angularVelocityAverage;
+    //private Vector3 movementDirection; 
 
 
     public bool ishit;
@@ -84,41 +63,26 @@ public class AttachTest : MonoBehaviour
                 if (mainHandNess == 0)
                 {
                     currentController = controller0;
-                    currentNode = node0;
                 }
 
                 if (mainHandNess == 1)
                 {
                     currentController = controller1;
-                    currentNode = node1;
 
                 }
-
 
                 ray.direction = currentController.transform.forward - currentController.transform.up * 0.25f;
                 ray.origin = currentController.transform.Find("start").position;
 
                 //Determine whether the ray interacts with this object
-                if (Physics.Raycast(ray, out hit) && (hit.transform == transform))
+                if (Physics.Raycast(ray.origin, ray.direction, out hit, maxdistance) && (hit.transform == transform))
                 {
-                    if (noClick)
-                    {
-                        transform.GetComponent<MeshRenderer>().material = attachMaterial;
-                    }
-
-                    {
-                        //Judging whether the "Trigger" is pressed or not
-                        if (Input.GetKey(KeyCode.Space) || Pvr_UnitySDKAPI.Controller.UPvr_GetKey(mainHandNess, Pvr_UnitySDKAPI.Pvr_KeyCode.TRIGGER))
-                        {
-                            giveme();
-
-                        }
-
-                    }
+                    objectanim.SetBool("Open", true);
+                    buttonanim.SetBool("Open", true);
                 }
                 else
                 {
-                    transform.GetComponent<MeshRenderer>().material = normalMaterial;
+
                 }
 
                 //Checking whether the "Trigger" is lifted or not
@@ -126,55 +90,10 @@ public class AttachTest : MonoBehaviour
                 {
                     if (moveState)
                     {
-                        noClick = true;
 
-                        transform.SetParent(null);
-                        GetComponent<Rigidbody>().isKinematic = false;
-
-                        angularVelocity = Pvr_UnitySDKAPI.Controller.UPvr_GetAngularVelocity(mainHandNess);
-                        angularVelocityAverage = (angularVelocityGetKey + angularVelocity) / 2;
-                        linearVelocity = Pvr_UnitySDKAPI.Controller.UPvr_GetVelocity(mainHandNess);
-
-                        GetComponent<Rigidbody>().angularVelocity = angularVelocityAverage * 0.0001f * throwSpeed;
-                        GetComponent<Rigidbody>().velocity = linearVelocity * 0.0001f * throwSpeed;
-
-                        ishit = false;
-                        moveState = false;
                     }
-
                 }
-
-
             }
         }
     }
-
-    public void AtachandOwn()
-    {
-        moveState = true;
-        noClick = false;
-        transform.GetComponent<MeshRenderer>().material = normalMaterial;
-
-        //Completed the attach effect
-        transform.position = Vector3.Lerp(transform.position, currentNode.position, Time.deltaTime * attachSpeed);
-        transform.rotation = Quaternion.Lerp(transform.rotation, currentNode.rotation, Time.deltaTime * attachSpeed);
-        transform.SetParent(currentNode);
-        GetComponent<Rigidbody>().isKinematic = true;
-
-        //The reason for using "Input.GetKey" is to get a more accurate motion trend in 2 frams.
-        //angularVelocityGetKey = Pvr_UnitySDKAPI.Controller.UPvr_GetAngularVelocity(mainHandNess);
-        Debug.Log("entro al la pegada del control");
-    }
-
-    public void giveme()
-    {
-        transform.GetComponent<MeshRenderer>().material = attachMaterial;
-        Debug.Log("ahora es mio");
-        transform.position = Vector3.Lerp(transform.position, currentNode.position, Time.deltaTime * attachSpeed);
-        transform.rotation = Quaternion.Lerp(transform.rotation, currentNode.rotation, Time.deltaTime * attachSpeed);
-        transform.SetParent(currentNode);
-        GetComponent<Rigidbody>().isKinematic = true;
-
-    }
-
 }

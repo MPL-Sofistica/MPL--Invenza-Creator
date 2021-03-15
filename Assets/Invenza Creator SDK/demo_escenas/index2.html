@@ -1,0 +1,709 @@
+<!DOCTYPE doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width, shrink-to-fit=no"
+		name="viewport">
+	<title>
+		Prueba Panolens
+	</title>
+	<script src="js/three.min.js">
+	</script>
+	<script src="js/panolens.min.js	">
+	</script>
+	<script src="js/GLTFLoader.js	">
+	</script>
+	<script src="js/FBXLoader.js">
+	</script>
+	<script src="js/inflate.min.js">
+	</script>
+
+	<script src="js/ColladaLoader.js"></script>
+
+
+
+	<style>
+		html,
+		body {
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			margin: 0;
+		}
+
+
+
+
+		.btns {
+
+			background: rgba(7, 5, 58, 0.902);
+			border-radius: 0px 0px 5px 5px;
+			text-align: center;
+			height: 15px;
+			display: block;
+
+			width: 100%;
+			left: 0;
+			bottom: 0;
+
+
+
+		}
+
+		#btnmenu {
+			display: inline-block;
+
+
+
+			text-align: center;
+			font-family: Sansation;
+
+			font-size: 6px;
+			color: rgba(255, 255, 255, 1);
+
+			background: rgba(255, 255, 255, 0.4);
+
+			border-radius: 5px;
+			margin: 2px;
+			float: left;
+		}
+
+		#btnmenu span {
+			vertical-align: middle;
+			align-content: center;
+			margin: 2px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+		}
+
+		.contetview {
+			display: inline-block;
+			margin: auto;
+
+
+
+		}
+
+		.contetview p {
+
+			font-size: 12px;
+			padding-left: 5px;
+			padding-right: 5px;
+
+		}
+
+		.contetview>img {
+			margin: auto;
+			vertical-align: middle;
+		}
+
+		.outcontetview>h4 {
+			margin: 0px;
+			text-align: center;
+			font-size: 6px;
+
+		}
+
+		.btns>h4 {
+			margin: 0px;
+			text-align: center;
+			font-size: 10px;
+			color: #fff;
+
+		}
+
+
+		.name {
+			display: inline-block;
+
+
+
+			text-align: center;
+			font-family: Sansation;
+
+			font-size: 6px;
+			color: rgba(255, 255, 255, 1);
+
+			background: rgba(255, 255, 255, 0.4);
+
+			border-radius: 5px;
+			margin: 2px;
+			float: left;
+		}
+
+		.name span {
+			vertical-align: middle;
+			align-content: center;
+			margin: 2px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+		}
+
+		.cerrar {
+			display: inline-block;
+
+
+
+			text-align: center;
+			font-family: Sansation;
+
+			font-size: 6px;
+			color: rgba(255, 255, 255, 1);
+
+			background: rgba(152, 28, 209, 1);
+
+			border-radius: 1px;
+			margin: 0px;
+			float: right;
+
+		}
+
+		.cerrar>span {
+			vertical-align: middle;
+			align-content: center;
+			margin: 2px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+
+		}
+
+		.flexbox-container {
+			display: none;
+			width: 230px;
+			height: 72px;
+			position: absolute;
+		}
+
+		.flexbox-container>div {
+			width: 50%;
+
+			border-radius: 5px 5px 5px 5px;
+			background-image: linear-gradient(rgba(245, 245, 245, 0.90), rgba(223, 223, 223, 0.90), rgba(200, 200, 200, 0.90));
+		}
+
+		.flexbox-container>div:first-child {
+			margin-right: 5px;
+		}
+
+		.outcontetview {
+			padding: 5px;
+			text-align: center;
+
+		}
+
+		#menu2 {
+			visibility: hidden;
+		}
+
+		.flexbox-container2 {
+			display: none;
+			width: 250px;
+			height: 170px;
+			position: absolute;
+		}
+
+		.flexbox-container2>div {
+			width: 100%;
+
+			border-radius: 5px 5px 5px 5px;
+			background-image: linear-gradient(rgba(245, 245, 245, 0.90), rgba(223, 223, 223, 0.90), rgba(200, 200, 200, 0.90));
+		}
+
+		.flexbox-container3 {
+			display: none;
+			width: 200px;
+			height: 120px;
+			position: absolute;
+		}
+
+		.flexbox-container3>div {
+			width: 100%;
+
+			border-radius: 5px 5px 5px 5px;
+			background-image: linear-gradient(rgba(245, 245, 245, 0.90), rgba(223, 223, 223, 0.90), rgba(200, 200, 200, 0.90));
+		}
+	</style>
+	</meta>
+	</meta>
+</head>
+
+<body>
+	<div class="flexbox-container2" id="containervideo">
+		<div class="menus3" id="menu1">
+			<div class="outcontetview" id="viewcontent">
+				<div class="contetview">
+					<video autoplay="" controls="" height="150px" id="myVideo" loop="" preload="auto" width="230px">
+						<source src="asset/glpV1.mp4" type="video/mp4">
+						</source>
+					</video>
+				</div>
+			</div>
+			<div class="btns" id="btnmenu2">
+				<h4>
+					Video
+				</h4>
+			</div>
+		</div>
+	</div>
+	<div class="flexbox-container3" id="containertext">
+		<div class="menus3" id="menu1">
+			<div class="outcontetview" id="viewcontent">
+				<div class="contetview">
+					<p style="text-align: justify;">
+						Este ejemplo permite mostrar el uso de capas de conocimiento sobre un área específica. Puede
+						incluir textos, audios, imágenes, videos. Ejemplo: Imágenes de EPP usadas en manejo de alturas
+					</p>
+				</div>
+			</div>
+			<div class="btns" id="btnmenu2">
+				<h4>
+					Hotspot / punto sensible 1.
+				</h4>
+			</div>
+		</div>
+	</div>
+	<div class="flexbox-container3" id="containerimg">
+		<div class="menus3" id="menu1">
+			<div class="outcontetview" id="viewcontent2">
+				<div class="contetview" id="viewcontent21">
+					<img height="100px" id="imgcontent" name="imgcontent" src="img/arnes.png" width="170px">
+					</img>
+				</div>
+			</div>
+			<div class="btns" id="btnmenu2">
+				<h4>
+					Línea de vida doble - EPP1
+				</h4>
+			</div>
+		</div>
+	</div>
+	<div class="flexbox-container3" id="containerimg2">
+		<div class="menus3" id="menu1">
+			<div class="outcontetview" id="viewcontent2">
+				<div class="contetview" id="viewcontent21">
+					<img height="100px" id="imgcontent" name="imgcontent" src="img/arnesazul.png" width="170px">
+					</img>
+				</div>
+			</div>
+			<div class="btns" id="btnmenu2">
+				<h4>
+					Línea de vida doble - EPP2
+				</h4>
+			</div>
+		</div>
+	</div>
+
+	<video id="Hotspot1btn2" loop crossOrigin="anonymous" playsinline style="display:none">
+		<source src="asset/Hotspot1btn2.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+	</video>
+	
+	<div id="container"></div>
+
+	<script>
+		//document.getElementsByName("fname")[0]; 
+		//var idel = document.getElementsByClassName('panolens-infospot');
+		//	var men = idel.document.getElementsByClassName('menus');
+
+		//	import { CSS3DRenderer, CSS3DObject } from './js/CSS3DRenderer.js';
+		//	import { CSS3DRenderer, CSS3DObject } from 'js/CSS3DRenderer.js';
+
+		var panorama, panorama2, viewer, container, infospot, infospot2, infospot3, infospot4, infospot5, infoimg;
+		var aux4, renderer, loader, dae;
+		var rendererCSS;
+
+		const path = 'asset/';
+		const format = '.jpg';
+
+		/*--------------------panorama 1--------------------------------*/
+		/* panorama = new PANOLENS.CubePanorama([
+			path + 'px' + format, path + 'nx' + format,
+			path + 'py' + format, path + 'ny' + format,
+			path + 'pz' + format, path + 'nz' + format
+		]); */
+
+		panorama = new PANOLENS.VideoPanorama( 'asset/GS010225small_1.mp4', { autoplay: true } );
+		infospot2 = new PANOLENS.Infospot(300, 'img/hotsp_r.png', true);
+		infospot2.position.set(-5000.00, -2955.49, 33.87);
+
+		//var panels = document.getElementById('containermain'); 
+		//	infospot2.addHoverElement( panels,70);
+
+
+
+
+		//infospot3 = new PANOLENS.Infospot(300, 'img/hsb01.png');
+		//infospot3.position.set(-5000.00, -2955.49, -350);
+		//infospot3.addHoverElement(document.getElementById('containertext'), 85, -115);
+
+		infospot3 = new PANOLENS.Infospot(300, 'img/hsb01.png');
+		infospot3.position.set(-5000.00, -2955.49, -350);
+		infospot3.name = 'info1';
+		//infospot3.addHoverElement(document.getElementById('containertext'), 85, -115);
+
+
+
+		infospot4 = new PANOLENS.Infospot(300, 'img/hsb02.png');
+		infospot4.position.set(-5000.00, -2955.49, 0);
+		infospot4.addHoverElement(document.getElementById('containerimg'), 84, 50);
+
+
+
+
+
+
+		infospot5 = new PANOLENS.Infospot(300, 'img/hsb03.png');
+		infospot5.position.set(-5000.00, -2955.49, 350);
+
+		infospot5.addHoverElement(document.getElementById('containerimg2'), 83, 9);
+
+		infospot = new PANOLENS.Infospot(300, 'img/hsb.png');
+		infospot.position.set(3268.26, -2084.65, 5000.00);
+
+		infospot.addHoverElement(document.getElementById('containervideo'), 120, 0);
+
+
+		infospot4.addEventListener('hoverenter', function () {
+			infospot5.onDismiss();
+
+
+		});
+		infospot5.addEventListener('hoverenter', function () {
+			infospot4.onDismiss();
+
+
+		});
+
+		infospot.addEventListener('click', function () {
+			//document.getElementById("myVideo").play();
+			console.log('Entro en click');
+
+
+		});
+		infospot4.addEventListener('click', function () {
+			infospot5.onDismiss();
+
+
+		});
+		infospot5.addEventListener('click	', function () {
+			infospot4.onDismiss();
+
+
+		});
+
+		infoimg = new PANOLENS.Infospot(150, 'img/imgbtn.png');
+		infoimg.position.set(-5000.00, -2982.78, -1412.74);
+		infoimg.addEventListener('click', function () {
+			document.getElementsByClassName('menus2')[1].style.visibility = 'visible';
+			document.getElementsByClassName('flexbox-container')[1].style.display = 'flex';
+		});
+
+		var video2 = document.getElementById('Hotspot1btn2');
+		//video2.play();
+		/*	video2.addEventListener( 'play', function () {
+
+				this.currentTime = 3;
+
+			} );*/
+
+		var textureVideo = new THREE.VideoTexture(video2);
+		textureVideo.needsUpdate = true;
+
+		const parameters = { color: 0xffffff, map: textureVideo };
+
+		var videoMaterial = new THREE.MeshLambertMaterial(parameters);
+		var material = new THREE.MeshPhongMaterial({
+			map: textureVideo, // Set texture map
+		});
+
+		var btnPlay, btnClose, btnPause, videoCanvas;
+		/*const loadingManager = new THREE.LoadingManager(function () {
+
+			panorama.add(elf);
+
+		});*/
+		loader = new THREE.ColladaLoader();
+		loader.load('Models/untitled.dae', function (collada) {
+
+			elf = collada.scene;
+
+			elf.children.map(function (object) {
+				if (object.name === 'Close_Mesh') {
+					btnClose = object;
+				}
+			});
+			elf.children.map(function (object) {
+				if (object.name === 'Play_Mesh') {
+					btnPlay = object;
+				}
+			});
+			elf.children.map(function (object) {
+				if (object.name === 'Pause_Mesh') {
+					btnPause = object;
+				}
+			});
+
+			elf.children.map(function (object) {
+				if (object.name === 'VideoHolder_Mesh.000') {
+					videoCanvas = object;
+					videoCanvas.material = material;
+
+					console.log(object.name);
+				}
+				//	console.log(object.name); 
+			});
+
+
+
+			panorama.add(elf);
+
+		});
+
+
+		panorama.addEventListener('click', function (event) {
+
+			if (event.intersects.length > 0) {
+
+				intersect = event.intersects[0].object;
+
+				if (!(intersect instanceof PANOLENS.Infospot) && intersect.material) {
+
+					/*	if (!intersect.previousMaterial) {
+	
+							intersect.previousMaterial = intersect.material.clone();
+							intersect.material = new THREE.MeshNormalMaterial();
+	
+						} else {
+	
+							intersect.material = intersect.previousMaterial;
+							intersect.previousMaterial.dispose();
+							intersect.previousMaterial = undefined;
+	
+						}*/
+
+					if (intersect.name === 'Play_Mesh.000') {
+						video2.play();
+						console.log('Play');
+					}
+
+					if (intersect.name === 'Pause_Mesh.000') {
+						video2.pause();
+						console.log('Play');
+					}
+
+					if (intersect.name === 'info1') {
+						addVideo(intersect);
+						console.log('info1');
+					}
+
+				}
+				if (intersect.name === 'info1') {
+					//addVideo(intersect);
+				//	animate();
+
+					addVideo2(intersect);
+					console.log('info1');
+				}
+				
+				console.log(intersect);
+
+			}
+
+		});
+
+
+		panorama.add(infospot3);
+		//panorama.add( infospot2 );
+		panorama.add(infospot4);
+		panorama.add(infospot5);
+		panorama.add(infospot);
+
+		panorama.addEventListener('enter-fade-start', function () {
+			viewer.tweenControlCenter(new THREE.Vector3(-5000.00, -1861.95, 250.18), 0);
+		});
+		panorama.addEventListener('click', function () {
+			infospot3.position.set(-5000.00, -2955.49, -350);
+			infospot4.position.set(-5000.00, -2955.49, 0);
+			infospot5.position.set(-5000.00, -2955.49, 350);
+
+		});
+
+		function addVideo2(object) {
+			const video = document.getElementById('Hotspot1btn2');
+			video.play()
+			const texture = new THREE.VideoTexture(video);
+			texture.minFilter = THREE.LinearFilter;
+			texture.magFilter = THREE.LinearFilter;
+			texture.format = THREE.RGBFormat;
+
+			const geometry = new THREE.PlaneGeometry(100, 100);
+			const material = new THREE.MeshBasicMaterial({ map: texture });
+
+			const plane = new THREE.Mesh(new THREE.PlaneGeometry(100, 100), THREE.MeshBasicMaterial({ map: texture }));
+			plane.material.side = THREE.DoubleSide;
+			plane.position.y = 0.05;
+			//	plane.material.depthTest = false;
+			plane.material.needsUpdate = true;
+		//	plane.position.Z = -350;
+			plane.rotation.y = Math.PI / 2;
+			//plane.rotation.set(new THREE.Vector3( 0, 0, Math.PI / 2));
+			plane.scale.set(0.1, 0.1, 0.1);
+			console.log(object.position.x + '-' + object.position.y + '-' + object.position.y);
+			//plane.position.set(object.position.x, object.position.y, object.position.y);
+			console.log(object.rotation);
+			document.appendChild(plane.dom); 
+			//	plane.rotation.set(object.rotation)
+			panorama.add(plane);
+		}
+
+		function addVideo(object) {
+			var video, videoImage, videoImageContext, videoTexture;
+			// create the video element
+			video = document.createElement('video');
+			// video.id = 'video';
+			// video.type = ' video/ogg; codecs="theora, vorbis" ';
+			video.src = "asset/Hotspot1btn2.mp4";
+			video.load(); // must call after setting/changing source
+			video.play();
+
+			// alternative method -- 
+			// create DIV in HTML:
+			// <video id="myVideo" autoplay style="display:none">
+			//		<source src="videos/sintel.ogv" type='video/ogg; codecs="theora, vorbis"'>
+			// </video>
+			// and set JS variable:
+			// video = document.getElementById( 'myVideo' );
+
+			videoImage = document.createElement('canvas');
+			videoImage.width = 230;
+			videoImage.height = 150;
+
+			videoImageContext = videoImage.getContext('2d');
+			// background color if no video present
+			videoImageContext.fillStyle = '#000000';
+			videoImageContext.fillRect(0, 0, videoImage.width, videoImage.height);
+
+			videoTexture = new THREE.Texture(videoImage);
+			videoTexture.minFilter = THREE.LinearFilter;
+			videoTexture.magFilter = THREE.LinearFilter;
+
+			var movieMaterial = new THREE.MeshBasicMaterial({ map: videoTexture, overdraw: true, side: THREE.DoubleSide });
+			// the geometry on which the movie will be displayed;
+			// 		movie image will be scaled to fit these dimensions.
+			var movieGeometry = new THREE.PlaneGeometry(240, 100, 4, 4);
+			var movieScreen = new THREE.Mesh(movieGeometry, movieMaterial);
+			movieScreen.position.set(object.position.x + 100, object.position.y + 100, object.position.y);
+			console.log(object.name);
+
+			panorama.add(movieScreen);
+		}
+
+
+		//viewer = new PANOLENS.Viewer({autoHideInfospot: false, 	controlButtons:['video', 'fullscreen'], enableReticle: false});
+		viewer = new PANOLENS.Viewer();
+		viewer.add(panorama);
+
+
+
+		//  viewer.enableEffect( PANOLENS.MODES.NORMAL );
+		// viewer.enableControl( PANOLENS.CONTROLS.ORBIT ); 
+		//viewer.add( panorama2);
+		/*-5000.00, -2542.15, -1122.66*/
+
+		function num() {
+			var aux = 0;
+			var zdd = document.getElementsByClassName('flexbox-container');
+			console.log(zdd.length);
+			var aux2 = zdd.length;
+			if (aux2 <= 2) {
+				if (zdd[1].style.display == 'none') {
+					aux = 3;
+					console.log('entro 1 ' + aux2);
+
+				} else {
+					aux = 1;
+					console.log('entro 2 ' + aux2);
+				}
+			}
+			else {
+				if (zdd[2].style.display != 'none') {
+					aux = 3;
+					console.log('entro 3 ' + aux2);
+
+				} else {
+					aux = 1;
+					console.log('entro 4 ' + aux2);
+				}
+
+			}
+			return aux;
+		}
+		var statuspan = 0;
+		var statuspan2 = 1;
+		var onImagepan1 = 'url("img/ic_card_white.png")';
+		var offImagepan1 = 'url("img/ic_card_white_n.png")';
+		var onImagepan2 = 'url("img/icon_blanco_360.png")';
+		var offImagepan2 = 'url("img/icon_blanco_360_n.png")';
+
+		var itempan1 = {
+			style: {
+				backgroundImage: onImagepan1
+			},
+
+			onTap: function () {
+				//if (statuspan === 1) {
+				/*viewer.setPanorama(panorama); 
+				viewer.enableEffect( PANOLENS.MODES.NORMAL );
+				viewer.enableControl( PANOLENS.CONTROLS.ORBIT ); 
+				viewer.tweenControlCenter(new THREE.Vector3(-5000.00, -1861.95, 250.18), 0 );
+				console.log(statuspan);
+				statuspan = 0;
+				statuspan2 = 1; 
+			//	itempan1.style.backgroundImage = statuspan === 0 ? offImagepan1 : onImagepan1;
+			//itempan2.style.backgroundImage = statuspan2 === 0 ? offImagepan2 : onImagepan2;*/
+
+				//}
+				location.href = "imgcard.html";
+
+			}
+		};
+		viewer.appendControlItem(itempan1);
+
+		var itempan2 = {
+			style: {
+				backgroundImage: onImagepan2
+			},
+
+			onTap: function () {
+				/*if (statuspan2 === 1) {
+					viewer.setPanorama(panorama2); 
+					viewer.enableEffect( PANOLENS.MODES.NORMAL );
+					viewer.enableControl( PANOLENS.CONTROLS.ORBIT ); 
+					//viewer.tweenControlCenter(new THREE.Vector3(-5000.00, -1861.95, 250.18), 0 );
+					//console.log(statuspan);
+					statuspan2 = 0;
+					statuspan = 1;
+					//itempan1.style.backgroundImage = statuspan === 0 ? offImagepan1 : onImagepan1;
+					//itempan2.style.backgroundImage = statuspan2 === 0 ? offImagepan2 : onImagepan2;
+		
+				}*/
+
+			}
+		};
+		viewer.appendControlItem(itempan2);
+
+		function animate() {
+			requestAnimationFrame(animate);
+
+		}
+
+	</script>
+</body>
+
+</html>

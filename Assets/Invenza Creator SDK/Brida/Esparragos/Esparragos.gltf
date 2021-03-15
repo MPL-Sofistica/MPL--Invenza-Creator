@@ -1,0 +1,116 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v1.4.40",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "esparragos"
+        }
+    ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "name" : "final3:blinn1SG.003",
+            "pbrMetallicRoughness" : {
+                "baseColorFactor" : [
+                    0.4000000059604645,
+                    0.4000000059604645,
+                    0.4000000059604645,
+                    1
+                ],
+                "metallicFactor" : 0
+            }
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "esparragos.003",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1,
+                        "TEXCOORD_0" : 2
+                    },
+                    "indices" : 3,
+                    "material" : 0
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 13296,
+            "max" : [
+                0.06443038582801819,
+                0.15909990668296814,
+                0.009099841117858887
+            ],
+            "min" : [
+                -0.06443052738904953,
+                0.14090009033679962,
+                -0.009099841117858887
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 13296,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 13296,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5123,
+            "count" : 39330,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 159552,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 159552,
+            "byteOffset" : 159552
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 106368,
+            "byteOffset" : 319104
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 78660,
+            "byteOffset" : 425472
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 504132,
+            "uri" : "Esparragos.bin"
+        }
+    ]
+}

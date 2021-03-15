@@ -1,0 +1,60 @@
+{
+    "SHORT_TITLE": "prueba de JS",
+    "TYPE": "MR",
+    "URL_INTERNAL_FILE": "",
+    "NAME_FILE_ZIP": "",
+    "URL_FILE": "",
+    "MODEL": [
+        {
+            "NAME_MODEL": "Object",
+            "PATH_IMAGE_REF": "",
+            "PATH_MODEL": "",
+            "SCALE_MODEL": "",
+            "PATH_MODEL_LABEL": "",
+            "HOTSPOTS": [
+                {
+                    "NAME_HOTSPOT": "Hotspot VR1",
+                    "POSITION_HOTSPOT": "0.00000, 0.00000, 14.19000",
+                    "ROTATION_HOTSPOT": "0.00000, 0.00000, 0.00000",
+                    "IMAGE_HOTSPOT": "Hotspot VR1",
+                    "TYPE": "",
+                    "PATH_ARRAY": "",
+                    "TITLE_PANEL": "Hotspot VR1",
+                    "POSITION_PANEL": "4.47500, 2.76500, -0.20000",
+                    "SCALE_PANEL": "0.00400, 0.00400, 0.00466",
+                    "ROTATION_PANEL": "0.0, 180.0, 0.0",
+                    "NUM_PANEL": "",
+                    "BUTTONS": []
+                },
+                {
+                    "NAME_HOTSPOT": "Hotspot VR2",
+                    "POSITION_HOTSPOT": "17.83000, 6.57000, -0.89000",
+                    "ROTATION_HOTSPOT": "-333.26120, -100.38920, 0.00000",
+                    "IMAGE_HOTSPOT": "Hotspot VR2",
+                    "TYPE": "",
+                    "PATH_ARRAY": "",
+                    "TITLE_PANEL": "Hotspot VR2",
+                    "POSITION_PANEL": "4.47500, 2.76500, -0.20000",
+                    "SCALE_PANEL": "0.00400, 0.00400, 0.00466",
+                    "ROTATION_PANEL": "0.0, 180.0, 0.0",
+                    "NUM_PANEL": "",
+                    "BUTTONS": []
+                },
+                {
+                    "NAME_HOTSPOT": "Hotspot VR3",
+                    "POSITION_HOTSPOT": "-17.37000, -6.36000, -1.36000",
+                    "ROTATION_HOTSPOT": "-16.83763, -279.13950, 0.00000",
+                    "IMAGE_HOTSPOT": "Hotspot VR3",
+                    "TYPE": "",
+                    "PATH_ARRAY": "",
+                    "TITLE_PANEL": "Hotspot VR3",
+                    "POSITION_PANEL": "4.47500, 2.76500, -0.20000",
+                    "SCALE_PANEL": "0.00400, 0.00400, 0.00466",
+                    "ROTATION_PANEL": "0.0, 180.0, 0.0",
+                    "NUM_PANEL": "",
+                    "BUTTONS": []
+                }
+            ]
+        }
+    ]
+}
