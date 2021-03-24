@@ -1,0 +1,103 @@
+{
+    "SHORT_TITLE": "Cambio de llantas en camiones CAT 777",
+    "TYPE": "Three",
+    "URL_INTERNAL_FILE": "",
+    "NAME_FILE_ZIP": "",
+    "URL_FILE": "",
+    "MODEL": [
+        {
+            "NAME_MODEL": "Object",
+            "PATH_IMAGE_REF": "",
+            "PATH_MODEL": "",
+            "SCALE_MODEL": "",
+            "PATH_MODEL_LABEL": "",
+            "HOTSPOTS": [
+                {
+                    "NAME_HOTSPOT": "Hotspot_VR1",
+                    "POSITION_HOTSPOT": "-1454.01400, -426.69310, -1015.41200",
+                    "ROTATION_HOTSPOT": "",
+                    "IMAGE_HOTSPOT": "Hotspot_VR1",
+                    "TYPE": "",
+                    "PATH_ARRAY": "",
+                    "TITLE_PANEL": "Hotspot_VR1_Panel",
+                    "POSITION_PANEL": "-150.97860, -15.01931, -57.09513",
+                    "SCALE_PANEL": "",
+                    "ROTATION_PANEL": "",
+                    "NUM_PANEL": "",
+                    "BUTTONS": [
+                        {
+                            "TYPE": "video",
+                            "PATH_ARRAY": "video/Hotspot1_btn1.mp4"
+                        },
+                        {
+                            "TYPE": "video",
+                            "PATH_ARRAY": "video/Hotspot1_btn2.mp4"
+                        },
+                        {
+                            "TYPE": "video",
+                            "PATH_ARRAY": "video/Hotspot1_btn3.mp4"
+                        },
+                        {
+                            "TYPE": "video",
+                            "PATH_ARRAY": "video/Hotspot1_btn4.mp4"
+                        }
+                    ]
+                },
+                {
+                    "NAME_HOTSPOT": "Hotspot_VR2",
+                    "POSITION_HOTSPOT": "-1534.01400, 0.30686, -725.41250",
+                    "ROTATION_HOTSPOT": "",
+                    "IMAGE_HOTSPOT": "Hotspot_VR2",
+                    "TYPE": "",
+                    "PATH_ARRAY": "",
+                    "TITLE_PANEL": "Hotspot_VR2_Panel",
+                    "POSITION_PANEL": "-158.97860, 27.68069, -28.09513",
+                    "SCALE_PANEL": "",
+                    "ROTATION_PANEL": "",
+                    "NUM_PANEL": "",
+                    "BUTTONS": [
+                        {
+                            "TYPE": "video",
+                            "PATH_ARRAY": "video/Hotspot2_btn1.mp4"
+                        },
+                        {
+                            "TYPE": "video",
+                            "PATH_ARRAY": "video/Hotspot2_btn2.mp4"
+                        },
+                        {
+                            "TYPE": "image",
+                            "PATH_ARRAY": "images/canecareciclables.jpg&&images/canecaorganicos.jpg&&images/canecaincinerables.jpg&&images/canecapeligrosos.jpg&&images/canecaceitescombustibles.jpg&&images/canecaceitesusados.jpg"
+                        },
+                        {
+                            "TYPE": "video",
+                            "PATH_ARRAY": "video/Hotspot2_btn4.mp4"
+                        }
+                    ]
+                },
+                {
+                    "NAME_HOTSPOT": "Hotspot_VR3",
+                    "POSITION_HOTSPOT": "-1608.01400, -86.69315, 117.58750",
+                    "ROTATION_HOTSPOT": "",
+                    "IMAGE_HOTSPOT": "Hotspot_VR3",
+                    "TYPE": "",
+                    "PATH_ARRAY": "",
+                    "TITLE_PANEL": "Hotspot_VR3_Panel",
+                    "POSITION_PANEL": "-158.80140, 18.98069, 56.50875",
+                    "SCALE_PANEL": "",
+                    "ROTATION_PANEL": "",
+                    "NUM_PANEL": "",
+                    "BUTTONS": [
+                        {
+                            "TYPE": "text",
+                            "PATH_ARRAY": "images/hs3tx1.png&&images/hs3tx2.png&&images/hs3tx3.png"
+                        },
+                        {
+                            "TYPE": "video",
+                            "PATH_ARRAY": "video/Hotspot3_btn6.mp4"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

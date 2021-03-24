@@ -12,16 +12,7 @@ public class test : EditorWindow
     public GameObject canv;
     // Use this for initialization
     private Texture2D screenShot;
-    private RenderTexture rt;
-
-
-    public delegate void takePictureHandler(byte[] pngArray);
-    public static event takePictureHandler OnPictureTaken;
-
-    private GameObject duplicatedTargetUI;
-    private Image[] allImages;
-    private Text[] allTexts;
-    private Canvas[] allOtherCanvas;
+    private RenderTexture rt;    
 
     public enum SCREENSHOT_TYPE
     {
@@ -64,12 +55,6 @@ public class test : EditorWindow
                 receivePNGScreenShot(GetScreenshot(camera, screenShot, rt, canvasToSreenShot));
             }
         }
-    }
-
-    public void OnEnable()
-    {
-        //Un-Subscribe
-        CanvasScreenShot.OnPictureTaken -= receivePNGScreenShot;
     }
 
     void receivePNGScreenShot(byte[] pngArray)
