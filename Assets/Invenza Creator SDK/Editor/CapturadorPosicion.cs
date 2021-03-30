@@ -1115,14 +1115,16 @@ public class CapturadorPosicion : EditorWindow
                                 }
                             }
                         }
+                        //filehtml += indexHMTLFile.CreatePanoTag(panoramaPath);
                         /////
                         filehtml += "<script>" + indexHMTLFile.variablesGenericas;
                         filehtml += indexHMTLFile.varContainer;
                         filehtml += indexHMTLFile.CreatePanorama(panoramaPath, DebugFile.tipoPanorama.Video);////panorama
                         filehtml += indexHMTLFile.CreateViewerHTML();
+                        filehtml += indexHMTLFile.addWidgets();
                         for (int i = 0; i < experiencia.MODEL[0].HOTSPOTS.Count; i++)
                         {
-                            filehtml += indexHMTLFile.createGrupoPanel(experiencia.MODEL[0].HOTSPOTS[i].TITLE_PANEL + "_Grupo", experiencia.MODEL[0].HOTSPOTS[i].POSITION_PANEL, "1,1,1");
+                            filehtml += indexHMTLFile.createGrupoPanel(experiencia.MODEL[0].HOTSPOTS[i].TITLE_PANEL + "_Grupo", experiencia.MODEL[0].HOTSPOTS[i].POSITION_PANEL, "10,10,10");
                             filehtml += indexHMTLFile.CreateFrameLayout(experiencia.MODEL[0].HOTSPOTS[i].TITLE_PANEL + "_Layout", experiencia.MODEL[0].HOTSPOTS[i].TITLE_PANEL + "_Grupo");
                             //filehtml+= indexHMTLFile.CreateFrameLayout()
                             for (int ji = 0; ji < experiencia.MODEL[0].HOTSPOTS[i].BUTTONS.Count; ji++)
@@ -1150,7 +1152,7 @@ public class CapturadorPosicion : EditorWindow
                             }
                             indexHMTLFile.numBoton = 0;
                             filehtml += indexHMTLFile.CreatePanelHTML(experiencia.MODEL[0].HOTSPOTS[i].TITLE_PANEL, experiencia.MODEL[0].HOTSPOTS[i].TITLE_PANEL + "_Grupo");
-                            filehtml += indexHMTLFile.CreateInfoSpot((i + 1).ToString(), experiencia.MODEL[0].HOTSPOTS[i].NAME_HOTSPOT, experiencia.MODEL[0].HOTSPOTS[i].POSITION_HOTSPOT, experiencia.MODEL[0].HOTSPOTS[i].TITLE_PANEL + "_Grupo");
+                            filehtml += indexHMTLFile.CreateInfoSpot((i + 1).ToString(), experiencia.MODEL[0].HOTSPOTS[i].NAME_HOTSPOT, experiencia.MODEL[0].HOTSPOTS[i].POSITION_HOTSPOT, experiencia.MODEL[0].HOTSPOTS[i].TITLE_PANEL + "_Grupo","0.8,0.8,0.8");
                             //Debug.Log(experiencia.MODEL[0].HOTSPOTS[i].NAME_HOTSPOT);
                             //Debug.Log(experiencia.MODEL[0].HOTSPOTS[i].POSITION_HOTSPOT);
                             //Debug.Log(experiencia.MODEL[0].HOTSPOTS[i].TITLE_PANEL);
@@ -1161,7 +1163,7 @@ public class CapturadorPosicion : EditorWindow
                         filehtml += indexHMTLFile.createHidePlayAndPause();
                         filehtml += indexHMTLFile.stopfunction();
 
-
+                        filehtml += "</script>" + indexHMTLFile.ScriptIOS();
                         filehtml += indexHMTLFile.footer;///fin del documento
                         //Debug.Log(filehtml);
 
@@ -1313,9 +1315,9 @@ public class CapturadorPosicion : EditorWindow
     }
     public Vector3 panelPositionWeb(Vector3 position)
     {
-        position.x *= 10;
-        position.y *= 10;
-        position.z *= 10;
+        position.x *= 1;
+        position.y *= 1;
+        position.z *= 1;
 
         return position;
     }

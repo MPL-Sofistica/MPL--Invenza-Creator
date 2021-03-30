@@ -1,7 +1,7 @@
 {
     "SHORT_TITLE": "Cambio de llantas en camiones CAT 777",
-    "TYPE": "Three",
-    "URL_INTERNAL_FILE": "",
+    "TYPE": "v360",
+    "URL_INTERNAL_FILE": "HTMLTEST/index.html",
     "NAME_FILE_ZIP": "",
     "URL_FILE": "",
     "MODEL": [
@@ -14,13 +14,13 @@
             "HOTSPOTS": [
                 {
                     "NAME_HOTSPOT": "Hotspot_VR1",
-                    "POSITION_HOTSPOT": "-1454.01400, -426.69310, -1015.41200",
+                    "POSITION_HOTSPOT": "1596.98600, -570.69310, -858.41250",
                     "ROTATION_HOTSPOT": "",
                     "IMAGE_HOTSPOT": "Hotspot_VR1",
                     "TYPE": "",
                     "PATH_ARRAY": "",
                     "TITLE_PANEL": "Hotspot_VR1_Panel",
-                    "POSITION_PANEL": "-150.97860, -15.01931, -57.09513",
+                    "POSITION_PANEL": "-157.69860, -29.41931, -130.59120",
                     "SCALE_PANEL": "",
                     "ROTATION_PANEL": "",
                     "NUM_PANEL": "",
@@ -45,13 +45,13 @@
                 },
                 {
                     "NAME_HOTSPOT": "Hotspot_VR2",
-                    "POSITION_HOTSPOT": "-1534.01400, 0.30686, -725.41250",
+                    "POSITION_HOTSPOT": "1676.98600, 134.30690, -800.41240",
                     "ROTATION_HOTSPOT": "",
                     "IMAGE_HOTSPOT": "Hotspot_VR2",
                     "TYPE": "",
                     "PATH_ARRAY": "",
                     "TITLE_PANEL": "Hotspot_VR2_Panel",
-                    "POSITION_PANEL": "-158.97860, 27.68069, -28.09513",
+                    "POSITION_PANEL": "-165.69860, 41.08069, -124.79120",
                     "SCALE_PANEL": "",
                     "ROTATION_PANEL": "",
                     "NUM_PANEL": "",
@@ -66,7 +66,7 @@
                         },
                         {
                             "TYPE": "image",
-                            "PATH_ARRAY": "images/canecareciclables.jpg&&images/canecaorganicos.jpg&&images/canecaincinerables.jpg&&images/canecapeligrosos.jpg&&images/canecaceitescombustibles.jpg&&images/canecaceitesusados.jpg"
+                            "PATH_ARRAY": "images/MicrosoftTeams-image.png&&images/canecaorganicos.jpg&&images/canecaincinerables.jpg&&images/canecapeligrosos.jpg&&images/canecaceitescombustibles.jpg&&images/canecaceitesusados.jpg&&images/canecaceitesusados.jpg"
                         },
                         {
                             "TYPE": "video",
@@ -76,13 +76,13 @@
                 },
                 {
                     "NAME_HOTSPOT": "Hotspot_VR3",
-                    "POSITION_HOTSPOT": "-1608.01400, -86.69315, 117.58750",
+                    "POSITION_HOTSPOT": "1750.98600, -86.69315, 440.58750",
                     "ROTATION_HOTSPOT": "",
                     "IMAGE_HOTSPOT": "Hotspot_VR3",
                     "TYPE": "",
                     "PATH_ARRAY": "",
                     "TITLE_PANEL": "Hotspot_VR3_Panel",
-                    "POSITION_PANEL": "-158.80140, 18.98069, 56.50875",
+                    "POSITION_PANEL": "-173.09860, 18.98069, -0.69125",
                     "SCALE_PANEL": "",
                     "ROTATION_PANEL": "",
                     "NUM_PANEL": "",
