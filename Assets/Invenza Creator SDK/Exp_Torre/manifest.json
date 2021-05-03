@@ -1,0 +1,25 @@
+{
+    "SHORT_TITLE": "Prueba_Seccionador",
+    "TYPE": "MR",
+    "URL_INTERNAL_FILE": "",
+    "NAME_FILE_ZIP": "",
+    "URL_FILE": "",
+    "MODEL": [
+        {
+            "NAME_MODEL": "seccionador_INF",
+            "PATH_IMAGE_REF": "Exp_Torre/DSC01453.JPG",
+            "PATH_MODEL": "Exp_Torre/torre_abajo/seccionador_INF.gltf",
+            "SCALE_MODEL": "1.000, 1.000, 1.000",
+            "PATH_MODEL_LABEL": "",
+            "HOTSPOTS": []
+        },
+        {
+            "NAME_MODEL": "seccionador_SUP",
+            "PATH_IMAGE_REF": "Exp_Torre/DJI_0201.JPG",
+            "PATH_MODEL": "Exp_Torre/torre_arriba/seccionador_SUP.gltf",
+            "SCALE_MODEL": "1.000, 1.000, 1.000",
+            "PATH_MODEL_LABEL": "",
+            "HOTSPOTS": []
+        }
+    ]
+}

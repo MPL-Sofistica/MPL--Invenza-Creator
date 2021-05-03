@@ -1,0 +1,17 @@
+{
+    "SHORT_TITLE": "Camion_Canasta_Separado",
+    "TYPE": "MR",
+    "URL_INTERNAL_FILE": "",
+    "NAME_FILE_ZIP": "",
+    "URL_FILE": "",
+    "MODEL": [
+        {
+            "NAME_MODEL": "CamionCanasta_separado",
+            "PATH_IMAGE_REF": "CamionCanasta/B54401-3e83cbcf.jpeg",
+            "PATH_MODEL": "CamionCanasta/CamionCanasta_separado.gltf",
+            "SCALE_MODEL": "1.000, 1.000, 1.000",
+            "PATH_MODEL_LABEL": "",
+            "HOTSPOTS": []
+        }
+    ]
+}

@@ -1,0 +1,93 @@
+{
+    "SHORT_TITLE": "CMSA AR ",
+    "TYPE": "AR",
+    "URL_INTERNAL_FILE": "",
+    "NAME_FILE_ZIP": "",
+    "URL_FILE": "",
+    "MODEL": [
+        {
+            "NAME_MODEL": "piston",
+            "PATH_IMAGE_REF": "",
+            "PATH_MODEL": "AR_Prueba_Autos/model.tflite",
+            "SCALE_MODEL": "",
+            "PATH_MODEL_LABEL": "AR_Prueba_Autos/labels.txt",
+            "HOTSPOTS": [
+                {
+                    "NAME_HOTSPOT": "",
+                    "POSITION_HOTSPOT": "",
+                    "ROTATION_HOTSPOT": "",
+                    "IMAGE_HOTSPOT": "",
+                    "TYPE": "",
+                    "PATH_ARRAY": "",
+                    "TITLE_PANEL": "Hotspot Piston",
+                    "POSITION_PANEL": "0.7920, 0.0000, 0.0000",
+                    "SCALE_PANEL": "0.0040, 0.0040, 1.0000",
+                    "ROTATION_PANEL": "0.0000, 0.0000, 0.0000, 1.0000",
+                    "NUM_PANEL": "Hotspot Piston",
+                    "BUTTONS": [
+                        {
+                            "TYPE": "image",
+                            "PATH_ARRAY": "AR_Prueba_Autos/Img/pistón.png"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "NAME_MODEL": "ciguenal",
+            "PATH_IMAGE_REF": "",
+            "PATH_MODEL": "AR_Prueba_Autos/model.tflite",
+            "SCALE_MODEL": "",
+            "PATH_MODEL_LABEL": "AR_Prueba_Autos/labels.txt",
+            "HOTSPOTS": [
+                {
+                    "NAME_HOTSPOT": "",
+                    "POSITION_HOTSPOT": "",
+                    "ROTATION_HOTSPOT": "",
+                    "IMAGE_HOTSPOT": "",
+                    "TYPE": "",
+                    "PATH_ARRAY": "",
+                    "TITLE_PANEL": "Hotspot1 Ciguenal",
+                    "POSITION_PANEL": "0.7920, 0.0000, 0.0000",
+                    "SCALE_PANEL": "0.0040, 0.0040, 1.0000",
+                    "ROTATION_PANEL": "0.0000, 0.0000, 0.0000, 1.0000",
+                    "NUM_PANEL": "Hotspot1 Ciguenal",
+                    "BUTTONS": [
+                        {
+                            "TYPE": "image",
+                            "PATH_ARRAY": "AR_Prueba_Autos/Img/ciguenal.jpg"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "NAME_MODEL": "culata",
+            "PATH_IMAGE_REF": "",
+            "PATH_MODEL": "AR_Prueba_Autos/model.tflite",
+            "SCALE_MODEL": "",
+            "PATH_MODEL_LABEL": "AR_Prueba_Autos/labels.txt",
+            "HOTSPOTS": [
+                {
+                    "NAME_HOTSPOT": "",
+                    "POSITION_HOTSPOT": "",
+                    "ROTATION_HOTSPOT": "",
+                    "IMAGE_HOTSPOT": "",
+                    "TYPE": "",
+                    "PATH_ARRAY": "",
+                    "TITLE_PANEL": "Hotspot1 Culata",
+                    "POSITION_PANEL": "0.7920, 0.0000, 0.0000",
+                    "SCALE_PANEL": "0.0040, 0.0040, 1.0000",
+                    "ROTATION_PANEL": "0.0000, 0.0000, 0.0000, 1.0000",
+                    "NUM_PANEL": "Hotspot1 Culata",
+                    "BUTTONS": [
+                        {
+                            "TYPE": "image",
+                            "PATH_ARRAY": "AR_Prueba_Autos/Img/culata.png"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
