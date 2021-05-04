@@ -56,7 +56,7 @@ public class WebSocketConnection : MonoBehaviour
                 }
                 catch (Exception x)
                 {
-                    Debug.LogError("la conexion fallo");
+                    Debug.LogError("la conexion fallo" + x);
                 }
             }
         }
@@ -74,20 +74,25 @@ public class WebSocketConnection : MonoBehaviour
      **/
     public void sendinfo()
     {
-        Debug.Log("hola");
+        //Debug.Log("hola");
+#if UNITY_ANDROID
         deviceinfo.id = helper.getSerialNumber();
         deviceinfo.name = helper.getSerialNumber();
-
         memoria = helper.GetStorage();
         deviceinfo.memory = memoria.ToString("F2");
         memoria_total = helper.GetStorage() * 100 / helper.GetTotalStorage();
 
         deviceinfo.memory_p = memoria_total.ToString();
+
         bateria = SystemInfo.batteryLevel * 100;
+
         deviceinfo.drums = bateria.ToString();
 
-        /*deviceinfo.id = SystemInfo.deviceUniqueIdentifier;
+        holder.message = deviceinfo;
+#elif UNITY_EDITOR
+        deviceinfo.id = SystemInfo.deviceUniqueIdentifier;
         deviceinfo.name = SystemInfo.deviceName;
+
         memoria = 30f;
         deviceinfo.memory = memoria.ToString("F2");
 
@@ -97,10 +102,10 @@ public class WebSocketConnection : MonoBehaviour
 
         bateria = SystemInfo.batteryLevel * 100;
 
-        deviceinfo.drums = "100";*/
-
+        deviceinfo.drums = "100";
 
         holder.message = deviceinfo;
+#endif
         if (ConexionesDocentes.connected)
         {
             Thread t = new Thread(new ThreadStart(metodo));
@@ -122,7 +127,6 @@ public class WebSocketConnection : MonoBehaviour
     {
         string sendmessage = JsonUtility.ToJson(messagetoSend);
         Debug.Log(sendmessage);
-        //info.text = sendmessage;
         return sendmessage;
     }
     /**

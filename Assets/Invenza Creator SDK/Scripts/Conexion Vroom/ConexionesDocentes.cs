@@ -24,17 +24,17 @@ public class ConexionesDocentes : MonoBehaviour
 
     public DownloadUtils loader;
 
-    //public GameObject createelement;
+    public GameObject createelement;
 
     //private create_element element;
 
     public static bool connected = false;
-       
+
 
     private void Awake()
     {
 
-        //loader = manager.GetComponent<DownloadUtils>();
+        loader = manager.GetComponent<DownloadUtils>();
         //element = createelement.GetComponent<create_element>();
 
         //dropdownDocentes.ClearOptions();

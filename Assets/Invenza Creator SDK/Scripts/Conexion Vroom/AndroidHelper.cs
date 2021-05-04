@@ -34,10 +34,9 @@ public class AndroidHelper : MonoBehaviour
         ajo.Call("init", ActivityContext);
         //Ensure to invoke "init" function first before using all interfaces.
         ajo.Call("init", ActivityContext);
-        object[] args = new object[] { apkPath, pkgname };
+        //object[] args = new object[] { apkPath, pkgname };
         ajo.Call("silentInstall", apkPath, pkgname);
         // deviceHelper.Call("silentInstall", apkPath, pkgname);
-
         return true;
     }
 
@@ -65,7 +64,7 @@ public class AndroidHelper : MonoBehaviour
             string[] ipDeviceSplit = ipDevice.Split('.');
             ipServer = ipDeviceSplit[0] + "." + ipDeviceSplit[1] + "." + ipDeviceSplit[2] + "." + numServerIp;
         }
-        Debug.Log(ipDevice + " Ipdevices " + ipServer);
+        //Debug.Log(ipDevice + " Ipdevices " + ipServer);
         return ipServer;
 
     }
@@ -107,7 +106,7 @@ public class AndroidHelper : MonoBehaviour
         ajo.Call("init", ActivityContext);
         float freestorage = ajo.Call<float>("getStorageFreeSize");
 
-        Debug.Log(freestorage);
+        //Debug.Log(freestorage);
 
         return freestorage;
     }
@@ -129,13 +128,10 @@ public class AndroidHelper : MonoBehaviour
         ajo.Call("init", ActivityContext);
         float freestorage = ajo.Call<float>("getStorageTotalSize");
 
-        Debug.Log(freestorage);
+        //Debug.Log(freestorage);
 
         return freestorage;
     }
-
-
-
     /**
     * 
     * Nombre: getSerialNumber
@@ -157,4 +153,16 @@ public class AndroidHelper : MonoBehaviour
         return serialnumber;
 
     }
+
+    public void lanzarvideo()
+    {
+        Debug.Log("empiezo el metodo");
+        string configPath = "/storage/emulated/0/Download/config.txt";
+        AndroidJavaObject ajo = new AndroidJavaObject("com.picovr.launchwebvr.LaunchWebVRClass");
+        AndroidJavaObject context = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
+        ajo.Call("launch", context, configPath);
+        //Debug.Log("pase por el metodo");
+    }
+
+
 }

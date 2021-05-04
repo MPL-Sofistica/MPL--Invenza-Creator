@@ -7,6 +7,7 @@ using System.Net.WebSockets;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Text;
+using UnityEngine.UI;
 
 
 /**
@@ -32,7 +33,7 @@ public class DeviceInfoCapture : MonoBehaviour
     float bateria;
     float memoria_total;
 
-    public float fps = 0.3f;
+    public float fps = 1f;
 
     private static System.Timers.Timer aTimer;
     private Messageholder holder = new Messageholder();
@@ -48,7 +49,7 @@ public class DeviceInfoCapture : MonoBehaviour
         {
             fps = float.Parse(BroadcastConnection.docente.fps_v);
         }
-        capture.InvokeRepeating("TimedScreen", 1f, fps);
+        //capture.InvokeRepeating("TimedScreen", 1f, fps);
 
         //StartCoroutine("timedEvent");
         aTimer = new System.Timers.Timer(5000);
@@ -74,7 +75,7 @@ public class DeviceInfoCapture : MonoBehaviour
         holder.message = deviceinfo;
 
         string sendmessage = JsonUtility.ToJson(holder);
-        Debug.Log(sendmessage);
+        //Debug.Log(deviceinfo.name);
 
         Receive(sendmessage);
         deviceinfo.screenshot.Clear();
@@ -86,6 +87,7 @@ public class DeviceInfoCapture : MonoBehaviour
         {
             fps = float.Parse(BroadcastConnection.docente.fps_v, System.Globalization.NumberStyles.Float, new System.Globalization.CultureInfo("en-US"));
         }
+#if UNITY_EDITOR
         /*deviceinfo.id = SystemInfo.deviceUniqueIdentifier;
         deviceinfo.name = SystemInfo.deviceName;
 
@@ -108,26 +110,30 @@ public class DeviceInfoCapture : MonoBehaviour
         }
 
         holder.message = deviceinfo;*/
-      
-         deviceinfo.id = helper.getSerialNumber();
-         deviceinfo.name = helper.getSerialNumber();
 
-         memoria = helper.GetStorage();
-         deviceinfo.memory = memoria.ToString("F2");
-         memoria_total = helper.GetStorage() * 100 / helper.GetTotalStorage();
+#elif UNITY_ANDROID
 
-         deviceinfo.memory_p = memoria_total.ToString();
+        deviceinfo.id = helper.getSerialNumber();
+        deviceinfo.name = helper.getSerialNumber();
 
-         bateria = SystemInfo.batteryLevel * 100;
+        memoria = helper.GetStorage();
+        deviceinfo.memory = memoria.ToString("F2");
+        memoria_total = helper.GetStorage() * 100 / helper.GetTotalStorage();
 
-         deviceinfo.drums = bateria.ToString();
+        deviceinfo.memory_p = memoria_total.ToString();
 
-         if (capture.takeHiResShot)
-         {
-             deviceinfo.screenshot.Add(capture.GetScreenshot());
-             capture.takeHiResShot = false;
-         }
-         holder.message = deviceinfo;
+        bateria = SystemInfo.batteryLevel * 100;
+
+        deviceinfo.drums = bateria.ToString();
+
+        if (capture.takeHiResShot)
+        {
+            deviceinfo.screenshot.Add(capture.GetScreenshot());
+            capture.takeHiResShot = false;
+        }
+        holder.message = deviceinfo;
+
+#endif
     }
 
     /**
