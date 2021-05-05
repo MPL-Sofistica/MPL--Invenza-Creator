@@ -4,7 +4,7 @@ using UnityEngine;
 using System.IO;
 
 
-public class DebugFile : MonoBehaviour
+public class HtmlGenerator : MonoBehaviour
 {
 
     private string myFilePath;

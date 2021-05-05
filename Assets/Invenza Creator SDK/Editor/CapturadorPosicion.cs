@@ -110,7 +110,7 @@ public class CapturadorPosicion : EditorWindow
     #endregion
 
     #region variables generar archivo
-    DebugFile indexHMTLFile;
+    HtmlGenerator indexHMTLFile;
     public string filehtml = "";
     public string[] hotPos;
     public string[] hotnam;
@@ -985,7 +985,7 @@ public class CapturadorPosicion : EditorWindow
 
                         if (GUILayout.Button("generar el index.html", GUILayout.Width(480)))
                         {
-                            indexHMTLFile = new DebugFile();
+                            indexHMTLFile = new HtmlGenerator();
                             filehtml = indexHMTLFile.headerStart;
                             filehtml += indexHMTLFile.CreateContainerHTML();
                             // crear videos html
@@ -1002,7 +1002,7 @@ public class CapturadorPosicion : EditorWindow
                             /////
                             filehtml += "<script>" + indexHMTLFile.variablesGenericas;
                             filehtml += indexHMTLFile.varContainer;
-                            filehtml += indexHMTLFile.CreatePanorama(panoramaPath, DebugFile.tipoPanorama.Imagen);////panorama
+                            filehtml += indexHMTLFile.CreatePanorama(panoramaPath, HtmlGenerator.tipoPanorama.Imagen);////panorama
                             filehtml += indexHMTLFile.CreateViewerHTML();
                             filehtml += indexHMTLFile.addWidgets();
                             for (int i = 0; i < experiencia.MODEL[0].HOTSPOTS.Count; i++)
@@ -1011,23 +1011,23 @@ public class CapturadorPosicion : EditorWindow
                                 filehtml += indexHMTLFile.CreateFrameLayout(experiencia.MODEL[0].HOTSPOTS[i].TITLE_PANEL + "_Layout", experiencia.MODEL[0].HOTSPOTS[i].TITLE_PANEL + "_Grupo");
                                 for (int ji = 0; ji < experiencia.MODEL[0].HOTSPOTS[i].BUTTONS.Count; ji++)
                                 {
-                                    DebugFile.tipoBoton boton;
+                                    HtmlGenerator.tipoBoton boton;
                                     if (experiencia.MODEL[0].HOTSPOTS[i].BUTTONS[ji].TYPE == "image")
                                     {
-                                        boton = DebugFile.tipoBoton.Imagen;
+                                        boton = HtmlGenerator.tipoBoton.Imagen;
                                     }
                                     else if (experiencia.MODEL[0].HOTSPOTS[i].BUTTONS[ji].TYPE == "text")
                                     {
-                                        boton = DebugFile.tipoBoton.Texto;
+                                        boton = HtmlGenerator.tipoBoton.Texto;
                                     }
                                     else
                                     {
-                                        boton = DebugFile.tipoBoton.Video;
+                                        boton = HtmlGenerator.tipoBoton.Video;
                                     }
                                     filehtml += indexHMTLFile.CrearBoton(experiencia.MODEL[0].HOTSPOTS[i].BUTTONS[ji].PATH_ARRAY, experiencia.MODEL[0].HOTSPOTS[i].BUTTONS[ji].TYPE + i.ToString() + "_" + ji.ToString(), boton, "Video" + "_id" + "_" + i.ToString() + "_" + ji.ToString(), experiencia.MODEL[0].HOTSPOTS[i].TITLE_PANEL + "_Grupo", experiencia.MODEL[0].HOTSPOTS[i].TITLE_PANEL + "_Layout");
                                     if (ji == experiencia.MODEL[0].HOTSPOTS[i].BUTTONS.Count - 1)
                                     {
-                                        filehtml += indexHMTLFile.CrearBoton(experiencia.MODEL[0].HOTSPOTS[i].BUTTONS[ji].PATH_ARRAY, experiencia.MODEL[0].HOTSPOTS[i].BUTTONS[ji].TYPE + i.ToString() + "_" + ji.ToString(), DebugFile.tipoBoton.Cerrar, "Video" + "_id" + "_" + i.ToString() + "_" + ji.ToString(), experiencia.MODEL[0].HOTSPOTS[i].TITLE_PANEL + "_Grupo", experiencia.MODEL[0].HOTSPOTS[i].TITLE_PANEL + "_Layout");
+                                        filehtml += indexHMTLFile.CrearBoton(experiencia.MODEL[0].HOTSPOTS[i].BUTTONS[ji].PATH_ARRAY, experiencia.MODEL[0].HOTSPOTS[i].BUTTONS[ji].TYPE + i.ToString() + "_" + ji.ToString(), HtmlGenerator.tipoBoton.Cerrar, "Video" + "_id" + "_" + i.ToString() + "_" + ji.ToString(), experiencia.MODEL[0].HOTSPOTS[i].TITLE_PANEL + "_Grupo", experiencia.MODEL[0].HOTSPOTS[i].TITLE_PANEL + "_Layout");
                                     }
                                 }
                                 indexHMTLFile.numBoton = 0;
@@ -1317,7 +1317,7 @@ public class CapturadorPosicion : EditorWindow
 
                         if (GUILayout.Button("generar el index.html", GUILayout.Width(480)))
                         {
-                            indexHMTLFile = new DebugFile();
+                            indexHMTLFile = new HtmlGenerator();
                             filehtml = indexHMTLFile.headerStart;
                             filehtml += indexHMTLFile.CreateContainerHTML();
                             // crear videos html
@@ -1334,7 +1334,7 @@ public class CapturadorPosicion : EditorWindow
                             /////
                             filehtml += "<script>" + indexHMTLFile.variablesGenericas;
                             filehtml += indexHMTLFile.varContainer;
-                            filehtml += indexHMTLFile.CreatePanorama(panoramaPath, DebugFile.tipoPanorama.Video);////panorama
+                            filehtml += indexHMTLFile.CreatePanorama(panoramaPath, HtmlGenerator.tipoPanorama.Video);////panorama
                             filehtml += indexHMTLFile.CreateViewerHTML();
                             filehtml += indexHMTLFile.addWidgets();
                             for (int i = 0; i < experiencia.MODEL[0].HOTSPOTS.Count; i++)
@@ -1343,23 +1343,23 @@ public class CapturadorPosicion : EditorWindow
                                 filehtml += indexHMTLFile.CreateFrameLayout(experiencia.MODEL[0].HOTSPOTS[i].TITLE_PANEL + "_Layout", experiencia.MODEL[0].HOTSPOTS[i].TITLE_PANEL + "_Grupo");
                                 for (int ji = 0; ji < experiencia.MODEL[0].HOTSPOTS[i].BUTTONS.Count; ji++)
                                 {
-                                    DebugFile.tipoBoton boton;
+                                    HtmlGenerator.tipoBoton boton;
                                     if (experiencia.MODEL[0].HOTSPOTS[i].BUTTONS[ji].TYPE == "image")
                                     {
-                                        boton = DebugFile.tipoBoton.Imagen;
+                                        boton = HtmlGenerator.tipoBoton.Imagen;
                                     }
                                     else if (experiencia.MODEL[0].HOTSPOTS[i].BUTTONS[ji].TYPE == "text")
                                     {
-                                        boton = DebugFile.tipoBoton.Texto;
+                                        boton = HtmlGenerator.tipoBoton.Texto;
                                     }
                                     else
                                     {
-                                        boton = DebugFile.tipoBoton.Video;
+                                        boton = HtmlGenerator.tipoBoton.Video;
                                     }
                                     filehtml += indexHMTLFile.CrearBoton(experiencia.MODEL[0].HOTSPOTS[i].BUTTONS[ji].PATH_ARRAY, experiencia.MODEL[0].HOTSPOTS[i].BUTTONS[ji].TYPE + i.ToString() + "_" + ji.ToString(), boton, "Video" + "_id" + "_" + i.ToString() + "_" + ji.ToString(), experiencia.MODEL[0].HOTSPOTS[i].TITLE_PANEL + "_Grupo", experiencia.MODEL[0].HOTSPOTS[i].TITLE_PANEL + "_Layout");
                                     if (ji == experiencia.MODEL[0].HOTSPOTS[i].BUTTONS.Count - 1)
                                     {
-                                        filehtml += indexHMTLFile.CrearBoton(experiencia.MODEL[0].HOTSPOTS[i].BUTTONS[ji].PATH_ARRAY, experiencia.MODEL[0].HOTSPOTS[i].BUTTONS[ji].TYPE + i.ToString() + "_" + ji.ToString(), DebugFile.tipoBoton.Cerrar, "Video" + "_id" + "_" + i.ToString() + "_" + ji.ToString(), experiencia.MODEL[0].HOTSPOTS[i].TITLE_PANEL + "_Grupo", experiencia.MODEL[0].HOTSPOTS[i].TITLE_PANEL + "_Layout");
+                                        filehtml += indexHMTLFile.CrearBoton(experiencia.MODEL[0].HOTSPOTS[i].BUTTONS[ji].PATH_ARRAY, experiencia.MODEL[0].HOTSPOTS[i].BUTTONS[ji].TYPE + i.ToString() + "_" + ji.ToString(), HtmlGenerator.tipoBoton.Cerrar, "Video" + "_id" + "_" + i.ToString() + "_" + ji.ToString(), experiencia.MODEL[0].HOTSPOTS[i].TITLE_PANEL + "_Grupo", experiencia.MODEL[0].HOTSPOTS[i].TITLE_PANEL + "_Layout");
                                     }
                                 }
                                 indexHMTLFile.numBoton = 0;
@@ -1491,17 +1491,12 @@ public class CapturadorPosicion : EditorWindow
         return vector;
     }
 
-
-
-
-
     public Vector3 left2rightrotation_Safe(Vector3 vector)
     {
         vector.x = -vector.x;
         vector.y = -vector.y;
         return vector;
     }
-
 
     void receivePNGScreenShot(byte[] pngArray)
     {
@@ -1515,8 +1510,6 @@ public class CapturadorPosicion : EditorWindow
         System.IO.File.WriteAllBytes(path, pngArray);
         Debug.Log(path);
     }
-
-
 
     public byte[] GetScreenshot(Camera camera, Texture2D screenshot, RenderTexture rt, Canvas canvas)
     {
