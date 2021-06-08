@@ -20,7 +20,7 @@ public class DownloadUtils : MonoBehaviour
 {
     public Image image;
     public AudioSource audioSource;
-    AndroidHelper androidHelper = new AndroidHelper();
+    //AndroidHelper androidHelper = new AndroidHelper();
 
     public string url;
     public string teachername;
@@ -33,7 +33,7 @@ public class DownloadUtils : MonoBehaviour
     public GameObject conDocentes;
 
     public DataParent parent;
-    public Text downloadtext, Status;
+    public Text downloadtext, Status, usertext;
 
     public float file_size;
     public long getsize;
@@ -322,6 +322,7 @@ public class DownloadUtils : MonoBehaviour
         if (!Status.gameObject.activeSelf)
         {
             Status.gameObject.SetActive(true);
+            usertext.text = "Sincronizando contenidos";
             Status.text = "Descargando";
             Debug.Log("descargando");
         }

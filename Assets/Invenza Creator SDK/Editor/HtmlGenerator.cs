@@ -9,7 +9,6 @@ public class HtmlGenerator : MonoBehaviour
 
     private string myFilePath;
     private GameObject manager;
-    private DownloadUtils dUtils;
 
     public int numBoton = 0;
 
@@ -50,7 +49,6 @@ public class HtmlGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //myFilePath = dUtils.GetAndroidInternalFilesDir() + "/LogFile" + date + ".txt";
         myFilePath = Application.streamingAssetsPath + "/LogFile" + date + ".txt";
 
         if (File.Exists(myFilePath))

@@ -22,7 +22,7 @@ public class ConexionesDocentes : MonoBehaviour
 
     public GameObject manager;
 
-    public DownloadUtils loader;
+    //public DownloadUtils loader;
 
     public GameObject createelement;
 
@@ -30,11 +30,10 @@ public class ConexionesDocentes : MonoBehaviour
 
     public static bool connected = false;
 
-
     private void Awake()
     {
 
-        loader = manager.GetComponent<DownloadUtils>();
+        //loader = manager.GetComponent<DownloadUtils>();
         //element = createelement.GetComponent<create_element>();
 
         //dropdownDocentes.ClearOptions();
@@ -52,7 +51,7 @@ public class ConexionesDocentes : MonoBehaviour
      * 
      **/
     public void PopulateDropdown(Dropdown dropdown, List<Docente> optionsArray)
-    {
+    {        
         List<string> options = new List<string>();
         int count = 0;
         foreach (var option in optionsArray)
@@ -75,15 +74,15 @@ public class ConexionesDocentes : MonoBehaviour
     **/
     public void changeip(int index)
     {
-        loader.url = docentesactuales[index - 1].ipAddress;
-        loader.teachername = docentesactuales[index - 1].id_user;
+        //loader.url = docentesactuales[index - 1].ipAddress;
+        //loader.teachername = docentesactuales[index - 1].id_user;
         //Debug.Log("debo cambiar de ip");
         /*for (int i = 0; i < element.objectlist.Count; i++)
         {
             Destroy(element.objectlist[i]);
         }*/
         connected = true;
-        manager.GetComponent<WebSocketConnection>().sendinfo();
+        //manager.GetComponent<WebSocketConnection>().sendinfo();
         //element.selectElement();
     }
 }

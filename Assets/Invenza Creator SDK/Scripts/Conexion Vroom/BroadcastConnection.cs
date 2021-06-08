@@ -28,7 +28,7 @@ public class BroadcastConnection : MonoBehaviour
 
     public GameObject ElementoDocente;
 
-    static ColorConsola consola;
+    //static ColorConsola consola;
 
     public static ConexionesDocentes conex;
 
@@ -39,14 +39,14 @@ public class BroadcastConnection : MonoBehaviour
     public static Docente docente;
 
     public Image statusConexion;
-    public Image connectionty;
+    
     public Text userInfo;
 
-    public string conecting = "Buscando Conexión con Vroom";
+    public string conecting = "Conectando con VRoom";
 
     public string disconected = "Detenida Conexión con Vroom";
 
-    private static DebugFile debugFile;
+    //private static DebugFile debugFile;
     public static byte status = 0;
 
     private void Start()
@@ -55,9 +55,9 @@ public class BroadcastConnection : MonoBehaviour
 
         dropdownDocentes = ElementoDocente.GetComponent<ConexionesDocentes>().dropdownDocentes;
 
-        debugFile = this.gameObject.GetComponent<DebugFile>();
+        //debugFile = this.gameObject.GetComponent<DebugFile>();
 
-        consola = this.gameObject.GetComponent<ColorConsola>();
+        //consola = this.gameObject.GetComponent<ColorConsola>();
     }
     /**
      * 
@@ -75,7 +75,7 @@ public class BroadcastConnection : MonoBehaviour
         if (started)
         {
             userInfo.text = conecting;
-            connectionty.color = Color.blue;
+            //connectionty.color = Color.blue;
             t = new Thread(new ThreadStart(Threadhandler));
             //Debug.Log(started);
             t.Start();
@@ -83,7 +83,7 @@ public class BroadcastConnection : MonoBehaviour
         else
         {
             userInfo.text = disconected;
-            connectionty.color = Color.black;
+            //connectionty.color = Color.black;
             t.Abort();
             t = null;
         }
@@ -104,7 +104,7 @@ public class BroadcastConnection : MonoBehaviour
         int i = 0;
         IPEndPoint groupEP = new IPEndPoint(IPAddress.Any, 5005);
         Debug.Log(groupEP);
-        debugFile.WriteToFile("IP buscada: " + groupEP.ToString());
+        //debugFile.WriteToFile("IP buscada: " + groupEP.ToString());
         try
         {
             while (true)
@@ -112,9 +112,9 @@ public class BroadcastConnection : MonoBehaviour
                 Debug.Log("entro a conectarme");
                 byte[] bytes = listener.Receive(ref groupEP);
                 Debug.Log(bytes);
-                debugFile.WriteToFile(IPAddress.Any.ToString());
+                //debugFile.WriteToFile(IPAddress.Any.ToString());
                 returnData = Encoding.UTF8.GetString(bytes);
-                debugFile.WriteToFile("datos recibidos desde la ip: " + returnData);
+                //debugFile.WriteToFile("datos recibidos desde la ip: " + returnData);
                 Debug.Log(returnData);
                 docente = JsonUtility.FromJson<Docente>(returnData);
                 if (!listaentrante.Any<Docente>(x => x.teacherName == docente.teacherName))
@@ -132,7 +132,7 @@ public class BroadcastConnection : MonoBehaviour
             UnityEngine.Debug.Log(e);
             Debug.Log("algo fallo");
             //throw;
-            consola.CambiarColorConsola(status = 2);
+            //consola.CambiarColorConsola(status = 2);
         }
         finally
         {
@@ -151,11 +151,12 @@ public class BroadcastConnection : MonoBehaviour
     {
         if (returnData != null)
         {
-            consola.CambiarColorConsola(status = 1);
+            statusConexion.color = Color.green;
+            userInfo.text = "Conectado.  Selecciona el servidor";
         }
         else
         {
-            consola.CambiarColorConsola(status = 0);
+            statusConexion.color = Color.red;
         }
     }
 }

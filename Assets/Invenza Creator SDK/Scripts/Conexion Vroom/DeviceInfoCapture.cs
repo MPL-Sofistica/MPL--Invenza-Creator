@@ -21,7 +21,7 @@ using UnityEngine.UI;
 
 public class DeviceInfoCapture : MonoBehaviour
 {
-    AndroidHelper helper = new AndroidHelper();
+    //AndroidHelper helper = new AndroidHelper();
 
     public static Message deviceinfo = new Message();
 
@@ -29,9 +29,10 @@ public class DeviceInfoCapture : MonoBehaviour
 
     private static ScreenCapture capture;
 
+   //private DebugFile file;
     float memoria;
     float bateria;
-    float memoria_total;
+    float memoria_libre;
 
     public float fps = 1f;
 
@@ -42,21 +43,22 @@ public class DeviceInfoCapture : MonoBehaviour
 
     private void Start()
     {
-        helper = manager.GetComponent<AndroidHelper>();
+       // helper = manager.GetComponent<AndroidHelper>();
         downutils = manager.GetComponent<DownloadUtils>();
         capture = manager.GetComponent<ScreenCapture>();
         if (BroadcastConnection.docente != null)
         {
             fps = float.Parse(BroadcastConnection.docente.fps_v);
         }
-        //capture.InvokeRepeating("TimedScreen", 1f, fps);
-
+        capture.InvokeRepeating("TimedScreen", 1f, fps);
         //StartCoroutine("timedEvent");
         aTimer = new System.Timers.Timer(5000);
         //aTimer.Elapsed += onTimeEvent;
         aTimer.Elapsed += delegate { onThreadEvent(holder); };
         aTimer.AutoReset = true;
         aTimer.Enabled = true;
+
+        //file = manager.GetComponent<DebugFile>();
     }
 
 
@@ -78,6 +80,7 @@ public class DeviceInfoCapture : MonoBehaviour
         //Debug.Log(deviceinfo.name);
 
         Receive(sendmessage);
+        //file.WriteToFile(sendmessage);
         deviceinfo.screenshot.Clear();
     }
 
@@ -111,16 +114,18 @@ public class DeviceInfoCapture : MonoBehaviour
 
         holder.message = deviceinfo;*/
 
-#elif UNITY_ANDROID
+    #elif UNITY_ANDROID
 
         deviceinfo.id = helper.getSerialNumber();
         deviceinfo.name = helper.getSerialNumber();
 
         memoria = helper.GetStorage();
-        deviceinfo.memory = memoria.ToString("F2");
-        memoria_total = helper.GetStorage() * 100 / helper.GetTotalStorage();
+        deviceinfo.memory = ((memoria * 100) / helper.GetTotalStorage()).ToString("F2").Replace(",", ".");
+        //deviceinfo.memory=deviceinfo.memory.Replace(",",".");
+        //memoria_total = helper.GetStorage() * 100 / helper.GetTotalStorage();
 
-        deviceinfo.memory_p = memoria_total.ToString();
+        memoria_libre = helper.GetStorage();
+        deviceinfo.memory_p = memoria_libre.ToString().Replace(",", ".");
 
         bateria = SystemInfo.batteryLevel * 100;
 
@@ -132,8 +137,7 @@ public class DeviceInfoCapture : MonoBehaviour
             capture.takeHiResShot = false;
         }
         holder.message = deviceinfo;
-
-#endif
+        #endif
     }
 
     /**
